@@ -1,0 +1,1059 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.111" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Identifier" content="urn:ietf:id:gould-allocation-token" />
+<meta name="DC.Description.Abstract" content="This document describes an Extensible Provisioning Protocol (EPP)
+extension for including an allocation token or code for allocating an
+object like a domain name to the client. The allocation token MAY be
+transferred out-of-band to a client to give them authorization to
+allocate an object using one of the EPP transform commands including
+create, update, and transfer." />
+<meta name="DC.Creator" content="Wodjenski, Sharon" />
+<meta name="DC.Creator" content="Tran, Trung" />
+<meta name="DC.Creator" content="Gould, James" />
+<meta name="DC.Date.Issued" content="2014-10-09" />
+<meta name="DC.Title" content="Allocation Token Extension for the Extensible Provisioning Protocol (EPP)" />
+
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-gould-allocation-token-01 - Allocation Token Extension for the Extensible Provisioning Protocol (EPP)</title>
+    
+    
+    <style type="text/css">
+	body {
+	    margin: 0px 8px;
+            font-size: 1em;
+	}
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	    font-weight: bold;
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+	    font-weight: bold;
+        }
+        pre {
+            font-size: 1em;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header{
+	    font-weight: bold;
+	}
+        .newpage {
+            page-break-before: always;
+        }
+        .invisible {
+            text-decoration: none;
+            color: white;
+        }
+        a.selflink {
+          color: black;
+          text-decoration: none;
+        }
+        @media print {
+            body {
+                font-family: monospace;
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1em;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+            .noprint {
+                display: none;
+            }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+            .docinfo {
+                background-color: #EEE;
+            }
+            .top {
+                border-top: 7px solid #EEE;
+            }
+            .bgwhite  { background-color: white; }
+            .bgred    { background-color: #F44; }
+            .bggrey   { background-color: #666; }
+            .bgbrown  { background-color: #840; }            
+            .bgorange { background-color: #FA0; }
+            .bgyellow { background-color: #EE0; }
+            .bgmagenta{ background-color: #F4F; }
+            .bgblue   { background-color: #66F; }
+            .bgcyan   { background-color: #4DD; }
+            .bggreen  { background-color: #4F4; }
+
+            .legend   { font-size: 90%; }
+            .cplate   { font-size: 70%; border: solid grey 1px; }
+	}
+    </style>
+    <!--[if IE]>
+    <style>
+    body {
+       font-size: 13px;
+       margin: 10px 10px;
+    }
+    </style>
+    <![endif]-->
+
+    <script type="text/javascript"><!--
+    function addHeaderTags() {
+	var spans = document.getElementsByTagName("span");
+	for (var i=0; i < spans.length; i++) {
+	    var elem = spans[i];
+	    if (elem) {
+		var level = elem.getAttribute("class");
+                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
+                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
+                }
+	    }
+	}
+    }
+    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
+    function showElem(id) {
+        var elem = document.getElementById(id);
+        elem.innerHTML = eval(id+"_html");
+        elem.style.visibility='visible';
+    }
+    function hideElem(id) {
+        var elem = document.getElementById(id);
+        elem.style.visibility='hidden';        
+        elem.innerHTML = "";
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()">
+   <div style="height: 13px;">
+      <div onmouseover="this.style.cursor='pointer';"
+         onclick="showElem('legend');"
+         onmouseout="hideElem('legend')"
+	 style="height: 6px; position: absolute;"
+         class="pre noprint docinfo bgred"
+         title="Click for colour legend." >                                                                        </div>
+      <div id="legend"
+           class="docinfo noprint pre legend"
+           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
+           onmouseover="showElem('legend');"
+           onmouseout="hideElem('legend');">
+      </div>
+   </div>
+<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">Docs</a>] [<a href="https://tools.ietf.org/id/draft-gould-allocation-token-01.txt" title="Plaintext version of this document">txt</a>|<a href="/pdf/draft-gould-allocation-token-01.txt" title="PDF version of this document">pdf</a>|<a href="/id/draft-gould-allocation-token-01.xml" title="XML source for this document">xml</a>] [<a href='https://datatracker.ietf.org/doc/draft-gould-allocation-token' title='IESG Datatracker information for this document'>Tracker</a>] [<a href="mailto:draft-gould-allocation-token@tools.ietf.org?subject=draft-gould-allocation-token%20" title="Send email to the document authors">Email</a>] [<a href="/rfcdiff?difftype=--hwdiff&amp;url2=draft-gould-allocation-token-01.txt" title="Inline diff (wdiff)">Diff1</a>] [<a href="/rfcdiff?url2=draft-gould-allocation-token-01.txt" title="Side-by-side diff">Diff2</a>] [<a href="/idnits?url=https://tools.ietf.org/id/draft-gould-allocation-token-01.txt" title="Run an idnits check of this document">Nits</a>]           </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<span class="pre noprint docinfo">Versions: <a href="./draft-gould-allocation-token-00">00</a> <a href="./draft-gould-allocation-token-01">01</a>                                                         </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<pre>
+Network Working Group                                           J. Gould
+Internet-Draft                                            VeriSign, Inc.
+Intended status: Standards Track                                 T. Tran
+Expires: September 3, 2015                                  S. Wodjenski
+                                                                 Neustar
+                                                           March 2, 2015
+
+
+  <span class="h1">Allocation Token Extension for the Extensible Provisioning Protocol</span>
+                                 <span class="h1">(EPP)</span>
+                    <span class="h1">draft-gould-allocation-token-01</span>
+
+Abstract
+
+   This document describes an Extensible Provisioning Protocol (EPP)
+   extension for including an allocation token or code for allocating an
+   object like a domain name to the client.  The allocation token MAY be
+   transferred out-of-band to a client to give them authorization to
+   allocate an object using one of the EPP transform commands including
+   create, update, and transfer.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of <a href="./bcp78">BCP 78</a> and <a href="./bcp79">BCP 79</a>.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on September 3, 2015.
+
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to <a href="./bcp78">BCP 78</a> and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 1]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-2" id="page-2" href="#page-2" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in <a href="#section-4">Section 4</a>.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   <a href="#section-1">1</a>.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-2">2</a>
+     <a href="#section-1.1">1.1</a>.  Conventions Used in This Document . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-2">2</a>.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+     <a href="#section-2.1">2.1</a>.  Allocation Token  . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-3">3</a>.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.1">3.1</a>.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-3.1.1">3.1.1</a>.  EPP &lt;check&gt; Command . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-3.1.2">3.1.2</a>.  EPP &lt;info&gt; Command  . . . . . . . . . . . . . . . . .   <a href="#page-7">7</a>
+       <a href="#section-3.1.3">3.1.3</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .   <a href="#page-9">9</a>
+     <a href="#section-3.2">3.2</a>.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  <a href="#page-10">10</a>
+       <a href="#section-3.2.1">3.2.1</a>.  EPP &lt;create&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-10">10</a>
+       <a href="#section-3.2.2">3.2.2</a>.  EPP &lt;delete&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-11">11</a>
+       <a href="#section-3.2.3">3.2.3</a>.  EPP &lt;renew&gt; Command . . . . . . . . . . . . . . . . .  <a href="#page-11">11</a>
+       <a href="#section-3.2.4">3.2.4</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .  <a href="#page-11">11</a>
+       <a href="#section-3.2.5">3.2.5</a>.  EPP &lt;update&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-12">12</a>
+   <a href="#section-4">4</a>.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+     <a href="#section-4.1">4.1</a>.  Allocation Token Extension Schema . . . . . . . . . . . .  <a href="#page-14">14</a>
+   <a href="#section-5">5</a>.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+     <a href="#section-5.1">5.1</a>.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+     <a href="#section-5.2">5.2</a>.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  <a href="#page-15">15</a>
+   <a href="#section-6">6</a>.  Security Considerations . . . . . . . . . . . . . . . . . . .  <a href="#page-15">15</a>
+   <a href="#section-7">7</a>.  Normative References  . . . . . . . . . . . . . . . . . . . .  <a href="#page-15">15</a>
+   <a href="#appendix-A">Appendix A</a>.  Change History . . . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+     <a href="#appendix-A.1">A.1</a>.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+
+<span class="h2"><a class="selflink" name="section-1" href="#section-1">1</a>.  Introduction</span>
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provisioning Protocol (EPP) [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  This mapping, an
+   extension to EPP object mappings like the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], for passing an allocation token one of the EPP transform
+   commands including create, update, and transfer.  The allocation
+   token is known to the server to authorize a client that passes a
+   matching allocation token with one of the supported EPP transform
+   commands.  It is up to server policy which EPP transform commands and
+   which objects support the allocation token.  The allocation token MAY
+   be returned to an authorized client for passing out-of-band to a
+   client that uses it with an EPP transform command.
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 2]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-3" id="page-3" href="#page-3" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-1.1" href="#section-1.1">1.1</a>.  Conventions Used in This Document</span>
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in <a href="./rfc2119">RFC 2119</a> [<a href="./rfc2119" title="&quot;Key words for use in RFCs to Indicate Requirement Levels&quot;">RFC2119</a>].
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented in order to develop a conforming
+   implementation.
+
+   In examples, "C:" represents lines sent by a protocol client and "S:"
+   represents lines returned by a protocol server.  Indentation and
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this protocol.
+
+   "allocationToken-1.0" is used as an abbreviation for
+   "urn:ietf:params:xml:ns:allocationToken-1.0".  The XML namespace
+   prefix "allocationToken" is used, but implementations MUST NOT depend
+   on it and instead employ a proper namespace-aware XML parser and
+   serializer to interpret and output the XML documents.
+
+<span class="h2"><a class="selflink" name="section-2" href="#section-2">2</a>.  Object Attributes</span>
+
+   This extension adds additional elements to EPP object mappings like
+   the EPP domain name mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].  Only those new elements are
+   described here.
+
+<span class="h3"><a class="selflink" name="section-2.1" href="#section-2.1">2.1</a>.  Allocation Token</span>
+
+   The Allocation Token is a simple XML "token" type.  The exact format
+   of the Allocation Token is up to server policy.  The server MUST have
+   the allocation token for each object to match against the allocation
+   token passed by the client to authorize the allocation of the object.
+   The same &lt;allocationToken:allocationToken&gt; element is used for all of
+   the supported EPP transform commands as well as the info response.
+   If an invalid allocation token is passed the server MUST return an
+   EPP error result code of 2201.
+
+   An example &lt;allocationToken:allocationToken&gt; element with value of
+   "abc123":
+
+   &lt;allocationToken:allocationToken xmlns:allocationToken=
+             "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+     abc123
+   &lt;/allocationToken:allocationToken&gt;
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 3]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-4" id="page-4" href="#page-4" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-3" href="#section-3">3</a>.  EPP Command Mapping</span>
+
+   A detailed description of the EPP syntax and semantics can be found
+   in the EPP core protocol specification [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h3"><a class="selflink" name="section-3.1" href="#section-3.1">3.1</a>.  EPP Query Commands</span>
+
+   EPP provides three commands to retrieve object information: &lt;check&gt;
+   to determine if an object is known to the server, &lt;info&gt; to retrieve
+   detailed information associated with an object, and &lt;transfer&gt; to
+   retrieve object transfer status information.
+
+<span class="h4"><a class="selflink" name="section-3.1.1" href="#section-3.1.1">3.1.1</a>.  EPP &lt;check&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;check&gt;
+   command of an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+
+   This extension allow clients to check the availability of an object
+   with an allocation token, as described in <a href="#section-2.1">Section 2.1</a>.  Clients can
+   check if an object can be created using the allocation token.  The
+   allocation token is applied to all object names included in the EPP
+   &lt;check&gt; command.
+
+   Example &lt;check&gt; command for the example.tld domain name using the
+   &lt;allocationToken:allocationToken&gt; extension with the allocation token
+   of 'abc123':
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;check&gt;
+   C:      &lt;domain:check
+   C:       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;example.tld&lt;/domain:name&gt;
+   C:      &lt;/domain:check&gt;
+   C:    &lt;/check&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;allocationToken:allocationToken
+   C:        xmlns:allocationToken=
+   C:          "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   C:        abc123
+   C:      &lt;/allocationToken:allocationToken&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 4]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-5" id="page-5" href="#page-5" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   If the query was successful, the server replies with an &lt;check&gt;
+   response providing availability status of queried object.
+
+   Example &lt;check&gt; domain response for a &lt;check&gt; command using the
+   &lt;allocationToken:allocationToken&gt; extension:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S: &lt;response&gt;
+   S:  &lt;result code="1000"&gt;
+   S:   &lt;msg lang="en-US"&gt;Command completed successfully&lt;/msg&gt;
+   S:  &lt;/result&gt;
+   S:  &lt;resData&gt;
+   S:   &lt;domain:chkData
+   S:     xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:    &lt;domain:cd&gt;
+   S:     &lt;domain:name avail="0"&gt;example.tld&lt;/domain:name&gt;
+   S:     &lt;domain:reason&gt;Invalid domain-token pair&lt;/domain:reason&gt;
+   S:    &lt;/domain:cd&gt;
+   S:   &lt;/domain:chkData&gt;
+   S:  &lt;/resData&gt;
+   S:  &lt;trID&gt;
+   S:   &lt;clTRID&gt;ABC-DEF-12345&lt;/clTRID&gt;
+   S:   &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:  &lt;/trID&gt;
+   S: &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 5]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-6" id="page-6" href="#page-6" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   Example &lt;check&gt; command with the &lt;allocationToken:allocationToken&gt;
+   extension for the example.tld and example2.tld domain names.
+   Availability of example.tld and example2.tld domain names are based
+   on the allocation token 'abc123':
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C: &lt;command&gt;
+   C:  &lt;check&gt;
+   C:   &lt;domain:check
+   C:     xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:    &lt;domain:name&gt;example.tld&lt;/domain:name&gt;
+   C:    &lt;domain:name&gt;example2.tld&lt;/domain:name&gt;
+   C:   &lt;/domain:check&gt;
+   C:  &lt;/check&gt;
+   C:  &lt;extension&gt;
+   C:   &lt;allocationToken:allocationToken
+   C:     xmlns:allocationToken=
+   C:       "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   C:     abc123
+   C:   &lt;/allocationToken:allocationToken&gt;
+   C:  &lt;/extension&gt;
+   C:  &lt;clTRID&gt;ABC-DEF-12345&lt;/clTRID&gt;
+   C: &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 6]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-7" id="page-7" href="#page-7" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   Example &lt;check&gt; domain response for multiple domain names in the
+   &lt;check&gt; command using the &lt;allocationToken:allocationToken&gt;
+   extension:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S: &lt;response&gt;
+   S:  &lt;result code="1000"&gt;
+   S:   &lt;msg lang="en-US"&gt;Command completed successfully&lt;/msg&gt;
+   S:  &lt;/result&gt;
+   S:  &lt;resData&gt;
+   S:   &lt;domain:chkData
+   S:     xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:    &lt;domain:cd&gt;
+   S:     &lt;domain:name avail="0"&gt;example.tld&lt;/domain:name&gt;
+   S:     &lt;domain:reason&gt;Invalid domain-token pair&lt;/domain:reason&gt;
+   S:    &lt;/domain:cd&gt;
+   S:    &lt;domain:cd&gt;
+   S:     &lt;domain:name avail="1"&gt;example2.tld&lt;/domain:name&gt;
+   S:    &lt;/domain:cd&gt;
+   S:   &lt;/domain:chkData&gt;
+   S:  &lt;/resData&gt;
+   S:  &lt;trID&gt;
+   S:   &lt;clTRID&gt;ABC-DEF-12345&lt;/clTRID&gt;
+   S:   &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:  &lt;/trID&gt;
+   S: &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   This extension does not add any elements to the EPP &lt;check&gt; response
+   described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.1.2" href="#section-3.1.2">3.1.2</a>.  EPP &lt;info&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;info&gt;
+   command of an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+
+   The EPP &lt;info&gt; command allows a client to request information on an
+   existing object.  Authorized clients MAY retrieve the allocation
+   token (<a href="#section-2.1">Section 2.1</a>) along with the other object information using the
+   &lt;allocationToken:info&gt; element that identifies the extension
+   namespace.  The &lt;allocationToken:info&gt; element is an empty element
+   that serves as a marker to the server to return the
+   &lt;allocationToken:allocationToken&gt; element, defined in <a href="#section-2.1">Section 2.1</a>, in
+   the info response.  If the client is not authorized to receive the
+   allocation token (<a href="#section-2.1">Section 2.1</a>), the server MUST return an EPP error
+   result code of 2201.  If the client is authorized to receive the
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 7]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-8" id="page-8" href="#page-8" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   allocation token (<a href="#section-2.1">Section 2.1</a>), but there is no allocation token
+   (<a href="#section-2.1">Section 2.1</a>) associated with the object, the server MUST return an
+   EPP error result code of 2303 object referencing the
+   &lt;allocationToken:info&gt; element.
+
+   Example &lt;info&gt; command with the allocationToken:info extension for
+   the example.tld domain name:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:   &lt;info&gt;
+   C:    &lt;domain:info
+   C:      xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+   C:      xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+   C:      domain-1.0.xsd"&gt;
+   C:      &lt;domain:name&gt;example.tld&lt;/domain:name&gt;
+   C:    &lt;/domain:info&gt;
+   C:   &lt;/info&gt;
+   C:   &lt;extension&gt;
+   C:      &lt;allocationToken:info
+   C:        xmlns:allocationToken=
+   C:          "urn:ietf:params:xml:ns:allocationToken-1.0/&gt;
+   C:   &lt;/extension&gt;
+   C:   &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   If the query was successful, the server replies with an
+   &lt;allocationToken:allocationToken&gt; element, as described in
+   <a href="#section-2.1">Section 2.1</a>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 8]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-9" id="page-9" href="#page-9" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   Example &lt;info&gt; domain response using the
+   &lt;allocationToken:allocationToken&gt; extension:
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;example.tld&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;EXAMPLE1-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="pendingCreate"/&gt;
+   S:        &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+   S:        &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+   S:        &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2012-04-03T22:00:00.0Z&lt;/domain:crDate&gt;
+   S:        &lt;domain:authInfo&gt;
+   S:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   S:        &lt;/domain:authInfo&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;allocationToken:allocationToken
+   S:        xmlns:allocationToken=
+   S:          "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   S:        abc123
+   S:      &lt;/allocationToken:allocationToken&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-3.1.3" href="#section-3.1.3">3.1.3</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;transfer&gt; query
+   command or &lt;transfer&gt; response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015               [Page 9]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-10" id="page-10" href="#page-10" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-3.2" href="#section-3.2">3.2</a>.  EPP Transform Commands</span>
+
+   EPP provides five commands to transform objects: &lt;create&gt; to create
+   an instance of an object, &lt;delete&gt; to delete an instance of an
+   object, &lt;renew&gt; to extend the validity period of an object,
+   &lt;transfer&gt; to manage object sponsorship changes, and &lt;update&gt; to
+   change information associated with an object.
+
+<span class="h4"><a class="selflink" name="section-3.2.1" href="#section-3.2.1">3.2.1</a>.  EPP &lt;create&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;create&gt;
+   command of an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+
+   The EPP &lt;create&gt; command provides a transform operation that allows a
+   client to create an object.  In addition to the EPP command elements
+   described in an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], the command MUST
+   contain a child &lt;allocationToken:allocationToken&gt; element, as defined
+   in <a href="#section-2.1">Section 2.1</a>, that identifies the extension namespace for the
+   client to be authorized to create and allocate the object.  If the
+   allocation token (<a href="#section-2.1">Section 2.1</a>) does not match the object's allocation
+   token (<a href="#section-2.1">Section 2.1</a>), the server MUST return an EPP error result code
+   of 2201.:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 10]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-11" id="page-11" href="#page-11" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   Example &lt;create&gt; command to create a domain object with an allocation
+   token:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;create&gt;
+   C:      &lt;domain:create
+   C:       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;example.tld&lt;/domain:name&gt;
+   C:        &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+   C:        &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+   C:        &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+   C:        &lt;domain:authInfo&gt;
+   C:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   C:        &lt;/domain:authInfo&gt;
+   C:      &lt;/domain:create&gt;
+   C:    &lt;/create&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;allocationToken:allocationToken
+   C:        xmlns:allocationToken=
+   C:          "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   C:        abc123
+   C:      &lt;/allocationToken:allocationToken&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   This extension does not add any elements to the EPP &lt;create&gt; response
+   described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.2.2" href="#section-3.2.2">3.2.2</a>.  EPP &lt;delete&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;delete&gt; command
+   or &lt;delete&gt; response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.2.3" href="#section-3.2.3">3.2.3</a>.  EPP &lt;renew&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;renew&gt; command
+   or &lt;renew&gt; response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.2.4" href="#section-3.2.4">3.2.4</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP
+   &lt;transfer&gt; request command of an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 11]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-12" id="page-12" href="#page-12" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   The EPP &lt;transfer&gt; request command provides a transform operation
+   that allows a client to request the transfer of an object.  In
+   addition to the EPP command elements described in an object mapping
+   like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], the command MUST contain a child
+   &lt;allocationToken:allocationToken&gt; element, as defined in <a href="#section-2.1">Section 2.1</a>,
+   that identifies the extension namespace for the client to be
+   authorized to transfer and allocate the object.  If the allocation
+   token (<a href="#section-2.1">Section 2.1</a>) does not match the object's allocation token
+   (<a href="#section-2.1">Section 2.1</a>), the server MUST return an EPP error result code of
+   2201.:
+
+   Example &lt;transfer&gt; request command to allocate the domain object with
+   the allocation token:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;transfer op="request"&gt;
+   C:      &lt;domain:transfer
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;example1.tld&lt;/domain:name&gt;
+   C:        &lt;domain:period unit="y"&gt;1&lt;/domain:period&gt;
+   C:        &lt;domain:authInfo&gt;
+   C:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   C:        &lt;/domain:authInfo&gt;
+   C:      &lt;/domain:transfer&gt;
+   C:    &lt;/transfer&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;allocationToken:allocationToken
+   C:        xmlns:allocationToken=
+   C:          "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   C:        abc123
+   C:      &lt;/allocationToken:allocationToken&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   This extension does not add any elements to the EPP &lt;transfer&gt;
+   response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.2.5" href="#section-3.2.5">3.2.5</a>.  EPP &lt;update&gt; Command</span>
+
+   This extension defines additional elements to extend an extension of
+   an empty EPP &lt;update&gt; command of an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+   An example of an extension of an empty EPP &lt;update&gt; command is the
+   definition of the restore command within [<a href="./rfc3915" title="&quot;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)&quot;">RFC3915</a>].
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 12]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-13" id="page-13" href="#page-13" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   An extension of an empty EPP &lt;update&gt; command defines a new verb that
+   transforms an object.  In addition to the EPP command elements
+   described in an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], the command MUST
+   contain a child &lt;allocationToken:allocationToken&gt; element, as defined
+   in <a href="#section-2.1">Section 2.1</a>, that identifies the extension namespace for the
+   client to be authorized to allocate the object.  If the allocation
+   token (<a href="#section-2.1">Section 2.1</a>) does not match the object's allocation token
+   (<a href="#section-2.1">Section 2.1</a>), the server MUST return an EPP error result code of
+   2201.:
+
+   Example use an extension of an empty &lt;update&gt; command to release a
+   domain object with an allocation token:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;update&gt;
+   C:      &lt;domain:update
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;example1.tld&lt;/domain:name&gt;
+   C:      &lt;/domain:update&gt;
+   C:    &lt;/update&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;release:release
+   C:        xmlns:release="urn:ietf:params:xml:ns:release-1.0"/&gt;
+   C:      &lt;allocationToken:allocationToken
+   C:        xmlns:allocationToken=
+   C:          "urn:ietf:params:xml:ns:allocationToken-1.0"&gt;
+   C:        abc123
+   C:      &lt;/allocationToken:allocationToken&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345-XYZ&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   This extension does not add any elements to the EPP &lt;update&gt; response
+   described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h2"><a class="selflink" name="section-4" href="#section-4">4</a>.  Formal Syntax</span>
+
+   One schema is presented here that is the EPP Allocation Token
+   Extension schema.
+
+   The formal syntax presented here is a complete schema representation
+   of the object mapping suitable for automated validation of EPP XML
+   instances.  The BEGIN and END tags are not part of the schema; they
+   are used to note the beginning and ending of the schema for URI
+   registration purposes.
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 13]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-14" id="page-14" href="#page-14" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-4.1" href="#section-4.1">4.1</a>.  Allocation Token Extension Schema</span>
+
+   BEGIN
+   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+   &lt;schema targetNamespace="urn:ietf:params:xml:ns:allocationToken-1.0"
+     xmlns:allocationToken="urn:ietf:params:xml:ns:allocationToken-1.0"
+     xmlns="http://www.w3.org/2001/XMLSchema"
+     elementFormDefault="qualified"&gt;
+
+     &lt;annotation&gt;
+       &lt;documentation&gt;
+         Extensible Provisioning Protocol v1.0
+         Allocation Token Extension.
+       &lt;/documentation&gt;
+     &lt;/annotation&gt;
+
+     &lt;!-- Element used in info command to get allocation token. --&gt;
+     &lt;element name="info"/&gt;
+
+     &lt;!-- Allocation Token used in transform
+     commands and info response --&gt;
+     &lt;element name="allocationToken"
+       type="allocationToken:allocationTokenType"/&gt;
+
+      &lt;complexType name="allocationTokenType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="token"/&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+      &lt;!-- End of schema.--&gt;
+   &lt;/schema&gt;
+   END
+
+<span class="h2"><a class="selflink" name="section-5" href="#section-5">5</a>.  IANA Considerations</span>
+
+<span class="h3"><a class="selflink" name="section-5.1" href="#section-5.1">5.1</a>.  XML Namespace</span>
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [<a href="./rfc3688" title="&quot;The IETF XML Registry&quot;">RFC3688</a>].  The
+   following URI assignment is requested of IANA:
+
+   URI: ietf:params:xml:ns:allocationToken-1.0
+
+   Registrant Contact: See the "Author's Address" section of this
+   document.
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 14]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-15" id="page-15" href="#page-15" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   XML: See the "Formal Syntax" section of this document.
+
+<span class="h3"><a class="selflink" name="section-5.2" href="#section-5.2">5.2</a>.  EPP Extension Registry</span>
+
+   The EPP extension described in this document should be registered by
+   the IANA in the EPP Extension Registry described in [<a href="./rfc7451" title="&quot;Extension Registry for the Extensible Provisioning Protocol&quot;">RFC7451</a>].  The
+   details of the registration are as follows:
+
+   Name of Extension: "Allocation Token Extension for the Extensible
+   Provisioning Protocol (EPP)"
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: IESG, &lt;iesg@ietf.org&gt;
+
+   TLDs: Any
+
+   IPR Disclosure: None
+
+   Status: Active
+
+   Notes: None
+
+<span class="h2"><a class="selflink" name="section-6" href="#section-6">6</a>.  Security Considerations</span>
+
+   The mapping extensions described in this document do not provide any
+   security services beyond those described by EPP [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>] and
+   protocol layers used by EPP.  The security considerations described
+   in these other specifications apply to this specification as well.
+
+<span class="h2"><a class="selflink" name="section-7" href="#section-7">7</a>.  Normative References</span>
+
+   [<a name="ref-RFC2119" id="ref-RFC2119">RFC2119</a>]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>, March 1997.
+
+   [<a name="ref-RFC3688" id="ref-RFC3688">RFC3688</a>]  Mealling, M., "The IETF XML Registry", <a href="./bcp81">BCP 81</a>, <a href="./rfc3688">RFC 3688</a>,
+              January 2004.
+
+   [<a name="ref-RFC3915" id="ref-RFC3915">RFC3915</a>]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", <a href="./rfc3915">RFC 3915</a>,
+              September 2004.
+
+   [<a name="ref-RFC5730" id="ref-RFC5730">RFC5730</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, <a href="./rfc5730">RFC 5730</a>, August 2009.
+
+
+
+
+
+<span class="grey">Gould, et al.           Expires September 3, 2015              [Page 15]</span>
+</pre><!--NewPage--><pre class='newpage'><a name="page-16" id="page-16" href="#page-16" class="invisible"> </a>
+<span class="grey">Internet-Draft               allocationToken                  March 2015</span>
+
+
+   [<a name="ref-RFC5731" id="ref-RFC5731">RFC5731</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, <a href="./rfc5731">RFC 5731</a>, August 2009.
+
+   [<a name="ref-RFC7451" id="ref-RFC7451">RFC7451</a>]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", <a href="./rfc7451">RFC 7451</a>, February 2015.
+
+<span class="h2"><a class="selflink" name="appendix-A" href="#appendix-A">Appendix A</a>.  Change History</span>
+
+<span class="h3"><a class="selflink" name="appendix-A.1" href="#appendix-A.1">A.1</a>.  Change from 00 to 01</span>
+
+   1.  Amended XML Namespace section of IANA Considerations, added EPP
+       Extension Registry section.
+   2.  Moved Change History to the back section as an Appendix.
+
+Authors' Addresses
+
+   James Gould
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: jgould@verisign.com
+   URI:   <a href="http://www.verisigninc.com">http://www.verisigninc.com</a>
+
+
+   Trung Tran
+   Neustar
+   21575 Ridgetop Circle
+   Sterling, VA  20166
+   US
+
+   Email: Trung.Tran@neustar.biz
+   URI:   <a href="http://www.neustar.biz">http://www.neustar.biz</a>
+
+
+   Sharon Wodjenski
+   Neustar
+   21575 Ridgetop Circle
+   Sterling, VA  20166
+   US
+
+   Email: Sharon.Wodjenski@neustar.biz
+   URI:   <a href="http://www.neustar.biz">http://www.neustar.biz</a>
+
+
+
+
+
+
+
+Gould, et al.           Expires September 3, 2015              [Page 16]
+
+</pre><br />
+<span class="noprint"><small><small>Html markup produced by rfcmarkup 1.111, available from
+<a href="https://tools.ietf.org/tools/rfcmarkup/">https://tools.ietf.org/tools/rfcmarkup/</a>
+</small></small></span>
+</body></html>

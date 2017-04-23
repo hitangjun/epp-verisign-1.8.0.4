@@ -1,0 +1,992 @@
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Creating 10 initial objects in pool EPPXMLSignatureParserPool
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 1 Objects Available: 0 Objects In Use: 1 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 2 Objects Available: 0 Objects In Use: 2 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 3 Objects Available: 0 Objects In Use: 3 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 4 Objects Available: 0 Objects In Use: 4 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 5 Objects Available: 0 Objects In Use: 5 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 6 Objects Available: 0 Objects In Use: 6 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 7 Objects Available: 0 Objects In Use: 7 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 8 Objects Available: 0 Objects In Use: 8 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 9 Objects Available: 0 Objects In Use: 9 }
+PoolMan ObjectPool: created a new object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 0 Objects In Use: 10 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 1 Objects In Use: 9 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 2 Objects In Use: 8 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 3 Objects In Use: 7 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 4 Objects In Use: 6 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 5 Objects In Use: 5 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 6 Objects In Use: 4 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 7 Objects In Use: 3 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 8 Objects In Use: 2 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+Completed creation of initial objects
+Starting PoolSkimmer, which will expire objects after the <skimmerFrequency> element (currently set to 660 seconds)
+Starting LifeGuard, which will return checked-out objects to their pools if they are held longer than the <userTimeout> element (currently set to 1200 seconds)
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }
+PoolMan ObjectPool: returned existing pooled object for request
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 9 Objects In Use: 1 }
+PoolMan ObjectPool metrics after returning object:
+	Pool Name: EPPXMLSignatureParserPool { Total Objects: 10 Objects Available: 10 Objects In Use: 0 }

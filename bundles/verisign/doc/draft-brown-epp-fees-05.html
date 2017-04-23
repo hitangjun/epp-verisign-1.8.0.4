@@ -1,0 +1,2151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.115" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Identifier" content="urn:ietf:id:brown-epp-fees" />
+<meta name="DC.Description.Abstract" content="This document describes an Extensible Provisioning Protocol (EPP)
+extension mapping for registry fees." />
+<meta name="DC.Creator" content="Brown, Gavin" />
+<meta name="DC.Creator" content="Frakes, Jothan" />
+<meta name="DC.Date.Issued" content="2015-11-04" />
+<meta name="DC.Title" content="Registry Fee Extension for the Extensible Provisioning Protocol (EPP)" />
+
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-brown-epp-fees-05 - Registry Fee Extension for the Extensible Provisioning Protocol (EPP)</title>
+    
+    
+    <style type="text/css">
+	@media only screen 
+	  and (min-width: 992px)
+	  and (max-width: 1199px) {
+	    body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 768px)
+	  and (max-width: 991px) {
+            body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 480px)
+	  and (max-width: 767px) {
+            body { font-size: 11pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (max-width: 479px) {
+            body { font-size: 8pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-device-width : 375px) 
+	  and (max-device-width : 667px) {
+            body { font-size: 9.5pt; }
+            div.content { width: 96ex; margin: 0 1px; }
+        }
+	@media only screen 
+	  and (min-device-width: 1200px) {
+            body { font-size: 10pt; margin: 0 4em; }
+            div.content { width: 96ex; margin: 0; }
+        }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	    font-weight: bold;
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+	    font-weight: bold;
+        }
+        pre {
+            font-size: 1em;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header{
+	    font-weight: bold;
+	}
+        .newpage {
+            page-break-before: always;
+        }
+        .invisible {
+            text-decoration: none;
+            color: white;
+        }
+        a.selflink {
+          color: black;
+          text-decoration: none;
+        }
+        @media print {
+            body {
+                font-family: monospace;
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1em;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+            .noprint {
+                display: none;
+            }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+            .docinfo {
+                background-color: #EEE;
+            }
+            .top {
+                border-top: 7px solid #EEE;
+            }
+            .bgwhite  { background-color: white; }
+            .bgred    { background-color: #F44; }
+            .bggrey   { background-color: #666; }
+            .bgbrown  { background-color: #840; }            
+            .bgorange { background-color: #FA0; }
+            .bgyellow { background-color: #EE0; }
+            .bgmagenta{ background-color: #F4F; }
+            .bgblue   { background-color: #66F; }
+            .bgcyan   { background-color: #4DD; }
+            .bggreen  { background-color: #4F4; }
+
+            .legend   { font-size: 90%; }
+            .cplate   { font-size: 70%; border: solid grey 1px; }
+	}
+    </style>
+    <!--[if IE]>
+    <style>
+    body {
+       font-size: 13px;
+       margin: 10px 10px;
+    }
+    </style>
+    <![endif]-->
+
+    <script type="text/javascript"><!--
+    function addHeaderTags() {
+	var spans = document.getElementsByTagName("span");
+	for (var i=0; i < spans.length; i++) {
+	    var elem = spans[i];
+	    if (elem) {
+		var level = elem.getAttribute("class");
+                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
+                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
+                }
+	    }
+	}
+    }
+    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
+    function showElem(id) {
+        var elem = document.getElementById(id);
+        elem.innerHTML = eval(id+"_html");
+        elem.style.visibility='visible';
+    }
+    function hideElem(id) {
+        var elem = document.getElementById(id);
+        elem.style.visibility='hidden';        
+        elem.innerHTML = "";
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()">
+  <div class="content">
+   <div style="height: 13px;">
+      <div onmouseover="this.style.cursor='pointer';"
+         onclick="showElem('legend');"
+         onmouseout="hideElem('legend')"
+	 style="height: 6px; position: absolute;"
+         class="pre noprint docinfo bgred"
+         title="Click for colour legend." >                                                                        </div>
+      <div id="legend"
+           class="docinfo noprint pre legend"
+           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
+           onmouseover="showElem('legend');"
+           onmouseout="hideElem('legend');">
+      </div>
+   </div>
+<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">Docs</a>] [<a href="https://tools.ietf.org/id/draft-brown-epp-fees-05.txt" title="Plaintext version of this document">txt</a>|<a href="/pdf/draft-brown-epp-fees-05.txt" title="PDF version of this document">pdf</a>|<a href="/id/draft-brown-epp-fees-05.xml" title="XML source for this document">xml</a>|<a href="/id/draft-brown-epp-fees-05.html" title="HTML version of this document, from XML2RFC">html</a>] [<a href='https://datatracker.ietf.org/doc/draft-brown-epp-fees' title='IESG Datatracker information for this document'>Tracker</a>] [<a href="mailto:draft-brown-epp-fees@tools.ietf.org?subject=draft-brown-epp-fees%20" title="Send email to the document authors">Email</a>] [<a href="/rfcdiff?difftype=--hwdiff&amp;url2=draft-brown-epp-fees-05.txt" title="Inline diff (wdiff)">Diff1</a>] [<a href="/rfcdiff?url2=draft-brown-epp-fees-05.txt" title="Side-by-side diff">Diff2</a>] [<a href="/idnits?url=https://tools.ietf.org/id/draft-brown-epp-fees-05.txt" title="Run an idnits check of this document">Nits</a>]      </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<span class="pre noprint docinfo">Versions: <a href="./draft-brown-epp-fees-00">00</a> <a href="./draft-brown-epp-fees-01">01</a> <a href="./draft-brown-epp-fees-02">02</a> <a href="./draft-brown-epp-fees-03">03</a> <a href="./draft-brown-epp-fees-04">04</a> <a href="./draft-brown-epp-fees-05">05</a>                                             </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<pre>
+Internet Engineering Task Force                                 G. Brown
+Internet-Draft                                      CentralNic Group plc
+Intended status: Standards Track                         August 12, 2015
+Expires: February 13, 2016
+
+
+ <span class="h1">Registry Fee Extension for the Extensible Provisioning Protocol (EPP)</span>
+                        <span class="h1">draft-brown-epp-fees-05</span>
+
+Abstract
+
+   This document describes an Extensible Provisioning Protocol (EPP)
+   extension mapping for registry fees.
+
+Status of this Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of <a href="./bcp78">BCP 78</a> and <a href="./bcp79">BCP 79</a>.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on February 13, 2016.
+
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to <a href="./bcp78">BCP 78</a> and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in <a href="#section-4">Section 4</a>.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 1]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-2" id="page-2" href="#page-2" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+Table of Contents
+
+   <a href="#section-1">1</a>.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-3">3</a>
+     <a href="#section-1.1">1.1</a>.  Conventions Used in This Document  . . . . . . . . . . . .  <a href="#page-3">3</a>
+   <a href="#section-2">2</a>.  Migrating to Newer Versions of This Extension  . . . . . . . .  <a href="#page-4">4</a>
+   <a href="#section-3">3</a>.  Extension Elements . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-4">4</a>
+     <a href="#section-3.1">3.1</a>.  Client Commands  . . . . . . . . . . . . . . . . . . . . .  <a href="#page-4">4</a>
+     <a href="#section-3.2">3.2</a>.  Currency Codes . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-5">5</a>
+     <a href="#section-3.3">3.3</a>.  Validity Periods . . . . . . . . . . . . . . . . . . . . .  <a href="#page-5">5</a>
+     <a href="#section-3.4">3.4</a>.  Fees and Credits . . . . . . . . . . . . . . . . . . . . .  <a href="#page-5">5</a>
+       <a href="#section-3.4.1">3.4.1</a>.  Refunds  . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-6">6</a>
+       <a href="#section-3.4.2">3.4.2</a>.  Grace Periods  . . . . . . . . . . . . . . . . . . . .  <a href="#page-6">6</a>
+       <a href="#section-3.4.3">3.4.3</a>.  Applicability  . . . . . . . . . . . . . . . . . . . .  <a href="#page-7">7</a>
+     <a href="#section-3.5">3.5</a>.  Account Balance  . . . . . . . . . . . . . . . . . . . . .  <a href="#page-7">7</a>
+     <a href="#section-3.6">3.6</a>.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-7">7</a>
+     <a href="#section-3.7">3.7</a>.  Classification of Domain Names . . . . . . . . . . . . . .  <a href="#page-8">8</a>
+   <a href="#section-4">4</a>.  Server Handling of Fee Information . . . . . . . . . . . . . .  <a href="#page-8">8</a>
+   <a href="#section-5">5</a>.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  <a href="#page-8">8</a>
+     <a href="#section-5.1">5.1</a>.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  <a href="#page-8">8</a>
+       <a href="#section-5.1.1">5.1.1</a>.  EPP &lt;check&gt; Command  . . . . . . . . . . . . . . . . .  <a href="#page-9">9</a>
+       <a href="#section-5.1.2">5.1.2</a>.  EPP Transfer Query Command . . . . . . . . . . . . . . <a href="#page-13">13</a>
+     <a href="#section-5.2">5.2</a>.  EPP Transform Commands . . . . . . . . . . . . . . . . . . <a href="#page-14">14</a>
+       <a href="#section-5.2.1">5.2.1</a>.  EPP &lt;create&gt; Command . . . . . . . . . . . . . . . . . <a href="#page-14">14</a>
+       <a href="#section-5.2.2">5.2.2</a>.  EPP &lt;delete&gt; Command . . . . . . . . . . . . . . . . . <a href="#page-17">17</a>
+       <a href="#section-5.2.3">5.2.3</a>.  EPP &lt;renew&gt; Command  . . . . . . . . . . . . . . . . . <a href="#page-18">18</a>
+       <a href="#section-5.2.4">5.2.4</a>.  EPP &lt;transfer&gt; Command . . . . . . . . . . . . . . . . <a href="#page-20">20</a>
+       <a href="#section-5.2.5">5.2.5</a>.  EPP &lt;update&gt; Command . . . . . . . . . . . . . . . . . <a href="#page-22">22</a>
+     <a href="#section-5.3">5.3</a>.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . <a href="#page-24">24</a>
+   <a href="#section-6">6</a>.  Security Considerations  . . . . . . . . . . . . . . . . . . . <a href="#page-29">29</a>
+   <a href="#section-7">7</a>.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . <a href="#page-30">30</a>
+     <a href="#section-7.1">7.1</a>.  XML Namespace  . . . . . . . . . . . . . . . . . . . . . . <a href="#page-30">30</a>
+     <a href="#section-7.2">7.2</a>.  EPP Extension Registry . . . . . . . . . . . . . . . . . . <a href="#page-30">30</a>
+   <a href="#section-8">8</a>.  Implementation Status  . . . . . . . . . . . . . . . . . . . . <a href="#page-30">30</a>
+     <a href="#section-8.1">8.1</a>.  RegistryEngine EPP Service . . . . . . . . . . . . . . . . <a href="#page-31">31</a>
+   <a href="#section-9">9</a>.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . <a href="#page-31">31</a>
+   <a href="#section-10">10</a>. Change History . . . . . . . . . . . . . . . . . . . . . . . . <a href="#page-32">32</a>
+     <a href="#section-10.1">10.1</a>. Changes from 00 to 01  . . . . . . . . . . . . . . . . . . <a href="#page-32">32</a>
+     <a href="#section-10.2">10.2</a>. Changes from 01 to 02  . . . . . . . . . . . . . . . . . . <a href="#page-32">32</a>
+     <a href="#section-10.3">10.3</a>. Changes from 02 to 03  . . . . . . . . . . . . . . . . . . <a href="#page-33">33</a>
+     <a href="#section-10.4">10.4</a>. Changes from 03 to 04  . . . . . . . . . . . . . . . . . . <a href="#page-33">33</a>
+     <a href="#section-10.5">10.5</a>. Changes from 04 to 05  . . . . . . . . . . . . . . . . . . <a href="#page-34">34</a>
+   <a href="#section-11">11</a>. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <a href="#page-34">34</a>
+   <a href="#section-12">12</a>. Normative References . . . . . . . . . . . . . . . . . . . . . <a href="#page-34">34</a>
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . <a href="#page-35">35</a>
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 2]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-3" id="page-3" href="#page-3" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-1" href="#section-1">1</a>.  Introduction</span>
+
+   Historically, domain name registries have applied a simple fee
+   structure for billable transactions, namely a basic unit price
+   applied to domain &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and RGP [<a href="./rfc3915" title="&quot;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)&quot;">RFC3915</a>]
+   restore commands.  Given the relatively small number of EPP servers
+   to which EPP clients have been required to connect, it has generally
+   been the case that client operators have been able to obtain details
+   of these fees out-of-band by contacting the server operators.
+
+   Given the recent expansion of the DNS namespace, and the
+   proliferation of novel business models, it is now desirable to
+   provide a method for EPP clients to query EPP servers for the fees
+   and credits associated with certain commands and specific objects.
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provisioning Protocol (EPP) [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  This EPP mapping
+   provides a mechanism by which EPP clients may query the fees and
+   credits associated with various billable transactions, and also
+   obtain their current account balance.
+
+<span class="h3"><a class="selflink" name="section-1.1" href="#section-1.1">1.1</a>.  Conventions Used in This Document</span>
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in <a href="./rfc2119">RFC 2119</a> [<a href="./rfc2119" title="&quot;Key words for use in RFCs to Indicate Requirement Levels&quot;">RFC2119</a>].
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented in order to develop a conforming
+   implementation.
+
+   "fee" is used as an abbreviation for
+   "urn:ietf:params:xml:ns:fee-0.8".  The XML namespace prefix "fee" is
+   used, but implementations MUST NOT depend on it and instead employ a
+   proper namespace-aware XML parser and serializer to interpret and
+   output the XML documents.
+
+   (Note to RFC Editor: remove the following paragraph before
+   publication as an RFC.)
+
+   The XML namespace prefix above contains a version number,
+   specifically "0.8".  This version number will increment with
+   successive versions of this document, and will reach 1.0 if and when
+   this document is published as an RFC.  This permits clients to
+   distinguish which version of the extension a server has implemented.
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 3]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-4" id="page-4" href="#page-4" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-2" href="#section-2">2</a>.  Migrating to Newer Versions of This Extension</span>
+
+   (Note to RFC Editor: remove this section before publication as an
+   RFC.)
+
+   Servers which implement this extension SHOULD provide a way for
+   clients to progressively update their implementations when a new
+   version of the extension is deployed.
+
+   Servers SHOULD (for a temporary migration period) provide support for
+   older versions of the extension in parallel to the newest version,
+   and allow clients to select their preferred version via the
+   &lt;svcExtension&gt; element of the &lt;login&gt; command.
+
+   If a client requests multiple versions of the extension at login,
+   then, when preparing responses to commands which do not include
+   extension elements, the server SHOULD only include extension elements
+   in the namespace of the newest version of the extension requested by
+   the client.
+
+   When preparing responses to commands which do include extension
+   elements, the server SHOULD only include extension elements for the
+   extension versions present in the command.
+
+
+<span class="h2"><a class="selflink" name="section-3" href="#section-3">3</a>.  Extension Elements</span>
+
+<span class="h3"><a class="selflink" name="section-3.1" href="#section-3.1">3.1</a>.  Client Commands</span>
+
+   The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and &lt;info&gt; commands
+   to determine the fee which is applicable to the given command.
+
+   The element values permitted by the server is a matter of repository
+   policy, but MUST include as a minimum the following values:
+
+   o  "create" indicating a &lt;domain:create&gt; command;
+
+   o  "renew" indicating a &lt;domain:renew&gt; command;
+
+   o  "transfer" indicating a &lt;domain:transfer&gt; command;
+
+   If the server supports the Registry Grace Period Mapping [<a href="./rfc3915" title="&quot;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)&quot;">RFC3915</a>],
+   then the server MUST also support the "restore" value.
+
+   The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
+   specifying a launch phase as described in
+   [<a href="./draft-ietf-eppext-launchphase">draft-ietf-eppext-launchphase</a>].  It may also contain an OPTIONAL
+   "subphase" attribute identifying the custom or sub-phase as described
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 4]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-5" id="page-5" href="#page-5" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   in [<a href="./draft-ietf-eppext-launchphase">draft-ietf-eppext-launchphase</a>].
+
+<span class="h3"><a class="selflink" name="section-3.2" href="#section-3.2">3.2</a>.  Currency Codes</span>
+
+   The &lt;fee:currency&gt; element is used to indicate which currency fees
+   are charged in.  This value of this element MUST be a three-character
+   currency code from [<a href="#ref-ISO4217" title="&quot;ISO 4217: 2008, Codes for the representation of currencies and funds&quot;">ISO4217</a>].
+
+   Note that ISO 4217 provides the special "XXX" code, which MAY be used
+   if the server uses a non-currency based system for assessing fees,
+   such as a system of credits.
+
+   The use of &lt;fee:currency&gt; elements in commands is OPTIONAL: if a
+   &lt;fee:currency&gt; element is not present in a command, the server MUST
+   determine the currency based on the client's account settings which
+   MUST be agreed by the client and server via an out-of-band channel.
+   However, &lt;fee:currency&gt; element MUST be present in responses.
+
+   Servers SHOULD NOT perform a currency conversion if a client uses an
+   incorrect currency code.  Servers SHOULD return a 2004 error instead.
+
+<span class="h3"><a class="selflink" name="section-3.3" href="#section-3.3">3.3</a>.  Validity Periods</span>
+
+   When querying for fee information using the &lt;check&gt; or &lt;info&gt;
+   commands, the &lt;fee:period&gt; element is used to indicate the units to
+   be added to the registration period of domain names by the &lt;create&gt;,
+   &lt;renew&gt; and &lt;transfer&gt; commands.  This element is derived from the
+   &lt;domain:period&gt; element described in [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].
+
+   The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and &lt;info&gt; commands:
+   if omitted, the server MUST determine the fee(s) using a validity
+   period of 1 year.  The &lt;fee:period&gt; element MUST be present in
+   &lt;check&gt; and &lt;info&gt; responses.
+
+<span class="h3"><a class="selflink" name="section-3.4" href="#section-3.4">3.4</a>.  Fees and Credits</span>
+
+   Servers which implement this extension will include elements in
+   responses which provide information about the fees and/or credits
+   associated with a given billable transaction.
+
+   The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide this
+   information.  The presence of a &lt;fee:fee&gt; element in a response
+   indicates a debit against the client's account balance; a &lt;fee:
+   credit&gt; element indicates a credit.  A &lt;fee:fee&gt; element MUST have a
+   non-negative value.  A &lt;fee:credit&gt; element MUST have a negative
+   value.
+
+   A server MAY respond with multiple &lt;fee:fee&gt; and &lt;fee:credit&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 5]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-6" id="page-6" href="#page-6" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   elements in the same response.  In such cases, the net fee or credit
+   applicable to the transaction is the arithmetic sum of the values of
+   each of the &lt;fee:fee&gt; and/or &lt;fee:credit&gt; elements.  This amount
+   applies to the total additional validity period applied to the domain
+   (where applicable) rather than to any incremental unit.
+
+   The following attributes are defined for the &lt;fee:fee&gt; element.
+   These are described in detail below:
+
+   description:  an OPTIONAL attribute which provides a human-readable
+      description of the fee.  Servers SHOULD provide documentation on
+      the possible values of this attribute, and their meanings.
+
+   refundable:  an OPTIONAL boolean attribute indicating whether the fee
+      is refundable if the domain name is deleted.
+
+   grace-period:  an OPTIONAL attribute which provides the time period
+      during which the fee is refundable.
+
+   applied:  an OPTIONAL attribute indicating when the fee will be
+      deducted from the client's account.
+
+   The &lt;fee:credit&gt; element can take a "description" attribute as
+   described above.  No other attributes are defined for this element.
+
+<span class="h4"><a class="selflink" name="section-3.4.1" href="#section-3.4.1">3.4.1</a>.  Refunds</span>
+
+   &lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute which
+   takes a boolean value.  Fees may be refunded under certain
+   circumstances, such as when a domain application is rejected (as
+   described in [<a href="./draft-ietf-eppext-launchphase">draft-ietf-eppext-launchphase</a>]) or when a domain name
+   is deleted during the relevant Grace Period (see below).  If the
+   "refundable" attribute is omitted, then the default value of "1"
+   should be assumed (i.e. the fee is refundable).
+
+<span class="h4"><a class="selflink" name="section-3.4.2" href="#section-3.4.2">3.4.2</a>.  Grace Periods</span>
+
+   [<a name="ref-RFC3915" id="ref-RFC3915">RFC3915</a>] describes a system of "grace periods", which are time
+   periods following a billable transaction during which, if a domain
+   name is deleted, the client receives a refund.
+
+   The "grace-period" attribute MAY be used to indicate the relevant
+   grace period for a fee.  If a server implements the Registry Grace
+   Period extension, it MUST specify the grace period for all relevant
+   transactions.  If no "grace-period" attribute value is provided, then
+   no grace period is applicable.
+
+   If a &lt;fee:fee&gt; element has a "grace-period" attribute then it MUST
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 6]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-7" id="page-7" href="#page-7" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   also be refundable.  If the "refundable" attribute of a &lt;fee:fee&gt;
+   element is false then it MUST NOT have a "grace-period" attribute.
+
+<span class="h4"><a class="selflink" name="section-3.4.3" href="#section-3.4.3">3.4.3</a>.  Applicability</span>
+
+   Fees may be applied immediately upon receipt of a command from a
+   client, or may only be applied once an out-of-band process (such as
+   the processing of applications at the end of a launch phase) has
+   taken place.
+
+   The "applied" attribute of the &lt;fee:fee&gt; element allows servers to
+   indicate whether a fee will be applied immediately, or whether it
+   will be applied at some point in the future.  This attribute takes
+   two possible values: "immediate" (which is the default) or "delayed".
+
+<span class="h3"><a class="selflink" name="section-3.5" href="#section-3.5">3.5</a>.  Account Balance</span>
+
+   The &lt;fee:balance&gt; element is an OPTIONAL element which MAY be
+   included in server responses to transform commands.  If present, it
+   can be used by the client to determine the remaining credit at the
+   server.
+
+   Whether or not the &lt;fee:balance&gt; is included in responses is a matter
+   of server policy.  However, if a server chooses to offer support for
+   this element, it MUST be included in responses to all domain
+   "transform" commands (ie &lt;create&gt;, &lt;renew&gt;, &lt;update&gt;, &lt;delete&gt;,
+   &lt;transfer op="request"&gt;).
+
+   The value of the &lt;fee:balance&gt; MAY be negative.  A negative balance
+   indicates that the server has extended a line of credit to the client
+   (see below).
+
+   When a server includes a &lt;fee:balance&gt; element in response to
+   transform commands, the value of the element MUST reflect the
+   client's account balance after any fees or credits associated with
+   that command have been applied.
+
+<span class="h3"><a class="selflink" name="section-3.6" href="#section-3.6">3.6</a>.  Credit Limit</span>
+
+   As described above, if a server returns a response containing a &lt;fee:
+   balance&gt; with a negative value, then the server has extended a line
+   of credit to the client.  A server MAY also include a &lt;fee:
+   creditLimit&gt; element in responses which indicates the maximum credit
+   available to a client.  A server MAY reject certain transactions if
+   the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
+   value of the &lt;fee:creditLimit&gt; element.
+
+   Whether or not the &lt;fee:creditLimit&gt; is included in responses is a
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 7]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-8" id="page-8" href="#page-8" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   matter of server policy.  However, if a server chooses to offer
+   support for this element, it MUST be included in responses to all
+   domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;, &lt;update&gt;,
+   &lt;delete&gt;, &lt;transfer op="request"&gt;).
+
+<span class="h3"><a class="selflink" name="section-3.7" href="#section-3.7">3.7</a>.  Classification of Domain Names</span>
+
+   Domain names may be assigned to a particular class, category, or
+   tier, each of which has a particular fee or set of fees associated
+   with it.  The &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
+   responses is used to indicate the classification of a domain name.
+
+   If a server makes use of this element, it MUST provide clients with a
+   list of all the values that the element may take via an out-of-band
+   channel.  Servers MUST NOT use values which do not appear on this
+   list.
+
+   Servers which make use of this element MUST use a &lt;fee:class&gt; element
+   with the value "standard" for all domains that are subject to the
+   standard or default price.
+
+
+<span class="h2"><a class="selflink" name="section-4" href="#section-4">4</a>.  Server Handling of Fee Information</span>
+
+   Depending on server policy, a client MAY be required to include the
+   extension elements described in this document for certain transform
+   commands.  Servers MUST provide clear documentation to clients about
+   the circumstances in which this extension must be used.
+
+   If a server receives a command from a client which does not include
+   the extension elements required by the server for that command, then
+   it MUST respond with a 2003 "Required parameter missing" error.
+
+   If the currency or total fee provided by the client do not agree with
+   the server's own calculation of the fee for that command, then the
+   server MUST reject the command with a 2004 "Parameter value range"
+   error.
+
+
+<span class="h2"><a class="selflink" name="section-5" href="#section-5">5</a>.  EPP Command Mapping</span>
+
+   A detailed description of the EPP syntax and semantics can be found
+   in [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h3"><a class="selflink" name="section-5.1" href="#section-5.1">5.1</a>.  EPP Query Commands</span>
+
+   This extension does not add any elements to the EPP &lt;poll&gt; or &lt;info&gt;
+   commands or responses.
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 8]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-9" id="page-9" href="#page-9" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+<span class="h4"><a class="selflink" name="section-5.1.1" href="#section-5.1.1">5.1.1</a>.  EPP &lt;check&gt; Command</span>
+
+   This extension defines additional elements for the EPP &lt;check&gt;
+   command.
+
+   The command MAY contain an &lt;extension&gt; element which MAY contain a
+   &lt;fee:check&gt; element.  The &lt;fee:check&gt; element MUST contain at least
+   one &lt;fee:domain&gt; element, with the following child elements:
+
+   o  A &lt;fee:name&gt; element.  The domain name need not correspond to a
+      &lt;domain:name&gt; element that appears in the &lt;domain:check&gt; element
+      of the main body of the frame.
+
+   o  An OPTIONAL &lt;fee:currency&gt; element;
+
+   o  A &lt;fee:command&gt; element;
+
+   o  An OPTIONAL &lt;fee:period&gt; element.
+
+   Example &lt;check&gt; command:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016               [Page 9]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-10" id="page-10" href="#page-10" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:   &lt;command&gt;
+   C:     &lt;check&gt;
+   C:       &lt;domain:check
+   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   C:         &lt;domain:name&gt;example.net&lt;/domain:name&gt;
+   C:         &lt;domain:name&gt;example.org&lt;/domain:name&gt;
+   C:       &lt;/domain:check&gt;
+   C:     &lt;/check&gt;
+   C:     &lt;extension&gt;
+   C:       &lt;fee:check
+   C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   C:         &lt;fee:domain&gt;
+   C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
+   C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   C:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+   C:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+   C:         &lt;/fee:domain&gt;
+   C:         &lt;fee:domain&gt;
+   C:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
+   C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+   C:           &lt;fee:command phase="claims" subphase="landrush"&gt;
+   C:           create&lt;/fee:command&gt;
+   C:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+   C:         &lt;/fee:domain&gt;
+   C:         &lt;fee:domain&gt;
+   C:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
+   C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+   C:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
+   C:         &lt;/fee:domain&gt;
+   C:         &lt;fee:domain&gt;
+   C:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
+   C:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
+   C:         &lt;/fee:domain&gt;
+   C:       &lt;/fee:check&gt;
+   C:     &lt;/extension&gt;
+   C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:   &lt;/command&gt;
+   C: &lt;/epp&gt;
+
+   When the server receives a &lt;check&gt; command that includes the
+   extension elements described above, its response MUST (subject to the
+   exception described below) contain an &lt;extension&gt; element, which MUST
+   contain a child &lt;fee:chkData&gt; element.  The &lt;fee:chkData&gt; element
+   MUST contain a &lt;fee:cd&gt; element for each &lt;fee:domain&gt; element
+   contained in the command.  The &lt;fee:cd&gt; MUST contain the following
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 10]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-11" id="page-11" href="#page-11" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   child elements:
+
+   o  A &lt;fee:name&gt; element that contains a domain name which matches the
+      name in the corresponding &lt;fee:domain&gt; element.
+
+   o  A &lt;fee:currency&gt; element that contains same currency code that
+      appeared in the corresponding &lt;fee:domain&gt; element.  If no &lt;fee:
+      currency&gt; element appeared in the corresponding &lt;fee:domain&gt;
+      element, then the client's default billing currency should be
+      used.
+
+   o  A &lt;fee:command&gt; element that contains same command that appeared
+      in the corresponding &lt;fee:domain&gt; element.  This element MAY have
+      the OPTIONAL "phase" and "subphase" elements, which MUST match the
+      same attributes in the corresponding &lt;fee:domain&gt; element.
+
+   o  An OPTIONAL &lt;fee:period&gt; element that contains same unit that
+      appeared in the corresponding &lt;fee:domain&gt; element.  If the value
+      of the preceding &lt;fee:command&gt; element is "restore", this element
+      MUST NOT be included.  Otherwise it MUST be included.  If no &lt;fee:
+      period&gt; appeared in the corresponding &lt;fee:domain&gt; element (and
+      the command is not "restore") then this element MUST have a value
+      of 1 year.
+
+   o  Zero or more &lt;fee:fee&gt; elements.
+
+   o  Zero or more &lt;fee:credit&gt; elements.
+
+   o  An OPTIONAL &lt;fee:class&gt; element.
+
+   If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt; element, this
+   indicates that the requested command is not permitted by server
+   policy.
+
+   The presence of one or more &lt;fee:fee&gt; and &lt;fee:credit&gt; elements with
+   a total value of "0.00" (ie a zero amount) in a &lt;fee:cd&gt; element
+   indicates that no fee will be assessed by the server for this
+   command.
+
+   Example &lt;check&gt; response:
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1000"&gt;
+   S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;resData&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 11]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-12" id="page-12" href="#page-12" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S:       &lt;domain:chkData
+   S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:         &lt;domain:cd&gt;
+   S:           &lt;domain:name avail="1"&gt;example.com&lt;/domain:name&gt;
+   S:         &lt;/domain:cd&gt;
+   S:         &lt;domain:cd&gt;
+   S:           &lt;domain:name avail="0"&gt;example.net&lt;/domain:name&gt;
+   S:           &lt;domain:reason&gt;In use&lt;/domain:reason&gt;
+   S:         &lt;/domain:cd&gt;
+   S:         &lt;domain:cd&gt;
+   S:           &lt;domain:name avail="0"&gt;example.org&lt;/domain:name&gt;
+   S:           &lt;domain:reason&gt;In use&lt;/domain:reason&gt;
+   S:         &lt;/domain:cd&gt;
+   S:       &lt;/domain:chkData&gt;
+   S:     &lt;/resData&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:chkData
+   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:cd&gt;
+   S:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
+   S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+   S:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+   S:           &lt;fee:fee description="Application Fee"
+   S:             refundable="0"&gt;5.00&lt;/fee:fee&gt;
+   S:           &lt;fee:fee description="Registration Fee"
+   S:             refundable="1"
+   S:          grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+   S:         &lt;/fee:cd&gt;
+   S:         &lt;fee:cd&gt;
+   S:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
+   S:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+   S:           &lt;fee:command phase="claims" subphase="landrush"&gt;
+   S:           create&lt;/fee:command&gt;
+   S:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+   S:           &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   S:         &lt;/fee:cd&gt;
+   S:         &lt;fee:cd&gt;
+   S:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
+   S:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+   S:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
+   S:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+   S:           &lt;fee:fee description="Transfer Fee"
+   S:             refundable="0"&gt;2.50&lt;/fee:fee&gt;
+   S:           &lt;fee:fee description="Renewal Fee"
+   S:             refundable="1"
+   S:          grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
+   S:         &lt;/fee:cd&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 12]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-13" id="page-13" href="#page-13" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S:         &lt;fee:cd&gt;
+   S:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
+   S:           &lt;fee:currency&gt;GBP&lt;/fee:currency&gt;
+   S:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
+   S:           &lt;fee:fee description="Restore Fee"
+   S:             refundable="0"&gt;25&lt;/fee:fee&gt;
+   S:           &lt;fee:class&gt;premium-tier1&lt;/fee:class&gt;
+   S:         &lt;/fee:cd&gt;
+   S:       &lt;/fee:chkData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-5.1.2" href="#section-5.1.2">5.1.2</a>.  EPP Transfer Query Command</span>
+
+   This extension does not add any elements to the EPP &lt;transfer&gt; query
+   command, but does include elements in the response, when the
+   extension has been selected during a &lt;login&gt; command.
+
+   When the &lt;transfer&gt; query command has been processed successfully,
+   the client selected the extension when it logged in, and the client
+   is authorised by the server to view information about the transfer,
+   the server MAY include in the &lt;extension&gt; section of the EPP response
+   a &lt;fee:trnData&gt; element that contains the following child elements:
+
+   o  A &lt;fee:currency&gt; element.
+
+   o  A &lt;fee:period&gt; element.
+
+   o  Zero or more &lt;fee:fee&gt; elements containing the fees that will be
+      charged to the gaining client.
+
+   o  Zero or more &lt;fee:credit&gt; elements containing the credits that
+      will be refunded to the losing client.
+
+   Servers SHOULD omit &lt;fee:credit&gt; when returning a response to the
+   gaining client, and omit &lt;fee:fee&gt; elements when returning a response
+   to the losing client.
+
+   If no &lt;fee:trnData&gt; element is included in the response, then no fee
+   will be assessed by the server for the transfer.
+
+   Example &lt;transfer&gt; query response:
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 13]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-14" id="page-14" href="#page-14" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1001"&gt;
+   S:       &lt;msg&gt;Command completed successfully; action pending&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;resData&gt;
+   S:       &lt;domain:trnData
+   S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   S:         &lt;domain:trStatus&gt;pending&lt;/domain:trStatus&gt;
+   S:         &lt;domain:reID&gt;ClientX&lt;/domain:reID&gt;
+   S:         &lt;domain:reDate&gt;2000-06-08T22:00:00.0Z&lt;/domain:reDate&gt;
+   S:         &lt;domain:acID&gt;ClientY&lt;/domain:acID&gt;
+   S:         &lt;domain:acDate&gt;2000-06-13T22:00:00.0Z&lt;/domain:acDate&gt;
+   S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
+   S:       &lt;/domain:trnData&gt;
+   S:     &lt;/resData&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+   S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   S:       &lt;/fee:trnData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h3"><a class="selflink" name="section-5.2" href="#section-5.2">5.2</a>.  EPP Transform Commands</span>
+
+<span class="h4"><a class="selflink" name="section-5.2.1" href="#section-5.2.1">5.2.1</a>.  EPP &lt;create&gt; Command</span>
+
+   This extension adds elements to both the EPP &lt;create&gt; command and
+   response, when the extension has been selected during a &lt;login&gt;
+   command.
+
+   When submitting a &lt;create&gt; command to the server, the client MAY
+   include in the &lt;extension&gt; element a &lt;fee:create&gt; element which
+   includes the following child elements:
+
+   o  An OPTIONAL &lt;fee:currency&gt; element;
+
+   o  One or more &lt;fee:fee&gt; elements.
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 14]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-15" id="page-15" href="#page-15" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   When the &lt;create&gt; command has been processed successfully, and the
+   client selected the extension when it logged in, and a fee was
+   assessed by the server for the transaction, the server MUST include
+   in the &lt;extension&gt; section of the EPP response a &lt;fee:creData&gt;
+   element that contains the following child elements:
+
+   o  A &lt;fee:currency&gt; element;
+
+   o  Zero or more &lt;fee:fee&gt; elements;
+
+   o  Zero or more &lt;fee:credit&gt; elements;
+
+   o  An OPTIONAL &lt;fee:balance&gt; element;
+
+   o  An OPTIONAL &lt;fee:creditLimit&gt; element.
+
+   If no fee or credit has been assessed by the server for this
+   transaction, a &lt;fee:creData&gt; element MUST NOT be included in the
+   response.
+
+   Example &lt;create&gt; command:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 15]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-16" id="page-16" href="#page-16" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:   &lt;command&gt;
+   C:     &lt;create&gt;
+   C:       &lt;domain:create
+   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   C:         &lt;domain:period unit="y"&gt;2&lt;/domain:period&gt;
+   C:         &lt;domain:ns&gt;
+   C:           &lt;domain:hostObj&gt;ns1.example.net&lt;/domain:hostObj&gt;
+   C:           &lt;domain:hostObj&gt;ns2.example.net&lt;/domain:hostObj&gt;
+   C:         &lt;/domain:ns&gt;
+   C:         &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+   C:         &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+   C:         &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+   C:         &lt;domain:authInfo&gt;
+   C:           &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   C:         &lt;/domain:authInfo&gt;
+   C:       &lt;/domain:create&gt;
+   C:     &lt;/create&gt;
+   C:     &lt;extension&gt;
+   C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   C:       &lt;/fee:create&gt;
+   C:     &lt;/extension&gt;
+   C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:   &lt;/command&gt;
+   C: &lt;/epp&gt;
+
+   Example &lt;create&gt; response:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 16]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-17" id="page-17" href="#page-17" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1000"&gt;
+   S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;resData&gt;
+   S:       &lt;domain:creData
+   S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   S:         &lt;domain:crDate&gt;1999-04-03T22:00:00.0Z&lt;/domain:crDate&gt;
+   S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
+   S:       &lt;/domain:creData&gt;
+   S:     &lt;/resData&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+   S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
+   S:         &lt;fee:creditLimit&gt;1000.00&lt;/fee:creditLimit&gt;
+   S:       &lt;/fee:creData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-5.2.2" href="#section-5.2.2">5.2.2</a>.  EPP &lt;delete&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;delete&gt; command,
+   but does include elements in the response, when the extension has
+   been selected during the &lt;login&gt; command.
+
+   When the &lt;delete&gt; command has been processed successfully, and the
+   client selected the extension when it logged in, the server MAY
+   include in the &lt;extension&gt; section of the EPP response a &lt;fee:
+   delData&gt; element that contains the following child elements:
+
+   o  A &lt;fee:currency&gt; element;
+
+   o  Zero or more &lt;fee:credit&gt; elements;
+
+   o  An OPTIONAL &lt;fee:balance&gt; element;
+
+   o  An OPTIONAL &lt;fee:creditLimit&gt; element.
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 17]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-18" id="page-18" href="#page-18" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   If no credit has been assessed by the server for this transaction, a
+   &lt;fee:delData&gt; element MUST NOT be included in the response.
+
+   Example &lt;delete&gt; response:
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1000"&gt;
+   S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:delData
+   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
+   S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
+   S:       &lt;/fee:delData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-5.2.3" href="#section-5.2.3">5.2.3</a>.  EPP &lt;renew&gt; Command</span>
+
+   This extension adds elements to both the EPP &lt;renew&gt; command and
+   response, when the extension has been selected during a &lt;login&gt;
+   command.
+
+   When submitting a &lt;renew&gt; command to the server, the client MAY
+   include in the &lt;extension&gt; element a &lt;fee:renew&gt; element which
+   includes the following child elements:
+
+   o  An OPTIONAL &lt;fee:currency&gt; element;
+
+   o  One or more &lt;fee:fee&gt; elements.
+
+   When the &lt;renew&gt; command has been processed successfully, and the
+   client selected the extension when it logged in, the server MAY
+   include in the &lt;extension&gt; section of the EPP response a &lt;fee:
+   renData&gt; element that contains the following child elements:
+
+   o  A &lt;fee:currency&gt; element;
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 18]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-19" id="page-19" href="#page-19" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   o  Zero or more &lt;fee:fee&gt; elements;
+
+   o  Zero or more &lt;fee:credit&gt; elements;
+
+   o  An OPTIONAL &lt;fee:balance&gt; element;
+
+   o  An OPTIONAL &lt;fee:creditLimit&gt; element.
+
+   If no fee or credit has been assessed by the server for this
+   transaction, a &lt;fee:renData&gt; element MUST NOT be included in the
+   response.
+
+   Example &lt;renew&gt; command:
+
+   C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:   &lt;command&gt;
+   C:     &lt;renew&gt;
+   C:       &lt;domain:renew
+   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   C:         &lt;domain:curExpDate&gt;2000-04-03&lt;/domain:curExpDate&gt;
+   C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
+   C:       &lt;/domain:renew&gt;
+   C:     &lt;/renew&gt;
+   C:     &lt;extension&gt;
+   C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   C:       &lt;/fee:renew&gt;
+   C:     &lt;/extension&gt;
+   C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:   &lt;/command&gt;
+   C: &lt;/epp&gt;
+
+   Example &lt;renew&gt; response:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 19]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-20" id="page-20" href="#page-20" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1000"&gt;
+   S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;resData&gt;
+   S:       &lt;domain:renData
+   S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
+   S:       &lt;/domain:renData&gt;
+   S:     &lt;/resData&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+   S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
+   S:       &lt;/fee:renData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-5.2.4" href="#section-5.2.4">5.2.4</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension adds elements to both the EPP &lt;transfer&gt; command and
+   response, when the value of the "op" attribute of the &lt;transfer&gt;
+   command element is "request", and the extension has been selected
+   during the &lt;login&gt; command.
+
+   When submitting a &lt;transfer&gt; command to the server, the client MAY
+   include in the &lt;extension&gt; element a &lt;fee:transfer&gt; element which
+   includes the following child elements:
+
+   o  An OPTIONAL &lt;fee:currency&gt; element;
+
+   o  One or more &lt;fee:fee&gt; elements.
+
+   When the &lt;transfer&gt; command has been processed successfully, and the
+   client selected the extension when it logged in, the server MAY
+   include in the &lt;extension&gt; section of the EPP response a &lt;fee:
+   trnData&gt; element that contains the following child elements:
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 20]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-21" id="page-21" href="#page-21" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   o  A &lt;fee:currency&gt; element;
+
+   o  Zero or more &lt;fee:fee&gt; elements;
+
+   o  Zero or more &lt;fee:credit&gt; elements;
+
+   o  An OPTIONAL &lt;fee:balance&gt; element;
+
+   o  An OPTIONAL &lt;fee:creditLimit&gt; element.
+
+   If no fee or credit has been assessed by the server for this
+   transaction, a &lt;fee:trnData&gt; element MUST NOT be included in the
+   response.
+
+   Example &lt;transfer&gt; command:
+
+   C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:   &lt;command&gt;
+   C:     &lt;transfer op="request"&gt;
+   C:       &lt;domain:transfer
+   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   C:         &lt;domain:period unit="y"&gt;1&lt;/domain:period&gt;
+   C:         &lt;domain:authInfo&gt;
+   C:           &lt;domain:pw roid="JD1234-REP"&gt;2fooBAR&lt;/domain:pw&gt;
+   C:         &lt;/domain:authInfo&gt;
+   C:       &lt;/domain:transfer&gt;
+   C:     &lt;/transfer&gt;
+   C:     &lt;extension&gt;
+   C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   C:       &lt;/fee:transfer&gt;
+   C:     &lt;/extension&gt;
+   C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:   &lt;/command&gt;
+   C: &lt;/epp&gt;
+
+   Example &lt;transfer&gt; response:
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 21]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-22" id="page-22" href="#page-22" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1001"&gt;
+   S:       &lt;msg&gt;Command completed successfully; action pending&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;resData&gt;
+   S:       &lt;domain:trnData
+   S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   S:         &lt;domain:trStatus&gt;pending&lt;/domain:trStatus&gt;
+   S:         &lt;domain:reID&gt;ClientX&lt;/domain:reID&gt;
+   S:         &lt;domain:reDate&gt;2000-06-08T22:00:00.0Z&lt;/domain:reDate&gt;
+   S:         &lt;domain:acID&gt;ClientY&lt;/domain:acID&gt;
+   S:         &lt;domain:acDate&gt;2000-06-13T22:00:00.0Z&lt;/domain:acDate&gt;
+   S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
+   S:       &lt;/domain:trnData&gt;
+   S:     &lt;/resData&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+   S:       &lt;/fee:trnData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-5.2.5" href="#section-5.2.5">5.2.5</a>.  EPP &lt;update&gt; Command</span>
+
+   This extension adds elements to both the EPP &lt;update&gt; command and
+   response, when the extension has been selected during a &lt;login&gt; has
+   been selected during the &lt;login&gt; command.
+
+   When submitting a &lt;update&gt; command to the server, the client MAY
+   include in the &lt;extension&gt; element a &lt;fee:update&gt; element which
+   includes the following child elements:
+
+   o  An OPTIONAL &lt;fee:currency&gt; element;
+
+   o  One or more &lt;fee:fee&gt; elements.
+
+   When the &lt;update&gt; command has been processed successfully, and the
+   client selected the extension when it logged in, the server MAY
+   include in the &lt;extension&gt; section of the EPP response a &lt;fee:upData&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 22]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-23" id="page-23" href="#page-23" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   element that contains the following child elements:
+
+   o  A &lt;fee:currency&gt; element;
+
+   o  Zero or more &lt;fee:fee&gt; elements;
+
+   o  Zero or more &lt;fee:credit&gt; elements;
+
+   o  An OPTIONAL &lt;fee:balance&gt; element;
+
+   o  An OPTIONAL &lt;fee:creditLimit&gt; element.
+
+   If no fee or credit has been assessed by the server for this
+   transaction, a &lt;fee:upData&gt; element MUST NOT be included in the
+   response.
+
+   Example &lt;update&gt; command:
+
+   C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:   &lt;command&gt;
+   C:     &lt;update&gt;
+   C:       &lt;domain:update
+   C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+   C:         &lt;domain:chg&gt;
+   C:           &lt;domain:registrant&gt;sh8013&lt;/domain:registrant&gt;
+   C:         &lt;/domain:chg&gt;
+   C:       &lt;/domain:update&gt;
+   C:     &lt;/update&gt;
+   C:     &lt;extension&gt;
+   C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   C:       &lt;/fee:update&gt;
+   C:     &lt;/extension&gt;
+   C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:   &lt;/command&gt;
+   C: &lt;/epp&gt;
+
+   Example &lt;update&gt; response:
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 23]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-24" id="page-24" href="#page-24" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+   S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:   &lt;response&gt;
+   S:     &lt;result code="1000"&gt;
+   S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:     &lt;/result&gt;
+   S:     &lt;extension&gt;
+   S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+   S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+   S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+   S:       &lt;/fee:updData&gt;
+   S:     &lt;/extension&gt;
+   S:     &lt;trID&gt;
+   S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:     &lt;/trID&gt;
+   S:   &lt;/response&gt;
+   S: &lt;/epp&gt;
+
+<span class="h3"><a class="selflink" name="section-5.3" href="#section-5.3">5.3</a>.  Formal Syntax</span>
+
+   An EPP object mapping is specified in XML Schema notation.  The
+   formal syntax presented here is a complete schema representation of
+   the object mapping suitable for automated validation of EPP XML
+   instances.
+
+   Copyright (c) 2014 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 24]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-25" id="page-25" href="#page-25" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   BEGIN
+   &lt;?xml version="1.0" encoding="utf-8"?&gt;
+   &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+     xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"
+     xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+     xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+     targetNamespace="urn:ietf:params:xml:ns:fee-0.8"
+     elementFormDefault="qualified"&gt;
+
+     &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;
+     &lt;import namespace="urn:ietf:params:xml:ns:domain-1.0" /&gt;
+
+     &lt;annotation&gt;
+       &lt;documentation&gt;Extensible Provisioning Protocol
+       v1.0 domain name extension schema for
+       fee information.&lt;/documentation&gt;
+     &lt;/annotation&gt;
+
+     &lt;!--
+     Child elements found in EPP commands and responses
+     --&gt;
+     &lt;element name="check" type="fee:checkType" /&gt;
+     &lt;element name="chkData" type="fee:chkDataType" /&gt;
+     &lt;element name="create" type="fee:transformCommandType" /&gt;
+     &lt;element name="creData" type="fee:transformResultType" /&gt;
+     &lt;element name="renew" type="fee:transformCommandType" /&gt;
+     &lt;element name="renData" type="fee:transformResultType" /&gt;
+     &lt;element name="transfer" type="fee:transformCommandType" /&gt;
+     &lt;element name="trnData" type="fee:transferResultType" /&gt;
+     &lt;element name="update" type="fee:transformCommandType" /&gt;
+     &lt;element name="updData" type="fee:transformResultType" /&gt;
+     &lt;element name="delData" type="fee:deleteDataType" /&gt;
+
+     &lt;!--
+     client &lt;check&gt; command
+     --&gt;
+     &lt;complexType name="checkType"&gt;
+       &lt;sequence&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 25]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-26" id="page-26" href="#page-26" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+         &lt;element name="domain" type="fee:domainCheckType"
+           maxOccurs="unbounded" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="domainCheckType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="name" type="eppcom:labelType" /&gt;
+         &lt;element name="currency" type="fee:currencyType"
+           minOccurs="0" /&gt;
+         &lt;element name="command" type="fee:commandType" /&gt;
+         &lt;element name="period" type="domain:periodType"
+           minOccurs="0" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+
+     &lt;!--
+     server &lt;check&gt; result
+     --&gt;
+     &lt;complexType name="chkDataType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="cd" type="fee:domainCDType"
+           maxOccurs="unbounded" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="domainCDType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="name" type="eppcom:labelType" /&gt;
+         &lt;element name="currency" type="fee:currencyType" /&gt;
+         &lt;element name="command" type="fee:commandType" /&gt;
+         &lt;element name="period" type="domain:periodType"
+           minOccurs="0" maxOccurs="1" /&gt;
+         &lt;element name="fee" type="fee:feeType"
+            minOccurs="0" maxOccurs="unbounded" /&gt;
+         &lt;element name="credit" type="fee:creditType"
+            minOccurs="0" maxOccurs="unbounded" /&gt;
+         &lt;element name="class" type="token" minOccurs="0" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;!--
+       general transform (create, renew, update, transfer) command
+     --&gt;
+     &lt;complexType name="transformCommandType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="currency" type="fee:currencyType"
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 26]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-27" id="page-27" href="#page-27" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+           minOccurs="0" /&gt;
+         &lt;element name="fee" type="fee:feeType"
+           maxOccurs="unbounded" /&gt;
+         &lt;element name="credit" type="fee:creditType"
+           minOccurs="0" maxOccurs="unbounded" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;!--
+       general transform (create, renew, update) result
+     --&gt;
+     &lt;complexType name="transformResultType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="currency" type="fee:currencyType" /&gt;
+         &lt;element name="fee" type="fee:feeType"
+           minOccurs="0" maxOccurs="unbounded" /&gt;
+         &lt;element name="credit" type="fee:creditType"
+           minOccurs="0" maxOccurs="unbounded" /&gt;
+         &lt;element name="balance" type="fee:balanceType"
+           minOccurs="0" /&gt;
+         &lt;element name="creditLimit" type="fee:creditLimitType"
+           minOccurs="0" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;!--
+       transfer result
+     --&gt;
+     &lt;complexType name="transferResultType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="currency" type="fee:currencyType" /&gt;
+
+         &lt;!-- only used op="query" responses --&gt;
+         &lt;element name="period" type="domain:periodType"
+           minOccurs="0" /&gt;
+
+         &lt;element name="fee" type="fee:feeType"
+           maxOccurs="unbounded" /&gt;
+         &lt;element name="credit" type="fee:creditType"
+           minOccurs="0" maxOccurs="unbounded" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;!--
+       delete result
+     --&gt;
+     &lt;complexType name="deleteDataType"&gt;
+       &lt;sequence&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 27]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-28" id="page-28" href="#page-28" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+         &lt;element name="currency" type="fee:currencyType" /&gt;
+         &lt;element name="credit" type="fee:creditType"
+           minOccurs="0" maxOccurs="unbounded" /&gt;
+         &lt;element name="balance" type="fee:balanceType"
+           minOccurs="0" /&gt;
+         &lt;element name="creditLimit" type="fee:creditLimitType"
+           minOccurs="0" /&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;!--
+       common types
+     --&gt;
+     &lt;simpleType name="currencyType"&gt;
+       &lt;restriction base="string"&gt;
+         &lt;pattern value="[A-Z]{3}" /&gt;
+       &lt;/restriction&gt;
+     &lt;/simpleType&gt;
+
+     &lt;complexType name="commandType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="fee:commandTypeValue"&gt;
+           &lt;attribute name="phase" type="token" /&gt;
+           &lt;attribute name="subphase" type="token" /&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;simpleType name="commandTypeValue"&gt;
+       &lt;restriction base="token"&gt;
+         &lt;minLength value="3"/&gt;
+         &lt;maxLength value="16"/&gt;
+       &lt;/restriction&gt;
+     &lt;/simpleType&gt;
+
+     &lt;simpleType name="nonNegativeDecimal"&gt;
+       &lt;restriction base="decimal"&gt;
+         &lt;minInclusive value="0" /&gt;
+       &lt;/restriction&gt;
+     &lt;/simpleType&gt;
+
+     &lt;simpleType name="negativeDecimal"&gt;
+       &lt;restriction base="decimal"&gt;
+         &lt;maxInclusive value="0" /&gt;
+       &lt;/restriction&gt;
+     &lt;/simpleType&gt;
+
+     &lt;complexType name="feeType"&gt;
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 28]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-29" id="page-29" href="#page-29" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+       &lt;simpleContent&gt;
+         &lt;extension base="fee:nonNegativeDecimal"&gt;
+           &lt;attribute name="description"/&gt;
+           &lt;attribute name="refundable" type="boolean"
+             default="1" /&gt;
+           &lt;attribute name="grace-period" type="duration" /&gt;
+           &lt;attribute name="applied" default="immediate"&gt;
+             &lt;simpleType&gt;
+               &lt;restriction base="token"&gt;
+                 &lt;enumeration value="immediate" /&gt;
+                 &lt;enumeration value="delayed" /&gt;
+               &lt;/restriction&gt;
+             &lt;/simpleType&gt;
+           &lt;/attribute&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="creditType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="fee:negativeDecimal"&gt;
+           &lt;attribute name="description"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;simpleType name="balanceType"&gt;
+       &lt;restriction base="decimal" /&gt;
+     &lt;/simpleType&gt;
+
+     &lt;simpleType name="creditLimitType"&gt;
+       &lt;restriction base="decimal" /&gt;
+     &lt;/simpleType&gt;
+
+   &lt;/schema&gt;
+
+   END
+
+
+<span class="h2"><a class="selflink" name="section-6" href="#section-6">6</a>.  Security Considerations</span>
+
+   The mapping extensions described in this document do not provide any
+   security services beyond those described by EPP [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>], the EPP
+   domain name mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], and protocol layers used by EPP.  The
+   security considerations described in these other specifications apply
+   to this specification as well.
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 29]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-30" id="page-30" href="#page-30" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-7" href="#section-7">7</a>.  IANA Considerations</span>
+
+<span class="h3"><a class="selflink" name="section-7.1" href="#section-7.1">7.1</a>.  XML Namespace</span>
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [<a href="./rfc3688" title="&quot;The IETF XML Registry&quot;">RFC3688</a>].  The
+   following URI assignment is requested of IANA:
+
+   URI: urn:ietf:params:xml:ns:fee-0.8
+
+   Registrant Contact: See the "Author's Address" section of this
+   document.
+
+   XML: See the "Formal Syntax" section of this document.
+
+<span class="h3"><a class="selflink" name="section-7.2" href="#section-7.2">7.2</a>.  EPP Extension Registry</span>
+
+   The EPP extension described in this document should be registered by
+   the IANA in the EPP Extension Registry described in [<a href="./rfc7451" title="&quot;Extension Registry for the Extensible Provisioning Protocol&quot;">RFC7451</a>].  The
+   details of the registration are as follows:
+
+   Name of Extension: EPP Fee Extension
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: See the "Author's Address" section
+   of this document.
+
+   TLDs: any
+
+   IPR Disclosure: none
+
+   Status: active
+
+   Notes: none
+
+
+<span class="h2"><a class="selflink" name="section-8" href="#section-8">8</a>.  Implementation Status</span>
+
+   Note to RFC Editor: Please remove this section and the reference to
+   [<a href="./rfc6982" title="&quot;Improving Awareness of Running Code: The Implementation Status Section&quot;">RFC6982</a>] before publication.
+
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of posting of this
+   Internet-Draft, and is based on a proposal described in [<a href="./rfc6982" title="&quot;Improving Awareness of Running Code: The Implementation Status Section&quot;">RFC6982</a>].
+   The description of implementations in this section is intended to
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 30]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-31" id="page-31" href="#page-31" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   assist the IETF in its decision processes in progressing drafts to
+   RFCs.  Please note that the listing of any individual implementation
+   here does not imply endorsement by the IETF.  Furthermore, no effort
+   has been spent to verify the information presented here that was
+   supplied by IETF contributors.  This is not intended as, and must not
+   be construed to be, a catalog of available implementations or their
+   features.  Readers are advised to note that other implementations may
+   exist.
+
+   According to [<a href="./rfc6982" title="&quot;Improving Awareness of Running Code: The Implementation Status Section&quot;">RFC6982</a>], "this will allow reviewers and working groups
+   to assign due consideration to documents that have the benefit of
+   running code, which may serve as evidence of valuable experimentation
+   and feedback that have made the implemented protocols more mature.
+   It is up to the individual working groups to use this information as
+   they see fit".
+
+<span class="h3"><a class="selflink" name="section-8.1" href="#section-8.1">8.1</a>.  RegistryEngine EPP Service</span>
+
+   Organization: CentralNic
+
+   Name: RegistryEngine EPP Service
+
+   Description: Generic high-volume EPP service for gTLDs, ccTLDs and
+   SLDs
+
+   Level of maturity: Deployed in CentralNic's production environment as
+   well as two other gTLD registry systems, and two ccTLD registry
+   systems.
+
+   Coverage: All aspects of the protocol are implemented.
+
+   Licensing: Proprietary In-House software
+
+   Contact: epp@centralnic.com
+
+   URL: <a href="https://www.centralnic.com">https://www.centralnic.com</a>
+
+
+<span class="h2"><a class="selflink" name="section-9" href="#section-9">9</a>.  Acknowledgements</span>
+
+   The author wishes to thank the following persons for their feedback
+   and suggestions:
+
+   o  James Gould of Verisign
+
+   o  Luis Munoz of ISC
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 31]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-32" id="page-32" href="#page-32" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   o  Michael Young of Architelos
+
+   o  Ben Levac and Jeff Eckhaus of Demand Media
+
+   o  Seth Goldman of Google
+
+   o  Klaus Malorny and Michael Bauland of Knipp
+
+   o  Jody Kolker and Roger Carney of Go Daddy
+
+   o  Michael Holloway of Com Laude
+
+   o  Santosh Kalsangrah of Impetus Infotech
+
+
+<span class="h2"><a class="selflink" name="section-10" href="#section-10">10</a>.  Change History</span>
+
+<span class="h3"><a class="selflink" name="section-10.1" href="#section-10.1">10.1</a>.  Changes from 00 to 01</span>
+
+   1.  Restore the &lt;check&gt; command extension; either &lt;check&gt; or &lt;info&gt;
+       can be used.
+
+   2.  added extension elements for &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and
+       &lt;update&gt; so that the server can reject the command if the fee is
+       incorrect.
+
+<span class="h3"><a class="selflink" name="section-10.2" href="#section-10.2">10.2</a>.  Changes from 01 to 02</span>
+
+   1.   Use Internet-Draft version number rather than XML namespace
+        version number in this section.
+
+   2.   Support for multiple &lt;fee:fee&gt; and &lt;fee:credit&gt; elements.
+
+   3.   Added the "description" attribute to &lt;fee:fee&gt; and &lt;fee:credit&gt;
+        elements.
+
+   4.   Added the &lt;fee:balance&gt; element.
+
+   5.   Added the &lt;fee:creditLimit&gt; element.
+
+   6.   Updated reference to [<a href="./draft-ietf-eppext-launchphase">draft-ietf-eppext-launchphase</a>].
+
+   7.   Use &lt;fee:command&gt; instead of &lt;fee:action&gt;.
+
+   8.   Use a single child element of &lt;fee:chkData&gt; instead of multiple
+        elements for each domain.  This also requires using a different
+        name (&lt;fee:name&gt;) for the domain name.
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 32]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-33" id="page-33" href="#page-33" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+   9.   Added the "refundable" attribute to &lt;fee:fee&gt; elements.
+
+   10.  Added the "grace-period" attribute to &lt;fee:fee&gt; elements.
+
+<span class="h3"><a class="selflink" name="section-10.3" href="#section-10.3">10.3</a>.  Changes from 02 to 03</span>
+
+   1.  Added the "applied" attribute to to &lt;fee:fee&gt; elements.
+
+   2.  Simplified the wording in relation to when a server can return an
+       error for extended &lt;info&gt; commands.
+
+   3.  Added the &lt;fee:period&gt; element to transfer query responses.
+
+   4.  Removed wording about how servers behave when receiving incorrect
+       fee information from transform commands, and put it into a single
+       section at the top of the document.
+
+   5.  Allow servers to omit &lt;fee:fee&gt; elements from &lt;fee:cd&gt; elements
+       if the command specified by the client is forbidden.
+
+<span class="h3"><a class="selflink" name="section-10.4" href="#section-10.4">10.4</a>.  Changes from 03 to 04</span>
+
+   1.  Changed Intended Status to Standards Track.
+
+   2.  As per suggestion from Michael Bauland, the &lt;fee:period&gt; element
+       is no longer included in &lt;check&gt; and &lt;info&gt; responses for
+       "restore" commands.  It's still mandatory for all other commands.
+
+   3.  Added summary of the attributes for the &lt;fee:fee&gt; element.
+
+   4.  Clarified that the "refundable" and "grace-period" attributes of
+       the &lt;fee:fee&gt; elements are dependant on each other and cannot
+       appear on their own.
+
+   5.  Removed the option of returning a 1001 response when the fee is
+       incorrect.
+
+   6.  Forbidden the inclusion of extension elements in transform
+       responses if no fee/credit has been assessed.
+
+   7.  Made the &lt;fee:currency&gt; element optional in transform commands.
+
+   8.  Amended XML Namespace section of IANA Considerations, added EPP
+       Extension Registry section.
+
+
+
+
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 33]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-34" id="page-34" href="#page-34" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-10.5" href="#section-10.5">10.5</a>.  Changes from 04 to 05</span>
+
+   1.  Removed the extended &lt;info&gt; command.  The &lt;check&gt; command is the
+       only command that can be used now.
+
+   2.  Introduced a mandatory-to-implement "standard" class for non-
+       premium domains.
+
+   3.  The decision was made to keep availability info in &lt;check&gt;
+       responses as registrars have indicated that it is very useful as
+       it avoids unnecessary round trips to the server.
+
+   4.  Allow &lt;fee:credit&gt; elements to be present in &lt;check&gt; responses.
+
+   5.  Allow the number of &lt;fee:fee&gt; which can appear in transform
+       responses to be zero.
+
+   6.  Removed the &lt;fee:balance&gt; and &lt;fee:creditLimit&gt; elements from
+       transfer query responses.  The reason is that these elements are
+       defined as containing the values after the transform command has
+       taken place - which means that it is not appropriate to include
+       them in a query response.
+
+   7.  Added Implementation Status section.
+
+
+<span class="h2"><a class="selflink" name="section-11" href="#section-11">11</a>.  TODO</span>
+
+   (Note to RFC Editor: remove this section before publication as an
+   RFC.)
+
+   1.  Make the extension object-agnostic so it can be used with other
+       objects, not just vanilla domains.
+
+
+<span class="h2"><a class="selflink" name="section-12" href="#section-12">12</a>.  Normative References</span>
+
+   [<a name="ref-ISO4217" id="ref-ISO4217">ISO4217</a>]  International Organization for Standardization, "ISO 4217:
+              2008, Codes for the representation of currencies and
+              funds", 2008.
+
+   [<a name="ref-RFC2119" id="ref-RFC2119">RFC2119</a>]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>, DOI 10.17487/
+              <a href="./rfc2119">RFC2119</a>, March 1997,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+
+   [<a name="ref-RFC3688" id="ref-RFC3688">RFC3688</a>]  Mealling, M., "The IETF XML Registry", <a href="./bcp81">BCP 81</a>, <a href="./rfc3688">RFC 3688</a>,
+              DOI 10.17487/RFC3688, January 2004,
+
+
+
+<span class="grey">Brown                   Expires February 13, 2016              [Page 34]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-35" id="page-35" href="#page-35" class="invisible"> </a>
+<span class="grey">Internet-Draft       Registry Fee Extension for EPP          August 2015</span>
+
+
+              &lt;<a href="http://www.rfc-editor.org/info/rfc3688">http://www.rfc-editor.org/info/rfc3688</a>&gt;.
+
+   [<a name="ref-RFC3915" id="ref-RFC3915">RFC3915</a>]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", <a href="./rfc3915">RFC 3915</a>,
+              DOI 10.17487/RFC3915, September 2004,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc3915">http://www.rfc-editor.org/info/rfc3915</a>&gt;.
+
+   [<a name="ref-RFC5730" id="ref-RFC5730">RFC5730</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, <a href="./rfc5730">RFC 5730</a>, DOI 10.17487/RFC5730, August 2009,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc5730">http://www.rfc-editor.org/info/rfc5730</a>&gt;.
+
+   [<a name="ref-RFC5731" id="ref-RFC5731">RFC5731</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, <a href="./rfc5731">RFC 5731</a>, DOI 10.17487/
+              <a href="./rfc5731">RFC5731</a>, August 2009,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc5731">http://www.rfc-editor.org/info/rfc5731</a>&gt;.
+
+   [<a name="ref-RFC6982" id="ref-RFC6982">RFC6982</a>]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
+              Code: The Implementation Status Section", <a href="./rfc6982">RFC 6982</a>,
+              DOI 10.17487/RFC6982, July 2013,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc6982">http://www.rfc-editor.org/info/rfc6982</a>&gt;.
+
+   [<a name="ref-RFC7451" id="ref-RFC7451">RFC7451</a>]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", <a href="./rfc7451">RFC 7451</a>, DOI 10.17487/RFC7451,
+              February 2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7451">http://www.rfc-editor.org/info/rfc7451</a>&gt;.
+
+   [<a href="./draft-ietf-eppext-launchphase">draft-ietf-eppext-launchphase</a>]
+              Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
+              for the  Extensible Provisioning Protocol (EPP)", 2014.
+
+
+Author's Address
+
+   Gavin Brown
+   CentralNic Group plc
+   35-39 Moorgate
+   London, England  EC2R 6AR
+   GB
+
+   Phone: +44 20 33 88 0600
+   Email: gavin.brown@centralnic.com
+   URI:   <a href="https://www.centralnic.com">https://www.centralnic.com</a>
+
+
+
+
+
+
+
+
+
+
+Brown                   Expires February 13, 2016              [Page 35]
+
+</pre><br />
+    <span class="noprint"><small><small>Html markup produced by rfcmarkup 1.115, available from
+      <a href="https://tools.ietf.org/tools/rfcmarkup/">https://tools.ietf.org/tools/rfcmarkup/</a>
+    </small></small></span>
+  </div>
+</body>
+</html>

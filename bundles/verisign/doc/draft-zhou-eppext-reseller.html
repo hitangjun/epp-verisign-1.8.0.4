@@ -1,0 +1,1150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.115" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Identifier" content="urn:ietf:id:zhou-eppext-reseller" />
+<meta name="DC.Description.Abstract" content="This mapping, an extension to EPP object mappings like the EPP domain
+name mapping [RFC5731], to support assigning a reseller to any
+existing object (domain, host, contact) as well as any future objects.
+Specified in Extensible Markup Language (XML), this extended mapping
+is applied to provide additional features required for the
+provisioning of resellers." />
+<meta name="DC.Creator" content="Zhou, Linlin" />
+<meta name="DC.Creator" content="Gould, James" />
+<meta name="DC.Creator" content="Qi, Chao" />
+<meta name="DC.Creator" content="Ning, " />
+<meta name="DC.Creator" content="Lee, XiaoDong" />
+<meta name="DC.Date.Issued" content="1999-00-20" />
+<meta name="DC.Title" content="Reseller Extension for the Extensible Provisioning Protocol (EPP)" />
+
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-zhou-eppext-reseller-02 - Reseller Extension for the Extensible Provisioning Protocol (EPP)</title>
+    
+    
+    <style type="text/css">
+	@media only screen 
+	  and (min-width: 992px)
+	  and (max-width: 1199px) {
+	    body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 768px)
+	  and (max-width: 991px) {
+            body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 480px)
+	  and (max-width: 767px) {
+            body { font-size: 11pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (max-width: 479px) {
+            body { font-size: 8pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-device-width : 375px) 
+	  and (max-device-width : 667px) {
+            body { font-size: 9.5pt; }
+            div.content { width: 96ex; margin: 0 1px; }
+        }
+	@media only screen 
+	  and (min-device-width: 1200px) {
+            body { font-size: 10pt; margin: 0 4em; }
+            div.content { width: 96ex; margin: 0; }
+        }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	    font-weight: bold;
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+	    font-weight: bold;
+        }
+        pre {
+            font-size: 1em;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header{
+	    font-weight: bold;
+	}
+        .newpage {
+            page-break-before: always;
+        }
+        .invisible {
+            text-decoration: none;
+            color: white;
+        }
+        a.selflink {
+          color: black;
+          text-decoration: none;
+        }
+        @media print {
+            body {
+                font-family: monospace;
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1em;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+            .noprint {
+                display: none;
+            }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+            .docinfo {
+                background-color: #EEE;
+            }
+            .top {
+                border-top: 7px solid #EEE;
+            }
+            .bgwhite  { background-color: white; }
+            .bgred    { background-color: #F44; }
+            .bggrey   { background-color: #666; }
+            .bgbrown  { background-color: #840; }            
+            .bgorange { background-color: #FA0; }
+            .bgyellow { background-color: #EE0; }
+            .bgmagenta{ background-color: #F4F; }
+            .bgblue   { background-color: #66F; }
+            .bgcyan   { background-color: #4DD; }
+            .bggreen  { background-color: #4F4; }
+
+            .legend   { font-size: 90%; }
+            .cplate   { font-size: 70%; border: solid grey 1px; }
+	}
+    </style>
+    <!--[if IE]>
+    <style>
+    body {
+       font-size: 13px;
+       margin: 10px 10px;
+    }
+    </style>
+    <![endif]-->
+
+    <script type="text/javascript"><!--
+    function addHeaderTags() {
+	var spans = document.getElementsByTagName("span");
+	for (var i=0; i < spans.length; i++) {
+	    var elem = spans[i];
+	    if (elem) {
+		var level = elem.getAttribute("class");
+                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
+                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
+                }
+	    }
+	}
+    }
+    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
+    function showElem(id) {
+        var elem = document.getElementById(id);
+        elem.innerHTML = eval(id+"_html");
+        elem.style.visibility='visible';
+    }
+    function hideElem(id) {
+        var elem = document.getElementById(id);
+        elem.style.visibility='hidden';        
+        elem.innerHTML = "";
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()">
+  <div class="content">
+   <div style="height: 13px;">
+      <div onmouseover="this.style.cursor='pointer';"
+         onclick="showElem('legend');"
+         onmouseout="hideElem('legend')"
+	 style="height: 6px; position: absolute;"
+         class="pre noprint docinfo bgred"
+         title="Click for colour legend." >                                                                        </div>
+      <div id="legend"
+           class="docinfo noprint pre legend"
+           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
+           onmouseover="showElem('legend');"
+           onmouseout="hideElem('legend');">
+      </div>
+   </div>
+<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">Docs</a>] [<a href="https://tools.ietf.org/id/draft-zhou-eppext-reseller-02.txt" title="Plaintext version of this document">txt</a>|<a href="/pdf/draft-zhou-eppext-reseller-02.txt" title="PDF version of this document">pdf</a>] [<a href='https://datatracker.ietf.org/doc/draft-zhou-eppext-reseller' title='IESG Datatracker information for this document'>Tracker</a>] [<a href="mailto:draft-zhou-eppext-reseller@tools.ietf.org?subject=draft-zhou-eppext-reseller%20" title="Send email to the document authors">Email</a>] [<a href="/rfcdiff?difftype=--hwdiff&amp;url2=draft-zhou-eppext-reseller-02.txt" title="Inline diff (wdiff)">Diff1</a>] [<a href="/rfcdiff?url2=draft-zhou-eppext-reseller-02.txt" title="Side-by-side diff">Diff2</a>] [<a href="/idnits?url=https://tools.ietf.org/id/draft-zhou-eppext-reseller-02.txt" title="Run an idnits check of this document">Nits</a>]               </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<span class="pre noprint docinfo">Versions: <a href="./draft-zhou-eppext-reseller-00">00</a> <a href="./draft-zhou-eppext-reseller-01">01</a> <a href="./draft-zhou-eppext-reseller-02">02</a>                                                      </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<pre>
+Internet Engineering Task Force                                  L. Zhou
+Internet-Draft                                                   N. Kong
+Intended status: Standards Track                                   CNNIC
+Expires: April 14, 2016                                            C. Qi
+                                                                Teleinfo
+                                                                  X. Lee
+                                                                   CNNIC
+                                                                J. Gould
+                                                          VeriSign, Inc.
+                                                        October 12, 2015
+
+
+   <span class="h1">Reseller Extension for the Extensible Provisioning Protocol (EPP)</span>
+                     <span class="h1">draft-zhou-eppext-reseller-02</span>
+
+Abstract
+
+   This mapping, an extension to EPP object mappings like the EPP domain
+   name mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], to support assigning a reseller to any
+   existing object (domain, host, contact) as well as any future
+   objects.  Specified in Extensible Markup Language (XML), this
+   extended mapping is applied to provide additional features required
+   for the provisioning of resellers.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of <a href="./bcp78">BCP 78</a> and <a href="./bcp79">BCP 79</a>.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on April 14, 2016.
+
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to <a href="./bcp78">BCP 78</a> and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 1]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-2" id="page-2" href="#page-2" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in <a href="#section-4">Section 4</a>.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+   This document may contain material from IETF Documents or IETF
+   Contributions published or made publicly available before November
+   10, 2008.  The person(s) controlling the copyright in some of this
+   material may not have granted the IETF Trust the right to allow
+   modifications of such material outside the IETF Standards Process.
+   Without obtaining an adequate license from the person(s) controlling
+   the copyright in such materials, this document may not be modified
+   outside the IETF Standards Process, and derivative works of it may
+   not be created outside the IETF Standards Process, except to format
+   it for publication as an RFC or to translate it into languages other
+   than English.
+
+Table of Contents
+
+   <a href="#section-1">1</a>.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-2">2</a>.  Conventions Used in This Document . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-3">3</a>.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.1">3.1</a>.  Reseller Identifier . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.2">3.2</a>.  Reseller Name . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+   <a href="#section-4">4</a>.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-4.1">4.1</a>.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-4.1.1">4.1.1</a>.  EPP &lt;check&gt; Command . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-4.1.2">4.1.2</a>.  EPP &lt;info&gt; Command  . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-4.1.3">4.1.3</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .   <a href="#page-7">7</a>
+     <a href="#section-4.2">4.2</a>.  EPP Transform Commands  . . . . . . . . . . . . . . . . .   <a href="#page-7">7</a>
+       <a href="#section-4.2.1">4.2.1</a>.  EPP &lt;create&gt; Command  . . . . . . . . . . . . . . . .   <a href="#page-7">7</a>
+       <a href="#section-4.2.2">4.2.2</a>.  EPP &lt;delete&gt; Command  . . . . . . . . . . . . . . . .   <a href="#page-8">8</a>
+       <a href="#section-4.2.3">4.2.3</a>.  EPP &lt;renew&gt; Command . . . . . . . . . . . . . . . . .   <a href="#page-8">8</a>
+       <a href="#section-4.2.4">4.2.4</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .   <a href="#page-9">9</a>
+       <a href="#section-4.2.5">4.2.5</a>.  EPP &lt;update&gt; Command  . . . . . . . . . . . . . . . .   <a href="#page-9">9</a>
+   <a href="#section-5">5</a>.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-11">11</a>
+   <a href="#section-6">6</a>.  Internationalization Considerations . . . . . . . . . . . . .  <a href="#page-13">13</a>
+   <a href="#section-7">7</a>.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+     <a href="#section-7.1">7.1</a>.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+     <a href="#section-7.2">7.2</a>.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+   <a href="#section-8">8</a>.  Security Considerations . . . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+   <a href="#section-9">9</a>.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+     <a href="#section-9.1">9.1</a>.  Normative References  . . . . . . . . . . . . . . . . . .  <a href="#page-14">14</a>
+     <a href="#section-9.2">9.2</a>.  Informative References  . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+   <a href="#appendix-A">Appendix A</a>.  Change Log . . . . . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 2]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-3" id="page-3" href="#page-3" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+
+<span class="h2"><a class="selflink" name="section-1" href="#section-1">1</a>.  Introduction</span>
+
+   Domain resellers are the individuals or companies act as agents for
+   ICANN accredited registrars.  A domain name registrar may have
+   several resellers to help them sell domain names to end users.
+
+   Generally speaking, resellers provide domain registration information
+   via registrar's EPP client without reseller information.  On one
+   hand, registrars are concerned about how to identify resellers.  On
+   the other hand, end users would also be confused by the WHOIS service
+   without corresponding reseller information.  This requirement imposes
+   a challenge for the domain registries since there is no definition of
+   resellers in the existing EPP domain name mapping.  Out of band
+   method could solve this problem but may increase extra cost.
+
+   In order to facilitate provisioning and management of reseller
+   information in a shared central repository, this document proposes a
+   reseller extension of [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  The
+   examples provided in this document are used for the domain object for
+   illustration purposes.  The host and contact object could be extended
+   in the same way with the domain object.
+
+   A reseller mapping object defined in
+   [ID.<a href="./draft-zhou-eppext-reseller-mapping">draft-zhou-eppext-reseller-mapping</a>] SHOULD be created first.  The
+   reseller information specified in this document SHOULD reference the
+   existing reseller identifier and reseller name.
+
+   This document is specified using the XML 1.0 as described in
+   [<a href="#ref-W3C.REC-xml-20040204">W3C.REC-xml-20040204</a>] and XML Schema notation as described in
+   [<a href="#ref-W3C.REC-xmlschema-1-20041028">W3C.REC-xmlschema-1-20041028</a>] and [<a href="#ref-W3C.REC-xmlschema-2-20041028">W3C.REC-xmlschema-2-20041028</a>].
+
+<span class="h2"><a class="selflink" name="section-2" href="#section-2">2</a>.  Conventions Used in This Document</span>
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [<a href="./rfc2119" title="&quot;Key words for use in RFCs to Indicate Requirement Levels&quot;">RFC2119</a>].
+
+   In examples, "C:" represents lines sent by a protocol client and "S:"
+   represents lines returned by a protocol server.  Indentation and
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this specification.
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented to develop a conforming implementation.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 3]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-4" id="page-4" href="#page-4" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   resellerext-1.0 in this document is used as an abbreviation for
+   urn:ietf:params:xml:ns:resellerext-1.0.
+
+<span class="h2"><a class="selflink" name="section-3" href="#section-3">3</a>.  Object Attributes</span>
+
+   This extension adds additional elements to the EPP domain name
+   mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>].  Only the new elements are described here.
+
+<span class="h3"><a class="selflink" name="section-3.1" href="#section-3.1">3.1</a>.  Reseller Identifier</span>
+
+   Reseller identifier provides the ID of the reseller of a sponsoring
+   registrar.  Its corresponding element is &lt;resellerext:id&gt; which
+   refers to the &lt;resellerext:id&gt; element defined in
+   [ID.<a href="./draft-zhou-eppext-reseller-mapping">draft-zhou-eppext-reseller-mapping</a>].
+
+<span class="h3"><a class="selflink" name="section-3.2" href="#section-3.2">3.2</a>.  Reseller Name</span>
+
+   Reseller name provides the name of the reseller of a sponsoring
+   registrar.  Its corresponding element is &lt;resellerext:name&gt; which
+   refers to the &lt;resellerext:name&gt; element defined in
+   [ID.<a href="./draft-zhou-eppext-reseller-mapping">draft-zhou-eppext-reseller-mapping</a>].
+
+<span class="h2"><a class="selflink" name="section-4" href="#section-4">4</a>.  EPP Command Mapping</span>
+
+   A detailed description of the EPP syntax and semantics can be found
+   in the EPP core protocol specification [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  The command
+   mappings described here are specifically for use in provisioning and
+   managing reseller information via EPP.
+
+<span class="h3"><a class="selflink" name="section-4.1" href="#section-4.1">4.1</a>.  EPP Query Commands</span>
+
+   EPP provides three commands to retrieve domain information: &lt;check&gt;
+   to determine if a domain object can be provisioned within a
+   repository, &lt;info&gt; to retrieve detailed information associated with a
+   domain object, and &lt;transfer&gt; to retrieve domain-object transfer
+   status information.
+
+<span class="h4"><a class="selflink" name="section-4.1.1" href="#section-4.1.1">4.1.1</a>.  EPP &lt;check&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;check&gt; command
+   or &lt;check&gt; response described in the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+<span class="h4"><a class="selflink" name="section-4.1.2" href="#section-4.1.2">4.1.2</a>.  EPP &lt;info&gt; Command</span>
+
+   This extension does not add any element to the EPP &lt;info&gt; command
+   described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>]
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 4]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-5" id="page-5" href="#page-5" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  However, additional elements are
+   defined for the &lt;info&gt; response.
+
+   Example &lt;info&gt; command:
+
+
+  C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+  C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+  C:  &lt;command&gt;
+  C:    &lt;info&gt;
+  C:      &lt;domain:info xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+  C:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+  C:        &lt;domain:authInfo&gt;
+  C:          &lt;domain:pw&gt;fooBAR&lt;/domain:pw&gt;
+  C:        &lt;/domain:authInfo&gt;
+  C:      &lt;/domain:info&gt;
+  C:    &lt;/info&gt;
+  C:    &lt;clTRID&gt;ngcl-mIFICBNP&lt;/clTRID&gt;
+  C:  &lt;/command&gt;
+  C:&lt;/epp&gt;
+
+
+   When an &lt;info&gt; command has been processed successfully, the EPP
+   &lt;resData&gt; element MUST contain child elements as described in the EPP
+   domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  In addition, the EPP &lt;extension&gt; element SHOULD contain a
+   child &lt;resellerext:infData&gt; element that identifies the extension
+   namespace if the domain object has data associated with this
+   extension and based on its service policy.  The &lt;resellerext:infData&gt;
+   element contains the following child elements:
+
+   o  A &lt;resellerext:id&gt; element that contains the identifier of the
+      reseller of a sponsoring registrar.
+
+   o  An OPTIONAL &lt;resellerext:name&gt; element that contains the name of
+      the reseller of a sponsoring registrar.
+
+   Example &lt;info&gt; response for an authorized client:
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 5]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-6" id="page-6" href="#page-6" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:  &lt;response&gt;
+S:    &lt;result code="1000"&gt;
+S:      &lt;msg lang="en-US"&gt;Command completed successfully&lt;/msg&gt;
+S:    &lt;/result&gt;
+S:    &lt;resData&gt;
+S:      &lt;domain:infData xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:        &lt;domain:roid&gt;EXAMPLE1-REP&lt;/domain:roid&gt;
+S:        &lt;domain:status s="ok"/&gt;
+S:        &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+S:        &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+S:        &lt;domain:contact type="billing"&gt;sh8013&lt;/domain:contact&gt;
+S:        &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+S:        &lt;domain:ns&gt;
+S:          &lt;domain:hostObj&gt;ns1.example.com&lt;/domain:hostObj&gt;
+S:        &lt;/domain:ns&gt;
+S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+S:        &lt;domain:crDate&gt;2015-02-06T04:01:21.0Z&lt;/domain:crDate&gt;
+S:        &lt;domain:exDate&gt;2018-02-06T04:01:21.0Z&lt;/domain:exDate&gt;
+S:        &lt;domain:authInfo&gt;
+S:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+S:        &lt;/domain:authInfo&gt;
+S:      &lt;/domain:infData&gt;
+S:    &lt;/resData&gt;
+S:    &lt;extension&gt;
+S:      &lt;rgp:infData xmlns:rgp="urn:ietf:params:xml:ns:rgp-1.0"&gt;
+S:        &lt;rgp:rgpStatus s="addPeriod"/&gt;
+S:      &lt;/rgp:infData&gt;
+S:      &lt;resellerext:infData xmlns:resellerext="urn:ietf:params:xml:ns:resellerext-1.0"&gt;
+S:        &lt;resellerext:id&gt;myreseller&lt;/resellerext:id&gt;
+S:        &lt;resellerext:name&gt;example&lt;/resellerext:name&gt;
+S:      &lt;/resellerext:infData&gt;
+S:    &lt;/extension&gt;
+S:    &lt;trID&gt;
+S:      &lt;clTRID&gt;ngcl-IvJjzMZc&lt;/clTRID&gt;
+S:      &lt;svTRID&gt;test142AWQONJZ&lt;/svTRID&gt;
+S:    &lt;/trID&gt;
+S:  &lt;/response&gt;
+S:&lt;/epp&gt;
+
+
+   &lt;info&gt; response for the unauthorized client has not been changed, see
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>]for detail.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 6]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-7" id="page-7" href="#page-7" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   An EPP error response MUST be returned if an &lt;info&gt; command cannot be
+   processed for any reason.
+
+<span class="h4"><a class="selflink" name="section-4.1.3" href="#section-4.1.3">4.1.3</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;transfer&gt;
+   command or &lt;transfer&gt; response described in the EPP domain name
+   mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+<span class="h3"><a class="selflink" name="section-4.2" href="#section-4.2">4.2</a>.  EPP Transform Commands</span>
+
+   EPP provides five commands to transform domain objects: &lt;create&gt; to
+   create an instance of a domain object, &lt;delete&gt; to delete an instance
+   of a domain object, &lt;renew&gt; to extend the validity period of a domain
+   object, &lt;transfer&gt; to manage domain object sponsorship changes, and
+   &lt;update&gt; to change information associated with a domain object.
+
+<span class="h4"><a class="selflink" name="section-4.2.1" href="#section-4.2.1">4.2.1</a>.  EPP &lt;create&gt; Command</span>
+
+   This extension defines additional elements for the EPP &lt;create&gt;
+   command described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping
+   [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  No additional elements are
+   defined for the EPP &lt;create&gt; response.
+
+   The EPP &lt;create&gt; command provides a transform operation that allows a
+   client to create a domain object.  In addition to the EPP command
+   elements described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping
+   [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>], the command MUST contain an
+   &lt;extension&gt; element, and the &lt;extension&gt; element MUST contain a child
+   &lt;resellerext:create&gt; element that identifies the extension namespace
+   if the client wants to associate data defined in this extension to
+   the domain object.  The &lt;resellerext:create&gt; element contains the
+   following child elements:
+
+   o  A &lt;resellerext:id&gt; element that contains the identifier of the
+      reseller of a sponsoring registrar.
+
+   Example &lt;create&gt; Command:
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 7]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-8" id="page-8" href="#page-8" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:  &lt;command&gt;
+C:    &lt;create&gt;
+C:      &lt;domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:        &lt;domain:period unit="y"&gt;3&lt;/domain:period&gt;
+C:        &lt;domain:ns&gt;
+C:          &lt;domain:hostObj&gt;ns1.example.com&lt;/domain:hostObj&gt;
+C:        &lt;/domain:ns&gt;
+C:        &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+C:        &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+C:        &lt;domain:contact type="billing"&gt;sh8013&lt;/domain:contact&gt;
+C:        &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+C:        &lt;domain:authInfo&gt;
+C:           &lt;domain:pw roid="ddddd-dddd"&gt;fooBAR&lt;/domain:pw&gt;
+C:        &lt;/domain:authInfo&gt;
+C:      &lt;/domain:create&gt;
+C:    &lt;/create&gt;
+C:    &lt;extension&gt;
+C:      &lt;resellerext:create xmlns:resellerext="urn:ietf:params:xml:ns:resellerext-1.0"&gt;
+C:        &lt;resellerext:id&gt;myreseller&lt;/resellerext:id&gt;
+C:      &lt;/resellerext:create&gt;
+C:    &lt;/extension&gt;
+C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:  &lt;/command&gt;
+C:&lt;/epp&gt;
+
+
+   When a &lt;create&gt; command has been processed successfully, the EPP
+   response is as described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host
+   mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+   An EPP error response MUST be returned if a &lt;create&gt; command cannot
+   be processed for any reason.
+
+<span class="h4"><a class="selflink" name="section-4.2.2" href="#section-4.2.2">4.2.2</a>.  EPP &lt;delete&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;delete&gt; command
+   or &lt;delete&gt; response described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>],
+   host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+<span class="h4"><a class="selflink" name="section-4.2.3" href="#section-4.2.3">4.2.3</a>.  EPP &lt;renew&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;renew&gt; command
+   or &lt;renew&gt; response described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>],
+   host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 8]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-9" id="page-9" href="#page-9" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+<span class="h4"><a class="selflink" name="section-4.2.4" href="#section-4.2.4">4.2.4</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;transfer&gt;
+   command or &lt;transfer&gt; response described in the EPP domain mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>], but
+   after a successful transfer of an object with an assigned reseller,
+   the server SHOULD clear the assigned reseller value.
+
+<span class="h4"><a class="selflink" name="section-4.2.5" href="#section-4.2.5">4.2.5</a>.  EPP &lt;update&gt; Command</span>
+
+   This extension defines additional elements for the EPP &lt;update&gt;
+   command described in the EPP domain mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping
+   [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  No additional elements are
+   defined for the EPP &lt;update&gt; response.
+
+   The EPP &lt;update&gt; command provides a transform operation that allows a
+   client to modify the attributes of a domain object.  In addition to
+   the EPP command elements described in the EPP domain mapping, the
+   command MUST contain an &lt;extension&gt; element, and the &lt;extension&gt;
+   element MUST contain a child &lt;resellerext:update&gt; element that
+   identifies the extension namespace if the client wants to update the
+   domain object with data defined in this extension.  The
+   &lt;resellerext:update&gt; element contains the following child elements:
+
+   o  An OPTIONAL &lt;resellerext:add&gt; element that contains attribute
+      values to be added to the object.
+
+   o  An OPTIONAL &lt;resellerext:rem&gt; element that contains attribute
+      values to be removed from the object.
+
+   o  An OPTIONAL &lt;resellerext:chg&gt; element that contains attribute
+      values to be changed.
+
+   At least one and only one &lt;resellerext:add&gt;, &lt;resellerext:rem&gt; or
+   &lt;resellerext:rem&gt; element MUST be provided.  The &lt;resellerext:add&gt;,
+   &lt;resellerext:rem&gt; and &lt;resellerext:rem&gt; elements contain the
+   following child element:
+
+   o  A &lt;resellerext:id&gt; element that contains the identifier of the
+      reseller of a sponsoring registrar.
+
+   Example &lt;update&gt; command, adding a reseller:
+
+
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 9]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-10" id="page-10" href="#page-10" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:  &lt;command&gt;
+C:    &lt;update&gt;
+C:      &lt;domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:      &lt;/domain:update&gt;
+C:    &lt;/update&gt;
+C:    &lt;extension&gt;
+C:      &lt;resellerext:update xmlns:resellerext="urn:ietf:params:xml:ns:resellerext-1.0"&gt;
+C:        &lt;resellerext:add&gt;
+C:          &lt;resellerext:id&gt;myreseller&lt;/resellerext:id&gt;
+C:        &lt;/resellerext:add&gt;
+C:      &lt;/resellerext:update&gt;
+C:    &lt;/extension&gt;
+C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:  &lt;/command&gt;
+C:&lt;/epp&gt;
+
+
+   Example &lt;update&gt; command, removing a reseller:
+
+
+C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:  &lt;command&gt;
+C:    &lt;update&gt;
+C:      &lt;domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:      &lt;/domain:update&gt;
+C:    &lt;/update&gt;
+C:    &lt;extension&gt;
+C:      &lt;resellerext:update xmlns:resellerext="urn:ietf:params:xml:ns:resellerext-1.0"&gt;
+C:        &lt;resellerext:rem&gt;
+C:          &lt;resellerext:id&gt;myreseller&lt;/resellerext:id&gt;
+C:        &lt;/resellerext:rem&gt;
+C:      &lt;/resellerext:update&gt;
+C:    &lt;/extension&gt;
+C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:  &lt;/command&gt;
+C:&lt;/epp&gt;
+
+
+   Example &lt;update&gt; command, updating reseller identifier:
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 10]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-11" id="page-11" href="#page-11" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:  &lt;command&gt;
+C:    &lt;update&gt;
+C:      &lt;domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:        &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:      &lt;/domain:update&gt;
+C:    &lt;/update&gt;
+C:    &lt;extension&gt;
+C:      &lt;resellerext:update xmlns:resellerext="urn:ietf:params:xml:ns:resellerext-1.0"&gt;
+C:        &lt;resellerext:chg&gt;
+C:          &lt;resellerext:id&gt;myreseller&lt;/resellerext:id&gt;
+C:        &lt;/resellerext:chg&gt;
+C:      &lt;/resellerext:update&gt;
+C:    &lt;/extension&gt;
+C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:  &lt;/command&gt;
+C:&lt;/epp&gt;
+
+
+   When an extended &lt;update&gt; command has been processed successfully,
+   the EPP response is as described in the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+<span class="h2"><a class="selflink" name="section-5" href="#section-5">5</a>.  Formal Syntax</span>
+
+   An EPP object mapping is specified in XML Schema notation.  The
+   formal syntax presented here is a complete schema representation of
+   the object mapping suitable for automated validation of EPP XML
+   instances.  The BEGIN and END tags are not part of the schema; they
+   are used to note the beginning and ending of the schema for URI
+   registration purposes.
+
+
+BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:resellerext-1.0"
+        xmlns:resellerr="urn:ietf:params:xml:ns:resellerext-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"&gt;
+
+&lt;!--
+Import common element types.
+--&gt;
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 11]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-12" id="page-12" href="#page-12" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:epp-1.0"
+          schemaLocation="epp-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+    &lt;documentation&gt;
+      Extensible Provisioning Protocol v1.0
+      Domain Reseller Extension Schema v1.0
+    &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+&lt;!-- Child elements found in EPP commands. --&gt;
+  &lt;element name="create" type="resellerext:createType"/&gt;
+  &lt;element name="update" type="resellerext:updateType"/&gt;
+
+&lt;!-- reseller name type--&gt;
+  &lt;simpleType name="resNameType"&gt;
+     &lt;restriction base="normalizedString"&gt;
+       &lt;minLength value="1"/&gt;
+       &lt;maxLength value="255"/&gt;
+     &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+&lt;!-- Child elements of the &lt;resellerext:create&gt; command
+All elements must be present at time of creation
+--&gt;
+  &lt;complexType name="createType"&gt;
+    &lt;sequence&gt;
+      &lt;!-- agent identifier that sells the domain, e.g. registrar, reseller --&gt;
+      &lt;element name="id" type="eppcom:clIDType"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+&lt;!--
+Child elements of &lt;resellerext:update&gt; command
+--&gt;
+
+  &lt;complexType name="updateType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="add" type="resellerext:addRemChgType" minOccurs="0"/&gt;
+      &lt;element name="rem" type="resellerext:addRemChgType" minOccurs="0"/&gt;
+      &lt;element name="chg" type="resellerext:addRemChgType" minOccurs="0"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name="addRemChgType"&gt;
+    &lt;sequence&gt;
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 12]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-13" id="page-13" href="#page-13" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+      &lt;!-- agent identifier that sells the domain, e.g. registrar, reseller --&gt;
+      &lt;element name="id" type="eppcom:clIDType" minOccurs="0"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+&lt;!-- Child response element --&gt;
+
+  &lt;element name="infData" type="resellerext:infDataType"/&gt;
+
+&lt;!-- &lt;resellerext:infData&gt; response elements --&gt;
+
+  &lt;complexType name="infDataType"&gt;
+    &lt;sequence&gt;
+      &lt;!-- agent identifier that sells the domain, e.g. registrar, reseller --&gt;
+      &lt;element name="id" type="eppcom:clIDType" minOccurs="0"/&gt;
+      &lt;!-- agent name that sells the domain, e.g. registrar, reseller --&gt;
+      &lt;element name="name" type="resellerext:resNameType" minOccurs="0"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+&lt;!-- End of schema. --&gt;
+&lt;/schema&gt;
+END
+
+
+<span class="h2"><a class="selflink" name="section-6" href="#section-6">6</a>.  Internationalization Considerations</span>
+
+   EPP is represented in XML, which provides native support for encoding
+   information using the Unicode character set and its more compact
+   representations including UTF-8.  Conformant XML processors recognize
+   both UTF-8 and UTF-16.  Though XML includes provisions to identify
+   and use other character encodings through use of an "encoding"
+   attribute in an &lt;?xml?&gt; declaration, use of UTF-8 is RECOMMENDED.
+
+   As an extension of the EPP domain name mapping, the elements, element
+   content described in this document MUST inherit the
+   internationalization conventions used to represent higher-layer
+   domain and core protocol structures present in an XML instance that
+   includes this extension.
+
+<span class="h2"><a class="selflink" name="section-7" href="#section-7">7</a>.  IANA Considerations</span>
+
+<span class="h3"><a class="selflink" name="section-7.1" href="#section-7.1">7.1</a>.  XML Namespace</span>
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [<a href="./rfc3688" title="&quot;The IETF XML Registry&quot;">RFC3688</a>].  IANA is
+   requested to assignment the following URI.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 13]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-14" id="page-14" href="#page-14" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   Registration request for the reseller namespace:
+
+   o  URI: urn:ietf:params:xml:ns:reseller-1.0
+
+   o  Registrant Contact: See the "Author's Address" section of this
+      document.
+
+   o  XML: See the "Formal Syntax" section of this document.
+
+<span class="h3"><a class="selflink" name="section-7.2" href="#section-7.2">7.2</a>.  EPP Extension Registry</span>
+
+   The EPP extension described in this document should be registered by
+   the IANA in the EPP Extension Registry described in [<a href="./rfc7451" title="&quot;Extension Registry for the Extensible Provisioning Protocol&quot;">RFC7451</a>].  The
+   details of the registration are as follows:
+
+   Name of Extension: Domain Reseller Extension
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: See the "Author's Address" section
+   of this document.
+
+   TLDs: any
+
+   IPR Disclosure: none
+
+   Status: active
+
+   Notes: none
+
+<span class="h2"><a class="selflink" name="section-8" href="#section-8">8</a>.  Security Considerations</span>
+
+   The object mapping extension described in this document does not
+   provide any other security services or introduce any additional
+   considerations beyond those described by [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>], [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>],
+   [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>] and [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>] or those caused by the protocol layers used
+   by EPP.
+
+<span class="h2"><a class="selflink" name="section-9" href="#section-9">9</a>.  References</span>
+
+<span class="h3"><a class="selflink" name="section-9.1" href="#section-9.1">9.1</a>.  Normative References</span>
+
+   [<a name="ref-RFC2119" id="ref-RFC2119">RFC2119</a>]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>,
+              DOI 10.17487/RFC2119, March 1997,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 14]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-15" id="page-15" href="#page-15" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   [<a name="ref-RFC3688" id="ref-RFC3688">RFC3688</a>]  Mealling, M., "The IETF XML Registry", <a href="./bcp81">BCP 81</a>, <a href="./rfc3688">RFC 3688</a>,
+              DOI 10.17487/RFC3688, January 2004,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc3688">http://www.rfc-editor.org/info/rfc3688</a>&gt;.
+
+   [<a name="ref-RFC5730" id="ref-RFC5730">RFC5730</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, <a href="./rfc5730">RFC 5730</a>, DOI 10.17487/RFC5730, August 2009,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc5730">http://www.rfc-editor.org/info/rfc5730</a>&gt;.
+
+   [<a name="ref-RFC5731" id="ref-RFC5731">RFC5731</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, <a href="./rfc5731">RFC 5731</a>,
+              DOI 10.17487/RFC5731, August 2009,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc5731">http://www.rfc-editor.org/info/rfc5731</a>&gt;.
+
+   [<a name="ref-RFC5732" id="ref-RFC5732">RFC5732</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Host Mapping", STD 69, <a href="./rfc5732">RFC 5732</a>, DOI 10.17487/RFC5732,
+              August 2009, &lt;<a href="http://www.rfc-editor.org/info/rfc5732">http://www.rfc-editor.org/info/rfc5732</a>&gt;.
+
+   [<a name="ref-RFC5733" id="ref-RFC5733">RFC5733</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Contact Mapping", STD 69, <a href="./rfc5733">RFC 5733</a>, DOI 10.17487/RFC5733,
+              August 2009, &lt;<a href="http://www.rfc-editor.org/info/rfc5733">http://www.rfc-editor.org/info/rfc5733</a>&gt;.
+
+   [<a name="ref-RFC7451" id="ref-RFC7451">RFC7451</a>]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", <a href="./rfc7451">RFC 7451</a>, DOI 10.17487/RFC7451,
+              February 2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7451">http://www.rfc-editor.org/info/rfc7451</a>&gt;.
+
+   [<a name="ref-W3C.REC-xml-20040204" id="ref-W3C.REC-xml-20040204">W3C.REC-xml-20040204</a>]
+              Bray, T., Paoli, J., Sperberg-McQueen, C., Maler, E., and
+              F. Yergeau, ""Extensible Markup Language (XML) 1.0 (Third
+              Edition)", World Wide Web Consortium FirstEdition REC-xml-
+              20040204", February 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xml-20040204">http://www.w3.org/TR/2004/REC-xml-20040204</a>&gt;.
+
+   [<a name="ref-W3C.REC-xmlschema-1-20041028" id="ref-W3C.REC-xmlschema-1-20041028">W3C.REC-xmlschema-1-20041028</a>]
+              Thompson, H., Beech, D., Maloney, M., and N. Mendelsohn,
+              ""XML Schema Part 1: Structures Second Edition", World
+              Wide Web Consortium Recommendation REC-xmlschema-
+              1-20041028", October 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028">http://www.w3.org/TR/2004/REC-xmlschema-1-20041028</a>&gt;.
+
+   [<a name="ref-W3C.REC-xmlschema-2-20041028" id="ref-W3C.REC-xmlschema-2-20041028">W3C.REC-xmlschema-2-20041028</a>]
+              Biron, P. and A. Malhotra, ""XML Schema Part 2: Datatypes
+              Second Edition", World Wide Web Consortium Recommendation
+              REC-xmlschema-2-20041028", October 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028">http://www.w3.org/TR/2004/REC-xmlschema-2-20041028</a>&gt;.
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 15]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-16" id="page-16" href="#page-16" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-9.2" href="#section-9.2">9.2</a>.  Informative References</span>
+
+   [ID.<a href="./draft-zhou-eppext-reseller-mapping">draft-zhou-eppext-reseller-mapping</a>]
+              Zhou, L., Kong, N., Qi, C., Lee, X., and J. Gould,
+              "Extensible Provisioning Protocol (EPP) Reseller Mapping",
+              Oct 2015, &lt;<a href="http://tools.ietf.org/html/draft-zhou-eppext-reseller-mapping">http://tools.ietf.org/html/</a>
+              <a href="http://tools.ietf.org/html/draft-zhou-eppext-reseller-mapping">draft-zhou-eppext-reseller-mapping</a>&gt;.
+
+<span class="h2"><a class="selflink" name="appendix-A" href="#appendix-A">Appendix A</a>.  Change Log</span>
+
+   Initial -00:  Individual document submitted.
+
+   -01:
+
+      *  Updated abstract and introduction.
+
+      *  Revised typos in info response.
+
+      *  Added explanations on how to process reseller extension after
+         successful transfer operation.
+
+      *  Modified &lt;update&gt; explanation.
+
+      *  Deleted reseller name element in &lt;create&gt; and &lt;update&gt;
+         commands.
+
+      *  Removed some inaccurate comments from xml schema.
+
+      *  Modified the element name of reseller id and reseller name.
+
+   -02:
+
+      *  Changed author information.
+
+      *  Updated xml typos &lt;reseller:infData&gt; to &lt;resellerext:infData&gt;
+         in &lt;info&gt; response.
+
+Authors' Addresses
+
+   Linlin Zhou
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 2677
+   Email: zhoulinlin@cnnic.cn
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 16]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-17" id="page-17" href="#page-17" class="invisible"> </a>
+<span class="grey">Internet-Draft       Reseller Extension for the EPP         October 2015</span>
+
+
+   Ning Kong
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 3147
+   Email: nkong@cnnic.cn
+
+
+   Chao Qi
+   Teleinfo
+
+   Email: qichao911@163.com
+
+
+   Xiaodong Lee
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 3020
+   Email: xl@cnnic.cn
+
+
+   James Gould
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: jgould@verisign.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zhou, et al.             Expires April 14, 2016                [Page 17]
+
+</pre><br />
+    <span class="noprint"><small><small>Html markup produced by rfcmarkup 1.115, available from
+      <a href="https://tools.ietf.org/tools/rfcmarkup/">https://tools.ietf.org/tools/rfcmarkup/</a>
+    </small></small></span>
+  </div>
+</body>
+</html>

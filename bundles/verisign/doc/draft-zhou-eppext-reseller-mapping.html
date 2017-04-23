@@ -1,0 +1,1933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.115" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Identifier" content="urn:ietf:id:zhou-eppext-reseller-mapping" />
+<meta name="DC.Description.Abstract" content="This document describes an Extensible Provisioning Protocol (EPP)
+mapping for provisioning and management of reseller object stored in a
+shared central repository. Specified in Extensible Markup Language
+(XML), this extended mapping is applied to provide additional features
+required for the provisioning of resellers." />
+<meta name="DC.Creator" content="Zhou, Linlin" />
+<meta name="DC.Creator" content="Gould, James" />
+<meta name="DC.Creator" content="Qi, Chao" />
+<meta name="DC.Creator" content="Ning, " />
+<meta name="DC.Creator" content="Lee, XiaoDong" />
+<meta name="DC.Date.Issued" content="1999-00-20" />
+<meta name="DC.Title" content="Extensible Provisioning Protocol (EPP) Reseller Mapping" />
+
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-zhou-eppext-reseller-mapping-02 - Extensible Provisioning Protocol (EPP) Reseller Mapping</title>
+    
+    
+    <style type="text/css">
+	@media only screen 
+	  and (min-width: 992px)
+	  and (max-width: 1199px) {
+	    body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 768px)
+	  and (max-width: 991px) {
+            body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 480px)
+	  and (max-width: 767px) {
+            body { font-size: 11pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (max-width: 479px) {
+            body { font-size: 8pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-device-width : 375px) 
+	  and (max-device-width : 667px) {
+            body { font-size: 9.5pt; }
+            div.content { width: 96ex; margin: 0 1px; }
+        }
+	@media only screen 
+	  and (min-device-width: 1200px) {
+            body { font-size: 10pt; margin: 0 4em; }
+            div.content { width: 96ex; margin: 0; }
+        }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	    font-weight: bold;
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+	    font-weight: bold;
+        }
+        pre {
+            font-size: 1em;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header{
+	    font-weight: bold;
+	}
+        .newpage {
+            page-break-before: always;
+        }
+        .invisible {
+            text-decoration: none;
+            color: white;
+        }
+        a.selflink {
+          color: black;
+          text-decoration: none;
+        }
+        @media print {
+            body {
+                font-family: monospace;
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1em;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+            .noprint {
+                display: none;
+            }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+            .docinfo {
+                background-color: #EEE;
+            }
+            .top {
+                border-top: 7px solid #EEE;
+            }
+            .bgwhite  { background-color: white; }
+            .bgred    { background-color: #F44; }
+            .bggrey   { background-color: #666; }
+            .bgbrown  { background-color: #840; }            
+            .bgorange { background-color: #FA0; }
+            .bgyellow { background-color: #EE0; }
+            .bgmagenta{ background-color: #F4F; }
+            .bgblue   { background-color: #66F; }
+            .bgcyan   { background-color: #4DD; }
+            .bggreen  { background-color: #4F4; }
+
+            .legend   { font-size: 90%; }
+            .cplate   { font-size: 70%; border: solid grey 1px; }
+	}
+    </style>
+    <!--[if IE]>
+    <style>
+    body {
+       font-size: 13px;
+       margin: 10px 10px;
+    }
+    </style>
+    <![endif]-->
+
+    <script type="text/javascript"><!--
+    function addHeaderTags() {
+	var spans = document.getElementsByTagName("span");
+	for (var i=0; i < spans.length; i++) {
+	    var elem = spans[i];
+	    if (elem) {
+		var level = elem.getAttribute("class");
+                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
+                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
+                }
+	    }
+	}
+    }
+    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
+    function showElem(id) {
+        var elem = document.getElementById(id);
+        elem.innerHTML = eval(id+"_html");
+        elem.style.visibility='visible';
+    }
+    function hideElem(id) {
+        var elem = document.getElementById(id);
+        elem.style.visibility='hidden';        
+        elem.innerHTML = "";
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()">
+  <div class="content">
+   <div style="height: 13px;">
+      <div onmouseover="this.style.cursor='pointer';"
+         onclick="showElem('legend');"
+         onmouseout="hideElem('legend')"
+	 style="height: 6px; position: absolute;"
+         class="pre noprint docinfo bgred"
+         title="Click for colour legend." >                                                                        </div>
+      <div id="legend"
+           class="docinfo noprint pre legend"
+           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
+           onmouseover="showElem('legend');"
+           onmouseout="hideElem('legend');">
+      </div>
+   </div>
+<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">Docs</a>] [<a href="https://tools.ietf.org/id/draft-zhou-eppext-reseller-mapping-02.txt" title="Plaintext version of this document">txt</a>|<a href="/pdf/draft-zhou-eppext-reseller-mapping-02.txt" title="PDF version of this document">pdf</a>] [<a href='https://datatracker.ietf.org/doc/draft-zhou-eppext-reseller-mapping' title='IESG Datatracker information for this document'>Tracker</a>] [<a href="mailto:draft-zhou-eppext-reseller-mapping@tools.ietf.org?subject=draft-zhou-eppext-reseller-mapping%20" title="Send email to the document authors">Email</a>] [<a href="/rfcdiff?difftype=--hwdiff&amp;url2=draft-zhou-eppext-reseller-mapping-02.txt" title="Inline diff (wdiff)">Diff1</a>] [<a href="/rfcdiff?url2=draft-zhou-eppext-reseller-mapping-02.txt" title="Side-by-side diff">Diff2</a>] [<a href="/idnits?url=https://tools.ietf.org/id/draft-zhou-eppext-reseller-mapping-02.txt" title="Run an idnits check of this document">Nits</a>]               </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<span class="pre noprint docinfo">Versions: <a href="./draft-zhou-eppext-reseller-mapping-00">00</a> <a href="./draft-zhou-eppext-reseller-mapping-01">01</a> <a href="./draft-zhou-eppext-reseller-mapping-02">02</a>                                                      </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<pre>
+Internet Engineering Task Force                                  L. Zhou
+Internet-Draft                                                   N. Kong
+Intended status: Standards Track                                   CNNIC
+Expires: April 14, 2016                                            C. Qi
+                                                                Teleinfo
+                                                                  X. Lee
+                                                                   CNNIC
+                                                                J. Gould
+                                                          VeriSign, Inc.
+                                                        October 12, 2015
+
+
+        <span class="h1">Extensible Provisioning Protocol (EPP) Reseller Mapping</span>
+                 <span class="h1">draft-zhou-eppext-reseller-mapping-02</span>
+
+Abstract
+
+   This document describes an Extensible Provisioning Protocol (EPP)
+   mapping for provisioning and management of reseller object stored in
+   a shared central repository.  Specified in Extensible Markup Language
+   (XML), this extended mapping is applied to provide additional
+   features required for the provisioning of resellers.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of <a href="./bcp78">BCP 78</a> and <a href="./bcp79">BCP 79</a>.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on April 14, 2016.
+
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to <a href="./bcp78">BCP 78</a> and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 1]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-2" id="page-2" href="#page-2" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in <a href="#section-4">Section 4</a>.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+   This document may contain material from IETF Documents or IETF
+   Contributions published or made publicly available before November
+   10, 2008.  The person(s) controlling the copyright in some of this
+   material may not have granted the IETF Trust the right to allow
+   modifications of such material outside the IETF Standards Process.
+   Without obtaining an adequate license from the person(s) controlling
+   the copyright in such materials, this document may not be modified
+   outside the IETF Standards Process, and derivative works of it may
+   not be created outside the IETF Standards Process, except to format
+   it for publication as an RFC or to translate it into languages other
+   than English.
+
+Table of Contents
+
+   <a href="#section-1">1</a>.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-2">2</a>.  Conventions Used in This Document . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-3">3</a>.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+     <a href="#section-3.1">3.1</a>.  Reseller Identifier . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.2">3.2</a>.  Contact and Client Identifiers  . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.3">3.3</a>.  Reseller State  . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.4">3.4</a>.  Parent Identifier . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.5">3.5</a>.  URL . . . . . . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+     <a href="#section-3.6">3.6</a>.  Disclosure of Data Elements and Attributes  . . . . . . .   <a href="#page-5">5</a>
+   <a href="#section-4">4</a>.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .   <a href="#page-5">5</a>
+     <a href="#section-4.1">4.1</a>.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .   <a href="#page-5">5</a>
+       <a href="#section-4.1.1">4.1.1</a>.  EPP &lt;check&gt; Command . . . . . . . . . . . . . . . . .   <a href="#page-5">5</a>
+       <a href="#section-4.1.2">4.1.2</a>.  EPP &lt;info&gt; Command  . . . . . . . . . . . . . . . . .   <a href="#page-7">7</a>
+       <a href="#section-4.1.3">4.1.3</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+     <a href="#section-4.2">4.2</a>.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+       <a href="#section-4.2.1">4.2.1</a>.  EPP &lt;create&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-13">13</a>
+       <a href="#section-4.2.2">4.2.2</a>.  EPP &lt;delete&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-16">16</a>
+       <a href="#section-4.2.3">4.2.3</a>.  EPP &lt;renew&gt; Command . . . . . . . . . . . . . . . . .  <a href="#page-18">18</a>
+       <a href="#section-4.2.4">4.2.4</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .  <a href="#page-18">18</a>
+       <a href="#section-4.2.5">4.2.5</a>.  EPP &lt;update&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-18">18</a>
+   <a href="#section-5">5</a>.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-21">21</a>
+   <a href="#section-6">6</a>.  Internationalization Considerations . . . . . . . . . . . . .  <a href="#page-27">27</a>
+   <a href="#section-7">7</a>.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+     <a href="#section-7.1">7.1</a>.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+     <a href="#section-7.2">7.2</a>.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+   <a href="#section-8">8</a>.  Security Considerations . . . . . . . . . . . . . . . . . . .  <a href="#page-29">29</a>
+   <a href="#section-9">9</a>.  Normative References  . . . . . . . . . . . . . . . . . . . .  <a href="#page-29">29</a>
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 2]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-3" id="page-3" href="#page-3" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   <a href="#appendix-A">Appendix A</a>.  Change Log . . . . . . . . . . . . . . . . . . . . .  <a href="#page-30">30</a>
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-30">30</a>
+
+<span class="h2"><a class="selflink" name="section-1" href="#section-1">1</a>.  Introduction</span>
+
+   Domain resellers are the individuals or companies that act as agents
+   for domain name registrars.  A domain name registrar is a direct
+   customer of the domain name registry, is represented as the
+   sponsoring client to the server in [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>], and may have several
+   resellers to help them sell domain names to end users.
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provisioning Protocol (EPP) [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  This EPP mapping
+   specifies the reseller object mapping.
+
+   This document is specified using the XML 1.0 as described in
+   [<a href="#ref-W3C.REC-xml-20040204">W3C.REC-xml-20040204</a>] and XML Schema notation as described in
+   [<a href="#ref-W3C.REC-xmlschema-1-20041028">W3C.REC-xmlschema-1-20041028</a>] and [<a href="#ref-W3C.REC-xmlschema-2-20041028">W3C.REC-xmlschema-2-20041028</a>].
+
+<span class="h2"><a class="selflink" name="section-2" href="#section-2">2</a>.  Conventions Used in This Document</span>
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [<a href="./rfc2119" title="&quot;Key words for use in RFCs to Indicate Requirement Levels&quot;">RFC2119</a>].
+
+   In examples, "C:" represents lines sent by a protocol client and "S:"
+   represents lines returned by a protocol server.  Indentation and
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this specification.
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented to develop a conforming implementation.
+
+   "reseller-1.0" in is used as an abbreviation for
+   "urn:ietf:params:xml:ns:reseller-1.0".  The XML namespace prefix
+   "reseller" is used, but implementations MUST NOT depend on it and
+   instead employ a proper namespace-aware XML parser and serializer to
+   interpret and output the XML documents.
+
+<span class="h2"><a class="selflink" name="section-3" href="#section-3">3</a>.  Object Attributes</span>
+
+   An EPP reseller object has attributes and associated values that can
+   be viewed and modified by the sponsoring client or the server.  This
+   section describes each attribute type in detail.  The formal syntax
+   for the attribute values described here can be found in the "Formal
+   Syntax" section of this document and in the appropriate normative
+   references.
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 3]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-4" id="page-4" href="#page-4" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-3.1" href="#section-3.1">3.1</a>.  Reseller Identifier</span>
+
+   Reseller identifier provides the ID of the reseller of a sponsoring
+   registrar.  Its corresponding element is &lt;reseller:id&gt; defined in
+   this document.
+
+<span class="h3"><a class="selflink" name="section-3.2" href="#section-3.2">3.2</a>.  Contact and Client Identifiers</span>
+
+   All EPP contacts are identified by a server-unique identifier.
+   Contact identifiers are character strings with a specific minimum
+   length, a specified maximum length, and a specified format.  Contact
+   identifiers use the "clIDType" client identifier syntax described in
+   [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h3"><a class="selflink" name="section-3.3" href="#section-3.3">3.3</a>.  Reseller State</span>
+
+   A reseller object MUST always have at least one associated state
+   value.  Valid values include "ok", "readonly" and "terminated".
+
+   State Value Descriptions:
+
+   o  ok: the normal status value for the reseller object.
+
+   o  readonly: transform commands submitted with the reseller
+      identifier in the reseller extension would not be allowed.
+
+   o  terminated: query and transform commands submitted with the
+      reseller identifier in the reseller extension would not be
+      allowed.
+
+<span class="h3"><a class="selflink" name="section-3.4" href="#section-3.4">3.4</a>.  Parent Identifier</span>
+
+   There can be more than one layer of resellers.  The parent
+   identifier, as defined with the &lt;reseller:parentId&gt; element,
+   represents the parent reseller identifier in a child reseller.  The
+   parent identifier is not defined for the top level reseller, namely
+   the registrar of the registry.  An N-tier reseller has a parent
+   reseller and at least one child reseller.  A reseller customer has a
+   parent reseller and no child resellers.
+
+   Loops SHOULD be prohibited.  If reseller A has B as parent
+   identifier, reseller B must not have reseller A as parent identifier.
+
+<span class="h3"><a class="selflink" name="section-3.5" href="#section-3.5">3.5</a>.  URL</span>
+
+   The URL represents the reseller web home page, as defined with the
+   &lt;reseller:url&gt; element.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 4]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-5" id="page-5" href="#page-5" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-3.6" href="#section-3.6">3.6</a>.  Disclosure of Data Elements and Attributes</span>
+
+   This document supports the same disclosure features described in
+   <a href="#section-2.9">Section 2.9</a> of with the use of the &lt;reseller:disclose&gt; element.
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+   The &lt;reseller:disclose&gt; element MUST contain at least one of the
+   following child elements:
+
+   &lt;reseller:name type="int"/&gt;
+
+   &lt;reseller:name type="loc"/&gt;
+
+   &lt;reseller:addr type="int"/&gt;
+
+   &lt;reseller:addr type="loc"/&gt;
+
+   &lt;reseller:voice/&gt;
+
+   &lt;reseller:fax/&gt;
+
+   &lt;reseller:email/&gt;
+
+   &lt;reseller:url/&gt;
+
+   &lt;reseller:contact/&gt;
+
+<span class="h2"><a class="selflink" name="section-4" href="#section-4">4</a>.  EPP Command Mapping</span>
+
+   A detailed description of the EPP syntax and semantics can be found
+   in the EPP core protocol specification [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  The command
+   mappings described here are specifically for use in provisioning and
+   managing reseller information via EPP.
+
+<span class="h3"><a class="selflink" name="section-4.1" href="#section-4.1">4.1</a>.  EPP Query Commands</span>
+
+   EPP provides two commands to retrieve domain information: &lt;check&gt; to
+   determine if a reseller object can be provisioned within a
+   repository, and &lt;info&gt; to retrieve detailed information associated
+   with a reseller object.  This document does not define a mapping for
+   the EPP &lt;transfer&gt; command.
+
+<span class="h4"><a class="selflink" name="section-4.1.1" href="#section-4.1.1">4.1.1</a>.  EPP &lt;check&gt; Command</span>
+
+   The EPP &lt;check&gt; command is used to determine if an object can be
+   provisioned within a repository.  It provides a hint that allows a
+   client to anticipate the success or failure of provisioning an object
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 5]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-6" id="page-6" href="#page-6" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   using the &lt;create&gt; command, as object-provisioning requirements are
+   ultimately a matter of server policy.
+
+   In addition to the standard EPP command elements, the &lt;check&gt; command
+   MUST contain a &lt;reseller:check&gt; element that identifies the reseller
+   namespace.  The &lt;reseller:check&gt; element contains the following child
+   elements:
+
+   o  One or more &lt;reseller:id&gt; elements that contain the server-unique
+      identifier of the reseller objects to be queried.
+
+   Example &lt;check&gt; command:
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;check&gt;
+   C:      &lt;reseller:check
+   C:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   C:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   C:        &lt;reseller:id&gt;re1523&lt;/reseller:id&gt;
+   C:        &lt;reseller:id&gt;1523res&lt;/reseller:id&gt;
+   C:      &lt;/reseller:check&gt;
+   C:    &lt;/check&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   When a &lt;check&gt; command has been processed successfully, the EPP
+   &lt;resData&gt; element MUST contain a child &lt;reseller:chkData&gt; element
+   that identifies the reseller namespace.  The &lt;reseller:chkData&gt;
+   element contains one or more &lt;reseller:cd&gt; elements that contain the
+   following child elements:
+
+   o  A &lt;reseller:id&gt; element that identifies the queried object.  This
+      element MUST contain an "avail" attribute whose value indicates
+      object availability (can it be provisioned or not) at the moment
+      the &lt;check&gt; command was completed.  A value of "1" or "true" means
+      that the object can be provisioned.  A value of "0" or "false"
+      means that the object cannot be provisioned.
+
+   o  An OPTIONAL &lt;reseller:reason&gt; element that MAY be provided when an
+      object cannot be provisioned.  If present, this element contains
+      server-specific text to help explain why the object cannot be
+      provisioned.  This text MUST be represented in the response
+      language previously negotiated with the client; an OPTIONAL "lang"
+      attribute MAY be present to identify the language if the
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 6]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-7" id="page-7" href="#page-7" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+      negotiated value is something other than the default value of
+      "en"(English).
+
+   Example &lt;check&gt; response:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;reseller:chkData
+   S:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   S:        &lt;reseller:cd&gt;
+   S:          &lt;reseller:id avail="1"&gt;res1523&lt;/reseller:id&gt;
+   S:        &lt;/reseller:cd&gt;
+   S:        &lt;reseller:cd&gt;
+   S:          &lt;reseller:id avail="0"&gt;re1523&lt;/reseller:id&gt;
+   S:          &lt;reseller:reason&gt;In use&lt;/reseller:reason&gt;
+   S:        &lt;/reseller:cd&gt;
+   S:        &lt;reseller:cd&gt;
+   S:          &lt;reseller:id avail="1"&gt;1523res&lt;/reseller:id&gt;
+   S:        &lt;/reseller:cd&gt;
+   S:      &lt;/reseller:chkData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   An EPP error response MUST be returned if a &lt;check&gt; command cannot be
+   processed for any reason.
+
+<span class="h4"><a class="selflink" name="section-4.1.2" href="#section-4.1.2">4.1.2</a>.  EPP &lt;info&gt; Command</span>
+
+   The EPP &lt;info&gt; command is used to retrieve information associated
+   with a reseller object.  In addition to the standard EPP command
+   elements, the &lt;info&gt; command MUST contain a &lt;reseller:info&gt; element
+   that identifies the reseller namespace.  The &lt;reseller:info&gt; element
+   contains the following child elements:
+
+   o  A &lt;reseller:id&gt; element that contains the server-unique identifier
+      of the reseller object to be queried.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 7]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-8" id="page-8" href="#page-8" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   Example &lt;info&gt; command:
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;info&gt;
+   C:      &lt;reseller:info
+   C:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   C:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   C:      &lt;/reseller:info&gt;
+   C:    &lt;/info&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   When an &lt;info&gt; command has been processed successfully, the EPP
+   &lt;resData&gt; element MUST contain a child &lt;reseller:infData&gt; element
+   that identifies the reseller namespace.  The &lt;reseller:infData&gt;
+   element contains the following child elements:
+
+   o  A &lt;reseller:id&gt; element that contains the server-unique identifier
+      of the reseller object, as defined in <a href="#section-3.1">Section 3.1</a>.
+
+   o  A &lt;reseller:roid&gt; element that contains the Repository Object
+      IDentifier assigned to the reseller object when the object was
+      created.
+
+   o  A &lt;reseller:state&gt; element that contains the operational state of
+      the reseller, as defined in <a href="#section-3.3">Section 3.3</a>.
+
+   o  An OPTIONAL &lt;reseller:parentId&gt; element that contains the
+      identifier of the parent object, as defined in <a href="#section-3.4">Section 3.4</a>.
+
+   o  One or two &lt;reseller:postalInfo&gt; elements that contain postal-
+      address information.  Two elements are provided so that address
+      information can be provided in both internationalized and
+      localized forms; a "type" attribute is used to identify the two
+      forms.  If an internationalized form (type="int") is provided,
+      element content MUST be represented in a subset of UTF-8 that can
+      be represented in the 7-bit US-ASCII character set.  If a
+      localized form (type="loc") is provided, element content MAY be
+      represented in unrestricted UTF-8.  The &lt;reseller:postalInfo&gt;
+      element contains the following child elements:
+
+      *  A &lt;reseller:name&gt; element that contains the name of the
+         reseller, which SHOULD be the name of the organization.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 8]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-9" id="page-9" href="#page-9" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+      *  A &lt;reseller:addr&gt; element that contains address information
+         associated with the reseller.  A &lt;reseller:addr&gt; element
+         contains the following child elements:
+
+         +  One, two, or three OPTIONAL &lt;reseller:street&gt; elements that
+            contain the reseller's street address.
+
+         +  A &lt;reseller:city&gt; element that contains the reseller's city.
+
+         +  An OPTIONAL &lt;reseller:sp&gt; element that contains the
+            reseller's state or province.
+
+         +  An OPTIONAL &lt;reseller:pc&gt; element that contains the
+            reseller's postal code.
+
+         +  A &lt;reseller:cc&gt; element that contains the reseller's country
+            code.
+
+   o  An OPTIONAL &lt;reseller:voice&gt; element that contains the reseller's
+      voice telephone number.
+
+   o  An OPTIONAL &lt;reseller:fax&gt; element that contains the reseller's
+      facsimile telephone number.
+
+   o  A &lt;reseller:email&gt; element that contains the reseller's email
+      address.
+
+   o  A &lt;reseller:url&gt; element that contains the URL to the website of
+      the reseller.
+
+   o  Zero or more OPTIONAL &lt;reseller:contact&gt; elements that contain
+      identifiers for the contact objects to be associated with the
+      reseller object.  Contact object identifiers MUST be known to the
+      server before the contact object can be associated with the
+      reseller object.  An attribute "type" associated with
+      &lt;reseller:contact&gt; is used to represent contact types.  The type
+      values include admin, tech and billing.
+
+   o  A &lt;reseller:clID&gt; element that contains the identifier of the
+      sponsoring client, who is the domain name registrar.
+
+   o  A &lt;reseller:crID&gt; element that contains the identifier of the
+      client that created the reseller object.
+
+   o  A &lt;reseller:crDate&gt; element that contains the date and time of
+      reseller-object creation.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                 [Page 9]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-10" id="page-10" href="#page-10" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   o  A &lt;reseller:upID&gt; element that contains the identifier of the
+      client that last updated the reseller object.  This element MUST
+      NOT be present if the reseller has never been modified.
+
+   o  A &lt;reseller:upDate&gt; element that contains the date and time of the
+      most recent reseller-object modification.  This element MUST NOT
+      be present if the reseller object has never been modified.
+
+   o  An OPTIONAL &lt;reseller:disclose&gt; element that identifies elements
+      that require exceptional server-operator handling to allow or
+      restrict disclosure to third parties.  See <a href="#section-3.6">Section 3.6</a> for a
+      description of the child elements contained within the
+      &lt;reseller:disclose&gt; element.
+
+   Example &lt;info&gt; response for the sponsoring client:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 10]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-11" id="page-11" href="#page-11" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;reseller:infData
+   S:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   S:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   S:        &lt;reseller:roid&gt;res1523-REP&lt;/reseller:roid&gt;
+   S:        &lt;reseller:state&gt;ok&lt;/reseller:state&gt;
+   S:        &lt;reseller:parentId&gt;1523res&lt;/reseller:parentId&gt;
+   S:        &lt;reseller:postalInfo type="int"&gt;
+   S:          &lt;reseller:name&gt;Example Reseller Inc.&lt;/reseller:name&gt;
+   S:          &lt;reseller:addr&gt;
+   S:            &lt;reseller:street&gt;123 Example Dr.&lt;/reseller:street&gt;
+   S:            &lt;reseller:street&gt;Suite 100&lt;/reseller:street&gt;
+   S:            &lt;reseller:city&gt;Dulles&lt;/reseller:city&gt;
+   S:            &lt;reseller:sp&gt;VA&lt;/reseller:sp&gt;
+   S:            &lt;reseller:pc&gt;20166-6503&lt;/reseller:pc&gt;
+   S:            &lt;reseller:cc&gt;US&lt;/reseller:cc&gt;
+   S:          &lt;/reseller:addr&gt;
+   S:        &lt;/reseller:postalInfo&gt;
+   S:        &lt;reseller:voice x="1234"&gt;+1.7035555555&lt;/reseller:voice&gt;
+   S:        &lt;reseller:fax&gt;+1.7035555556&lt;/reseller:fax&gt;
+   S:        &lt;reseller:email&gt;contact@reseller.example&lt;/reseller:email&gt;
+   S:        &lt;reseller:url&gt;http://reseller.example&lt;/reseller:url&gt;
+   S:        &lt;reseller:contact type="admin"&gt;sh8013&lt;/reseller:contact&gt;
+   S:        &lt;reseller:contact type="billing"&gt;sh8013&lt;/reseller:contact&gt;
+   S:        &lt;reseller:clID&gt;ClientY&lt;/reseller:clID&gt;
+   S:        &lt;reseller:crID&gt;ClientX&lt;/reseller:crID&gt;
+   S:        &lt;reseller:crDate&gt;1999-04-03T22:00:00.0Z&lt;/reseller:crDate&gt;
+   S:        &lt;reseller:upID&gt;ClientX&lt;/reseller:upID&gt;
+   S:        &lt;reseller:upDate&gt;1999-12-03T09:00:00.0Z&lt;/reseller:upDate&gt;
+   S:        &lt;reseller:disclose flag="0"&gt;
+   S:          &lt;reseller:voice/&gt;
+   S:          &lt;reseller:email/&gt;
+   S:        &lt;/reseller:disclose&gt;
+   S:      &lt;/reseller:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 11]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-12" id="page-12" href="#page-12" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   Example &lt;info&gt; for the non-sponsoring client, according to the
+   disclosure policy:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;reseller:infData
+   S:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   S:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   S:        &lt;reseller:roid&gt;res1523-REP&lt;/reseller:roid&gt;
+   S:        &lt;reseller:state&gt;ok&lt;/reseller:state&gt;
+   S:        &lt;reseller:parentId&gt;1523res&lt;/reseller:parentId&gt;
+   S:        &lt;reseller:postalInfo type="int"&gt;
+   S:          &lt;reseller:name&gt;Example Reseller Inc.&lt;/reseller:name&gt;
+   S:          &lt;reseller:addr&gt;
+   S:            &lt;reseller:street&gt;123 Example Dr.&lt;/reseller:street&gt;
+   S:            &lt;reseller:street&gt;Suite 100&lt;/reseller:street&gt;
+   S:            &lt;reseller:city&gt;Dulles&lt;/reseller:city&gt;
+   S:            &lt;reseller:sp&gt;VA&lt;/reseller:sp&gt;
+   S:            &lt;reseller:pc&gt;20166-6503&lt;/reseller:pc&gt;
+   S:            &lt;reseller:cc&gt;US&lt;/reseller:cc&gt;
+   S:          &lt;/reseller:addr&gt;
+   S:        &lt;/reseller:postalInfo&gt;
+   S:        &lt;reseller:fax&gt;+1.7035555556&lt;/reseller:fax&gt;
+   S:        &lt;reseller:url&gt;http://reseller.example&lt;/reseller:url&gt;
+   S:        &lt;reseller:clID&gt;ClientY&lt;/reseller:clID&gt;
+   S:        &lt;reseller:crID&gt;ClientX&lt;/reseller:crID&gt;
+   S:        &lt;reseller:crDate&gt;1999-04-03T22:00:00.0Z&lt;/reseller:crDate&gt;
+   S:        &lt;reseller:upID&gt;ClientX&lt;/reseller:upID&gt;
+   S:        &lt;reseller:upDate&gt;1999-12-03T09:00:00.0Z&lt;/reseller:upDate&gt;
+   S:      &lt;/reseller:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   An EPP error response MUST be returned if an &lt;info&gt; command cannot be
+   processed for any reason.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 12]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-13" id="page-13" href="#page-13" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+<span class="h4"><a class="selflink" name="section-4.1.3" href="#section-4.1.3">4.1.3</a>.  EPP &lt;transfer&gt; Command</span>
+
+   The transfer semantics does not apply to reseller object.  No EPP
+   &lt;transfer&gt; command is defined in this document.
+
+<span class="h3"><a class="selflink" name="section-4.2" href="#section-4.2">4.2</a>.  EPP Transform Commands</span>
+
+   EPP provides four commands to transform reseller-object information:
+   &lt;create&gt; to create an instance of a reseller object, &lt;delete&gt; to
+   delete an instance of a reseller object, &lt;transfer&gt; to manage
+   reseller-object sponsorship changes, and &lt;update&gt; to change
+   information associated with a reseller object.  This document does
+   not define a mapping for the EPP &lt;transfer&gt; and &lt;renew&gt; command.
+
+   Transform commands are typically processed and completed in real
+   time.  Server operators MAY receive and process transform commands
+   but defer completing the requested action if human or third-party
+   review is required before the requested action can be completed.  In
+   such situations, the server MUST return a 1001 response code to the
+   client to note that the command has been received and processed but
+   that the requested action is pending.  The server MUST also manage
+   the status of the object that is the subject of the command to
+   reflect the initiation and completion of the requested action.  Once
+   the action has been completed, all clients involved in the
+   transaction MUST be notified using a service message that the action
+   has been completed and that the status of the object has changed.
+   Other notification methods MAY be used in addition to the required
+   service message.
+
+<span class="h4"><a class="selflink" name="section-4.2.1" href="#section-4.2.1">4.2.1</a>.  EPP &lt;create&gt; Command</span>
+
+   The EPP &lt;create&gt; command provides a transform operation that allows a
+   client to create a reseller object.  In addition to the standard EPP
+   command elements, the &lt;create&gt; command MUST contain a
+   &lt;reseller:create&gt; element that identifies the reseller namespace.
+   The &lt;reseller:create&gt; element contains the following child elements:
+
+   o  A &lt;reseller:id&gt; element that contains the desired server-unique
+      identifier for the reseller to be created, as defined in
+      <a href="#section-3.1">Section 3.1</a>.
+
+   o  A &lt;reseller:state&gt; element that contains the operational status of
+      the reseller, as defined in <a href="#section-3.3">Section 3.3</a>.
+
+   o  An OPTIONAL &lt;reseller:parentId&gt; element that contains the
+      identifier of the parent object, as defined in <a href="#section-3.4">Section 3.4</a>.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 13]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-14" id="page-14" href="#page-14" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   o  One or two &lt;reseller:postalInfo&gt; elements that contain postal-
+      address information.  Two elements are provided so that address
+      information can be provided in both internationalized and
+      localized forms; a "type" attribute is used to identify the two
+      forms.  If an internationalized form (type="int") is provided,
+      element content MUST be represented in a subset of UTF-8 that can
+      be represented in the 7-bit US-ASCII character set.  If a
+      localized form (type="loc") is provided, element content MAY be
+      represented in unrestricted UTF-8.  The &lt;reseller:postalInfo&gt;
+      element contains the following child elements:
+
+      *  A &lt;reseller:name&gt; element that contains the name of the
+         reseller, which SHOULD be the name of the organization..
+
+      *  A &lt;reseller:addr&gt; element that contains address information
+         associated with the reseller.  A &lt;reseller:addr&gt; element
+         contains the following child elements:
+
+         +  One, two, or three OPTIONAL &lt;reseller:street&gt; elements that
+            contain the reseller's street address.
+
+         +  A &lt;reseller:city&gt; element that contains the reseller's city.
+
+         +  An OPTIONAL &lt;reseller:sp&gt; element that contains the
+            reseller's state or province.
+
+         +  An OPTIONAL &lt;reseller:pc&gt; element that contains the
+            reseller's postal code.
+
+         +  A &lt;reseller:cc&gt; element that contains the reseller's country
+            code.
+
+   o  An OPTIONAL &lt;reseller:voice&gt; element that contains the reseller's
+      voice telephone number.
+
+   o  An OPTIONAL &lt;reseller:fax&gt; element that contains the reseller's
+      facsimile telephone number.
+
+   o  A &lt;reseller:email&gt; element that contains the reseller's email
+      address.
+
+   o  A &lt;reseller:url&gt; element that contains the URL to the website of
+      the reseller.
+
+   o  Zero or more OPTIONAL &lt;reseller:contact&gt; elements that contain
+      identifiers for the human or organizational social information
+      objects associated with the reseller object.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 14]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-15" id="page-15" href="#page-15" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   o  An OPTIONAL &lt;reseller:disclose&gt; element that identifies elements
+      that require exceptional server-operator handling to allow or
+      restrict disclosure to third parties.  See <a href="#section-3.6">Section 3.6</a> for a
+      description of the child elements contained within the
+      &lt;reseller:disclose&gt; element.
+
+   Example &lt;create&gt; command:
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;create&gt;
+   C:      &lt;reseller:create
+   C:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   C:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   C:        &lt;reseller:state&gt;ok&lt;/reseller:state&gt;
+   C:        &lt;reseller:parentId&gt;1523res&lt;/reseller:parentId&gt;
+   C:        &lt;reseller:postalInfo type="int"&gt;
+   C:          &lt;reseller:name&gt;Example Reseller Inc.&lt;/reseller:name&gt;
+   C:          &lt;reseller:addr&gt;
+   C:            &lt;reseller:street&gt;123 Example Dr.&lt;/reseller:street&gt;
+   C:            &lt;reseller:street&gt;Suite 100&lt;/reseller:street&gt;
+   C:            &lt;reseller:city&gt;Dulles&lt;/reseller:city&gt;
+   C:            &lt;reseller:sp&gt;VA&lt;/reseller:sp&gt;
+   C:            &lt;reseller:pc&gt;20166-6503&lt;/reseller:pc&gt;
+   C:            &lt;reseller:cc&gt;US&lt;/reseller:cc&gt;
+   C:          &lt;/reseller:addr&gt;
+   C:        &lt;/reseller:postalInfo&gt;
+   C:        &lt;reseller:voice x="1234"&gt;+1.7035555555&lt;/reseller:voice&gt;
+   C:        &lt;reseller:fax&gt;+1.7035555556&lt;/reseller:fax&gt;
+   C:        &lt;reseller:email&gt;contact@reseller.example&lt;/reseller:email&gt;
+   C:        &lt;reseller:url&gt;http://reseller.example&lt;/reseller:url&gt;
+   C:        &lt;reseller:contact type="admin"&gt;sh8013&lt;/reseller:contact&gt;
+   C:        &lt;reseller:contact type="billing"&gt;sh8013&lt;/reseller:contact&gt;
+   C:        &lt;reseller:disclose flag="0"&gt;
+   C:          &lt;reseller:voice/&gt;
+   C:          &lt;reseller:email/&gt;
+   C:        &lt;/reseller:disclose&gt;
+   C:      &lt;/reseller:create&gt;
+   C:    &lt;/create&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   When a &lt;create&gt; command has been processed successfully, the EPP
+   &lt;resData&gt; element MUST contain a child &lt;reseller:creData&gt; element
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 15]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-16" id="page-16" href="#page-16" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   that identifies the reseller namespace.  The &lt;reseller:creData&gt;
+   element contains the following child elements:
+
+   o  A &lt;reseller:id&gt; element that contains the server-unique identifier
+      for the created reseller, as defined in <a href="#section-3.1">Section 3.1</a>..
+
+   o  A &lt;reseller:crDate&gt; element that contains the date and time of
+      reseller-object creation.
+
+   Example &lt;create&gt; response:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;reseller:creData
+   S:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   S:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   S:        &lt;reseller:crDate&gt;1999-04-03T22:00:00.0Z&lt;/reseller:crDate&gt;
+   S:      &lt;/reseller:creData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   An EPP error response MUST be returned if a &lt;create&gt; command cannot
+   be processed for any reason.
+
+<span class="h4"><a class="selflink" name="section-4.2.2" href="#section-4.2.2">4.2.2</a>.  EPP &lt;delete&gt; Command</span>
+
+   The EPP &lt;delete&gt; command provides a transform operation that allows a
+   client to delete a reseller object.  In addition to the standard EPP
+   command elements, the &lt;delete&gt; command MUST contain a
+   &lt;reseller:delete&gt; element that identifies the reseller namespace.
+   The &lt;reseller:delete&gt; element MUST contain the following child
+   element:
+
+   o  A &lt;reseller:id&gt; element that contains the server-unique identifier
+      of the reseller object, as defined in <a href="#section-3.1">Section 3.1</a>, to be deleted.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 16]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-17" id="page-17" href="#page-17" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   A reseller object SHOULD NOT be deleted if it is associated with
+   other known objects.  An associated reseller SHOULD NOT be deleted
+   until associations with other known objects have been broken.  A
+   server SHOULD notify clients that object relationships exist by
+   sending a 2305 error response code when a &lt;delete&gt; command is
+   attempted and fails due to existing object relationships.
+
+   Example &lt;delete&gt; command:
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;delete&gt;
+   C:      &lt;reseller:delete
+   C:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   C:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   C:      &lt;/reseller:delete&gt;
+   C:    &lt;/delete&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   When a &lt;delete&gt; command has been processed successfully, a server
+   MUST respond with an EPP response with no &lt;resData&gt; element.
+
+   Example &lt;delete&gt; response:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   An EPP error response MUST be returned if a &lt;delete&gt; command cannot
+   be processed for any reason.
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 17]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-18" id="page-18" href="#page-18" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+<span class="h4"><a class="selflink" name="section-4.2.3" href="#section-4.2.3">4.2.3</a>.  EPP &lt;renew&gt; Command</span>
+
+   Renewal semantics do not apply to reseller objects, so there is no
+   mapping defined for the EPP &lt;renew&gt; command.
+
+<span class="h4"><a class="selflink" name="section-4.2.4" href="#section-4.2.4">4.2.4</a>.  EPP &lt;transfer&gt; Command</span>
+
+   Transfer semantics do not apply to reseller objects, so there is no
+   mapping defined for the EPP &lt;transfer&gt; command.
+
+<span class="h4"><a class="selflink" name="section-4.2.5" href="#section-4.2.5">4.2.5</a>.  EPP &lt;update&gt; Command</span>
+
+   The EPP &lt;update&gt; command provides a transform operation that allows a
+   client to modify the attributes of a reseller object.  In addition to
+   the standard EPP command elements, the &lt;update&gt; command MUST contain
+   a &lt;reseller:update&gt; element that identifies the reseller namespace.
+   The &lt;reseller:update&gt; element contains the following child elements:
+
+   o  A &lt;reseller:id&gt; element that contains the server-unique identifier
+      of the reseller object to be updated, as defined in <a href="#section-3.1">Section 3.1</a>.
+
+   o  An OPTIONAL &lt;reseller:add&gt; element that contains attribute values
+      to be added to the object.
+
+   o  An OPTIONAL &lt;reseller:rem&gt; element that contains attribute values
+      to be removed from the object.
+
+   o  An OPTIONAL &lt;reseller:chg&gt; element that contains attribute values
+      to be changed.
+
+   At least one &lt;reseller:add&gt;, &lt;reseller:rem&gt; or &lt;reseller:rem&gt; element
+   MUST be provided if the command is not being extended.  All of these
+   elements MAY be omitted if an &lt;update&gt; extension is present.  The
+   &lt;reseller:add&gt; and &lt;reseller:rem&gt; elements contain the following
+   child element:
+
+   o  Zero or more &lt;reseller:contact&gt; elements that contain the
+      identifiers for contact objects to be associated with or removed
+      from the reseller object.  Contact object identifiers MUST be
+      known to the server before the contact object can be associated
+      with the reseller object.
+
+   A &lt;reseller:chg&gt; element contains the following OPTIONAL child
+   elements.  At least one child element MUST be present:
+
+   o  A &lt;reseller:state&gt; element that contains the operational status of
+      the reseller.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 18]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-19" id="page-19" href="#page-19" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   o  A &lt;reseller:parentId&gt; element that contains the identifier of the
+      parent object.
+
+   o  One or two &lt;reseller:postalInfo&gt; elements that contain postal-
+      address information.  Two elements are provided so that address
+      information can be provided in both internationalized and
+      localized forms; a "type" attribute is used to identify the two
+      forms.  If an internationalized form (type="int") is provided,
+      element content MUST be represented in a subset of UTF-8 that can
+      be represented in the 7-bit US-ASCII character set.  If a
+      localized form (type="loc") is provided, element content MAY be
+      represented in unrestricted UTF-8.  The &lt;reseller:postalInfo&gt;
+      element contains the following child elements:
+
+      *  A &lt;reseller:name&gt; element that contains the name of the
+         reseller, which SHOULD be the name of the organization.
+
+      *  A &lt;reseller:addr&gt; element that contains address information
+         associated with the reseller.  A &lt;reseller:addr&gt; element
+         contains the following child elements:
+
+         +  One, two, or three OPTIONAL &lt;reseller:street&gt; elements that
+            contain the reseller's street address.
+
+         +  A &lt;reseller:city&gt; element that contains the reseller's city.
+
+         +  An OPTIONAL &lt;reseller:sp&gt; element that contains the
+            reseller's state or province.
+
+         +  An OPTIONAL &lt;reseller:pc&gt; element that contains the
+            reseller's postal code.
+
+         +  A &lt;reseller:cc&gt; element that contains the reseller's country
+            code.
+
+   o  An &lt;reseller:voice&gt; element that contains the reseller's voice
+      telephone number.
+
+   o  An &lt;reseller:fax&gt; element that contains the reseller's facsimile
+      telephone number.
+
+   o  A &lt;reseller:email&gt; element that contains the reseller's email
+      address.
+
+   o  A &lt;reseller:url&gt; element that contains the URL to the website of
+      the reseller.
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 19]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-20" id="page-20" href="#page-20" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   o  An &lt;reseller:disclose&gt; element that identifies elements that
+      require exceptional server-operator handling to allow or restrict
+      disclosure to third parties.  See <a href="./rfc5733#section-2.9">Section&nbsp;2.9 in [RFC5733]</a> for a
+      description of the child elements contained within the
+      &lt;reseller:disclose&gt; element.
+
+   Example &lt;update&gt; command:
+
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;update&gt;
+   C:      &lt;reseller:update
+   C:       xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"&gt;
+   C:        &lt;reseller:id&gt;res1523&lt;/reseller:id&gt;
+   C:        &lt;reseller:add&gt;
+   C:          &lt;reseller:contact type="tech"&gt;sh8013&lt;/reseller:contact&gt;
+   C:        &lt;/reseller:add&gt;
+   C:        &lt;reseller:chg&gt;
+   C:          &lt;reseller:state&gt;readonly&lt;/reseller:state&gt;
+   C:          &lt;reseller:postalInfo type="int"&gt;
+   C:            &lt;reseller:org/&gt;
+   C:            &lt;reseller:addr&gt;
+   C:              &lt;reseller:street&gt;124 Example Dr.&lt;/reseller:street&gt;
+   C:              &lt;reseller:street&gt;Suite 200&lt;/reseller:street&gt;
+   C:              &lt;reseller:city&gt;Dulles&lt;/reseller:city&gt;
+   C:              &lt;reseller:sp&gt;VA&lt;/reseller:sp&gt;
+   C:              &lt;reseller:pc&gt;20166-6503&lt;/reseller:pc&gt;
+   C:              &lt;reseller:cc&gt;US&lt;/reseller:cc&gt;
+   C:            &lt;/reseller:addr&gt;
+   C:          &lt;/reseller:postalInfo&gt;
+   C:          &lt;reseller:voice&gt;+1.7034444444&lt;/reseller:voice&gt;
+   C:          &lt;reseller:fax/&gt;
+   C:          &lt;reseller:disclose flag="1"&gt;
+   C:            &lt;reseller:voice/&gt;
+   C:            &lt;reseller:email/&gt;
+   C:          &lt;/reseller:disclose&gt;
+   C:        &lt;/reseller:chg&gt;
+   C:      &lt;/reseller:update&gt;
+   C:    &lt;/update&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   When an &lt;update&gt; command has been processed successfully, a server
+   MUST respond with an EPP response with no &lt;resData&gt; element.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 20]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-21" id="page-21" href="#page-21" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   Example &lt;update&gt; response:
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   An EPP error response MUST be returned if an &lt;update&gt; command cannot
+   be processed for any reason.
+
+<span class="h2"><a class="selflink" name="section-5" href="#section-5">5</a>.  Formal Syntax</span>
+
+   An EPP object mapping is specified in XML Schema notation.  The
+   formal syntax presented here is a complete schema representation of
+   the object mapping suitable for automated validation of EPP XML
+   instances.  The BEGIN and END tags are not part of the schema; they
+   are used to note the beginning and ending of the schema for URI
+   registration purposes.
+
+
+      BEGIN
+      &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+      &lt;schema targetNamespace="urn:ietf:params:xml:ns:reseller-1.0"
+             xmlns:reseller="urn:ietf:params:xml:ns:reseller-1.0"
+             xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+             xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+             xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+             xmlns="http://www.w3.org/2001/XMLSchema"
+             elementFormDefault="qualified"&gt;
+
+      &lt;!--
+      Import common element types.
+      --&gt;
+       &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/&gt;
+       &lt;import namespace="urn:ietf:params:xml:ns:epp-1.0"/&gt;
+       &lt;import namespace="urn:ietf:params:xml:ns:contact-1.0"/&gt;
+
+       &lt;annotation&gt;
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 21]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-22" id="page-22" href="#page-22" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+         &lt;documentation&gt;
+           Extensible Provisioning Protocol v1.0
+           reseller provisioning schema.
+         &lt;/documentation&gt;
+       &lt;/annotation&gt;
+
+      &lt;!--
+      Child elements found in EPP commands.
+      --&gt;
+       &lt;element name="create" type="reseller:createType"/&gt;
+       &lt;element name="delete" type="reseller:sIDType"/&gt;
+       &lt;element name="update" type="reseller:updateType"/&gt;
+       &lt;element name="check" type="reseller:mIDType"/&gt;
+       &lt;element name="info" type="reseller:infoType"/&gt;
+
+      &lt;!--
+      Utility types.
+      --&gt;
+      &lt;simpleType name="stateType"&gt;
+        &lt;restriction base="token"&gt;
+          &lt;enumeration value="ok"/&gt;
+          &lt;enumeration value="readonly"/&gt;
+          &lt;enumeration value="terminated"/&gt;
+        &lt;/restriction&gt;
+      &lt;/simpleType&gt;
+
+      &lt;simpleType name="contactAttrType"&gt;
+        &lt;restriction base="token"&gt;
+          &lt;enumeration value="admin"/&gt;
+          &lt;enumeration value="billing"/&gt;
+          &lt;enumeration value="tech"/&gt;
+        &lt;/restriction&gt;
+      &lt;/simpleType&gt;
+
+      &lt;complexType name="contactType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="eppcom:clIDType"&gt;
+           &lt;attribute name="type" type="reseller:contactAttrType"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+      &lt;/complexType&gt;
+
+      &lt;complexType name="postalInfoType"&gt;
+        &lt;sequence&gt;
+          &lt;element name="name" type="contact:postalLineType"/&gt;
+          &lt;element name="addr" type="reseller:addrType"/&gt;
+        &lt;/sequence&gt;
+        &lt;attribute name="type" type="contact:postalInfoEnumType"
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 22]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-23" id="page-23" href="#page-23" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+         use="required"/&gt;
+      &lt;/complexType&gt;
+
+      &lt;complexType name="addrType"&gt;
+        &lt;sequence&gt;
+          &lt;element name="street" type="contact:optPostalLineType"
+           minOccurs="0" maxOccurs="3"/&gt;
+          &lt;element name="city" type="contact:postalLineType"/&gt;
+          &lt;element name="sp" type="contact:optPostalLineType"
+           minOccurs="0"/&gt;
+          &lt;element name="pc" type="contact:pcType"
+           minOccurs="0"/&gt;
+          &lt;element name="cc" type="contact:ccType"/&gt;
+        &lt;/sequence&gt;
+      &lt;/complexType&gt;
+
+      &lt;complexType name="discloseType"&gt;
+        &lt;sequence&gt;
+          &lt;element name="name" type="contact:intLocType"
+           minOccurs="0" maxOccurs="2"/&gt;
+          &lt;element name="org" type="contact:intLocType"
+           minOccurs="0" maxOccurs="2"/&gt;
+          &lt;element name="addr" type="contact:intLocType"
+           minOccurs="0" maxOccurs="2"/&gt;
+          &lt;element name="voice" minOccurs="0"/&gt;
+          &lt;element name="fax" minOccurs="0"/&gt;
+          &lt;element name="email" minOccurs="0"/&gt;
+          &lt;element name="url" minOccurs="0"/&gt;
+          &lt;element name="contact" minOccurs="0"/&gt;
+        &lt;/sequence&gt;
+        &lt;attribute name="flag" type="boolean" use="required"/&gt;
+      &lt;/complexType&gt;
+
+      &lt;!--
+      Child elements of the &lt;create&gt; command.
+      --&gt;
+          &lt;complexType name="createType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+           &lt;element name="state" type="reseller:stateType"
+            minOccurs="0"/&gt;
+           &lt;element name="parentId" type="eppcom:clIDType"
+            minOccurs="0"/&gt;
+           &lt;element name="postalInfo" type="reseller:postalInfoType"
+            maxOccurs="2"/&gt;
+           &lt;element name="voice" type="contact:e164Type"
+            minOccurs="0"/&gt;
+           &lt;element name="fax" type="contact:e164Type"
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 23]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-24" id="page-24" href="#page-24" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+            minOccurs="0"/&gt;
+           &lt;element name="email" type="eppcom:minTokenType"/&gt;
+           &lt;element name="url" type="anyURI"
+            minOccurs="0"/&gt;
+           &lt;element name="contact" type="reseller:contactType"
+            minOccurs="0" maxOccurs="3"/&gt;
+           &lt;element name="disclose" type="reseller:discloseType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Child element of commands that require only an identifier.
+      --&gt;
+       &lt;complexType name="sIDType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Child element of commands that accept multiple identifiers.
+      --&gt;
+       &lt;complexType name="mIDType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"
+            maxOccurs="unbounded"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Child elements of the &lt;info&gt; commands.
+      --&gt;
+       &lt;complexType name="infoType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Child elements of the &lt;update&gt; command.
+      --&gt;
+       &lt;complexType name="updateType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+           &lt;element name="add" type="reseller:addRemType"
+            minOccurs="0"/&gt;
+           &lt;element name="rem" type="reseller:addRemType"
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 24]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-25" id="page-25" href="#page-25" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+            minOccurs="0"/&gt;
+           &lt;element name="chg" type="reseller:chgType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Data elements that can be added or removed.
+      --&gt;
+       &lt;complexType name="addRemType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="contact" type="reseller:contactType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Data elements that can be changed.
+      --&gt;
+       &lt;complexType name="chgType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="state" type="reseller:stateType"
+            minOccurs="0"/&gt;
+                &lt;element name="parentId" type="eppcom:clIDType"
+            minOccurs="0"/&gt;
+           &lt;element name="postalInfo" type="reseller:chgPostalInfoType"
+            minOccurs="0" maxOccurs="2"/&gt;
+           &lt;element name="voice" type="contact:e164Type"
+            minOccurs="0"/&gt;
+           &lt;element name="fax" type="contact:e164Type"
+            minOccurs="0"/&gt;
+           &lt;element name="email" type="eppcom:minTokenType"
+            minOccurs="0"/&gt;
+           &lt;element name="url" type="anyURI"
+            minOccurs="0"/&gt;
+           &lt;element name="disclose" type="reseller:discloseType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+       &lt;complexType name="chgPostalInfoType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="name" type="contact:postalLineType"
+            minOccurs="0"/&gt;
+           &lt;element name="org" type="contact:optPostalLineType"
+            minOccurs="0"/&gt;
+           &lt;element name="addr" type="reseller:addrType"
+            minOccurs="0"/&gt;
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 25]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-26" id="page-26" href="#page-26" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+         &lt;/sequence&gt;
+         &lt;attribute name="type" type="contact:postalInfoEnumType"
+          use="required"/&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      Child response elements.
+      --&gt;
+       &lt;element name="chkData" type="reseller:chkDataType"/&gt;
+       &lt;element name="creData" type="reseller:creDataType"/&gt;
+       &lt;element name="infData" type="reseller:infDataType"/&gt;
+
+      &lt;!--
+      &lt;check&gt; response elements.
+      --&gt;
+       &lt;complexType name="chkDataType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="cd" type="reseller:checkType"
+            maxOccurs="unbounded"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+       &lt;complexType name="checkType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="reseller:checkIDType"/&gt;
+           &lt;element name="reason" type="eppcom:reasonType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+       &lt;complexType name="checkIDType"&gt;
+         &lt;simpleContent&gt;
+           &lt;extension base="eppcom:clIDType"&gt;
+             &lt;attribute name="avail" type="boolean"
+              use="required"/&gt;
+           &lt;/extension&gt;
+         &lt;/simpleContent&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      &lt;create&gt; response elements.
+      --&gt;
+       &lt;complexType name="creDataType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+           &lt;element name="crDate" type="dateTime"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 26]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-27" id="page-27" href="#page-27" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+      &lt;!--
+      &lt;info&gt; response elements.
+      --&gt;
+       &lt;complexType name="infDataType"&gt;
+         &lt;sequence&gt;
+           &lt;element name="id" type="eppcom:clIDType"/&gt;
+           &lt;element name="roid" type="eppcom:roidType"/&gt;
+                     &lt;element name="state" type="reseller:stateType"/&gt;
+           &lt;element name="parentId" type="eppcom:clIDType"
+            minOccurs="0"/&gt;
+           &lt;element name="postalInfo" type="reseller:postalInfoType"
+            maxOccurs="2"/&gt;
+           &lt;element name="voice" type="contact:e164Type"
+            minOccurs="0"/&gt;
+           &lt;element name="fax" type="contact:e164Type"
+            minOccurs="0"/&gt;
+           &lt;element name="email" type="eppcom:minTokenType"/&gt;
+           &lt;element name="url" type="anyURI"
+            minOccurs="0"/&gt;
+           &lt;element name="contact" type="reseller:contactType"
+            minOccurs="0" maxOccurs="3"/&gt;
+           &lt;element name="clID" type="eppcom:clIDType"/&gt;
+           &lt;element name="crID" type="eppcom:clIDType"/&gt;
+           &lt;element name="crDate" type="dateTime"/&gt;
+           &lt;element name="upID" type="eppcom:clIDType"
+            minOccurs="0"/&gt;
+           &lt;element name="upDate" type="dateTime"
+            minOccurs="0"/&gt;
+           &lt;element name="disclose" type="reseller:discloseType"
+            minOccurs="0"/&gt;
+         &lt;/sequence&gt;
+       &lt;/complexType&gt;
+
+      &lt;!--
+      End of schema.
+      --&gt;
+      &lt;/schema&gt;
+      END
+
+
+<span class="h2"><a class="selflink" name="section-6" href="#section-6">6</a>.  Internationalization Considerations</span>
+
+   EPP is represented in XML, which provides native support for encoding
+   information using the Unicode character set and its more compact
+   representations including UTF-8.  Conformant XML processors recognize
+   both UTF-8 and UTF-16.  Though XML includes provisions to identify
+   and use other character encodings through use of an "encoding"
+   attribute in an &lt;?xml?&gt; declaration, use of UTF-8 is RECOMMENDED.
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 27]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-28" id="page-28" href="#page-28" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   As an extension of the EPP reseller object mapping, the elements and
+   element content described in this document MUST inherit the
+   internationalization conventions used to represent higher-layer
+   domain and core protocol structures present in an XML instance that
+   includes this extension.
+
+<span class="h2"><a class="selflink" name="section-7" href="#section-7">7</a>.  IANA Considerations</span>
+
+<span class="h3"><a class="selflink" name="section-7.1" href="#section-7.1">7.1</a>.  XML Namespace</span>
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [<a href="./rfc3688" title="&quot;The IETF XML Registry&quot;">RFC3688</a>].  IANA is
+   requested to assignment the following URI.
+
+   Registration request for the reseller namespace:
+
+   o  URI: urn:ietf:params:xml:ns:reseller-1.0
+
+   o  Registrant Contact: See the "Author's Address" section of this
+      document.
+
+   o  XML: See the "Formal Syntax" section of this document.
+
+<span class="h3"><a class="selflink" name="section-7.2" href="#section-7.2">7.2</a>.  EPP Extension Registry</span>
+
+   The EPP extension described in this document should be registered by
+   the IANA in the EPP Extension Registry described in [<a href="./rfc7451" title="&quot;Extension Registry for the Extensible Provisioning Protocol&quot;">RFC7451</a>].  The
+   details of the registration are as follows:
+
+   Name of Extension: Domain Reseller Object Extension
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: See the "Author's Address" section
+   of this document.
+
+   TLDs: any
+
+   IPR Disclosure: none
+
+   Status: active
+
+   Notes: none
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 28]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-29" id="page-29" href="#page-29" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-8" href="#section-8">8</a>.  Security Considerations</span>
+
+   Authorization information described in [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>] is not supported in
+   this document.  If the querying client is not the sponsoring
+   registrar of the reseller, not all the object information is
+   accessible.  The disclose element defined in [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>] is used to
+   allow or restrict disclosure of object elements to third parties.
+   Other mechanism, such as defining a registry customized authorization
+   information list according to their local policies and regulations,
+   is also possible.
+
+<span class="h2"><a class="selflink" name="section-9" href="#section-9">9</a>.  Normative References</span>
+
+   [<a name="ref-RFC2119" id="ref-RFC2119">RFC2119</a>]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>,
+              DOI 10.17487/RFC2119, March 1997,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+
+   [<a name="ref-RFC3688" id="ref-RFC3688">RFC3688</a>]  Mealling, M., "The IETF XML Registry", <a href="./bcp81">BCP 81</a>, <a href="./rfc3688">RFC 3688</a>,
+              DOI 10.17487/RFC3688, January 2004,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc3688">http://www.rfc-editor.org/info/rfc3688</a>&gt;.
+
+   [<a name="ref-RFC5730" id="ref-RFC5730">RFC5730</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, <a href="./rfc5730">RFC 5730</a>, DOI 10.17487/RFC5730, August 2009,
+              &lt;<a href="http://www.rfc-editor.org/info/rfc5730">http://www.rfc-editor.org/info/rfc5730</a>&gt;.
+
+   [<a name="ref-RFC5733" id="ref-RFC5733">RFC5733</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Contact Mapping", STD 69, <a href="./rfc5733">RFC 5733</a>, DOI 10.17487/RFC5733,
+              August 2009, &lt;<a href="http://www.rfc-editor.org/info/rfc5733">http://www.rfc-editor.org/info/rfc5733</a>&gt;.
+
+   [<a name="ref-RFC7451" id="ref-RFC7451">RFC7451</a>]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", <a href="./rfc7451">RFC 7451</a>, DOI 10.17487/RFC7451,
+              February 2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7451">http://www.rfc-editor.org/info/rfc7451</a>&gt;.
+
+   [<a name="ref-W3C.REC-xml-20040204" id="ref-W3C.REC-xml-20040204">W3C.REC-xml-20040204</a>]
+              Bray, T., Paoli, J., Sperberg-McQueen, C., Maler, E., and
+              F. Yergeau, ""Extensible Markup Language (XML) 1.0 (Third
+              Edition)", World Wide Web Consortium FirstEdition REC-xml-
+              20040204", February 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xml-20040204">http://www.w3.org/TR/2004/REC-xml-20040204</a>&gt;.
+
+   [<a name="ref-W3C.REC-xmlschema-1-20041028" id="ref-W3C.REC-xmlschema-1-20041028">W3C.REC-xmlschema-1-20041028</a>]
+              Thompson, H., Beech, D., Maloney, M., and N. Mendelsohn,
+              ""XML Schema Part 1: Structures Second Edition", World
+              Wide Web Consortium Recommendation REC-xmlschema-
+              1-20041028", October 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028">http://www.w3.org/TR/2004/REC-xmlschema-1-20041028</a>&gt;.
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 29]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-30" id="page-30" href="#page-30" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   [<a name="ref-W3C.REC-xmlschema-2-20041028" id="ref-W3C.REC-xmlschema-2-20041028">W3C.REC-xmlschema-2-20041028</a>]
+              Biron, P. and A. Malhotra, ""XML Schema Part 2: Datatypes
+              Second Edition", World Wide Web Consortium Recommendation
+              REC-xmlschema-2-20041028", October 2004,
+              &lt;<a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028">http://www.w3.org/TR/2004/REC-xmlschema-2-20041028</a>&gt;.
+
+<span class="h2"><a class="selflink" name="appendix-A" href="#appendix-A">Appendix A</a>.  Change Log</span>
+
+   Initial -00:  Individual document submitted.
+
+   -01:
+
+      *  Updated abstract text.
+
+      *  Added sentences to avoid loop of parent identifiers in <a href="#section-3.4">section</a>
+         <a href="#section-3.4">3.4</a>.
+
+      *  Revised typos in <a href="#section-3.6">section 3.6</a>.
+
+      *  Added explanation of contact type attribute in <a href="#section-4.1.2">section 4.1.2</a>.
+
+      *  Updated &lt;info&gt; responses.
+
+      *  Deleted description of &lt;transfer&gt; command in <a href="#section-4.1">section 4.1</a> and
+         4.2.
+
+      *  Deleted whoisInfo disclose type in XML schema.
+
+      *  Deleted maxOccurs of addRemType.
+
+      *  Deleted extra "OPTIONAL" in <a href="#section-4.2.5">section 4.2.5</a>.
+
+      *  Updated typos in &lt;update&gt; response.
+
+   -02:
+
+      *  Changed author information.
+
+      *  Updated url definition.
+
+      *  Updated XML schema.
+
+Authors' Addresses
+
+
+
+
+
+
+
+
+<span class="grey">Zhou, et al.             Expires April 14, 2016                [Page 30]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-31" id="page-31" href="#page-31" class="invisible"> </a>
+<span class="grey">Internet-Draft            EPP Reseller Mapping              October 2015</span>
+
+
+   Linlin Zhou
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 2677
+   Email: zhoulinlin@cnnic.cn
+
+
+   Ning Kong
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 3147
+   Email: nkong@cnnic.cn
+
+
+   Chao Qi
+   Teleinfo
+
+   Email: qichao911@163.com
+
+
+   Xiaodong Lee
+   CNNIC
+   4 South 4th Street, Zhongguancun, Haidian District
+   Beijing, Beijing  100190
+   China
+
+   Phone: +86 10 5881 3020
+   Email: xl@cnnic.cn
+
+
+   James Gould
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: jgould@verisign.com
+
+
+
+
+
+
+
+
+Zhou, et al.             Expires April 14, 2016                [Page 31]
+
+</pre><br />
+    <span class="noprint"><small><small>Html markup produced by rfcmarkup 1.115, available from
+      <a href="https://tools.ietf.org/tools/rfcmarkup/">https://tools.ietf.org/tools/rfcmarkup/</a>
+    </small></small></span>
+  </div>
+</body>
+</html>

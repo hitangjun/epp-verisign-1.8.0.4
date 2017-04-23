@@ -1,0 +1,2099 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.115" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Identifier" content="urn:ietf:id:gould-eppext-verificationcode" />
+<meta name="DC.Description.Abstract" content="This document describes an Extensible Provisioning Protocol (EPP)
+extension for including a verification code for marking the data for a
+transform command as being verified by a 3rd party, which is referred
+to as the Verification Service Provider (VSP). The verification code
+is digitally signed by the VSP using XML Signature and is &quot;base64&quot;
+encoded. The XML Signature includes the VSP signer certificate, so the
+server can verify that the verification code originated from the VSP." />
+<meta name="DC.Creator" content="James Gould &lt;jgould@verisign.com&gt;" />
+<meta name="DC.Date.Issued" content="2015-11-02" />
+<meta name="DC.Title" content="Verification Code Extension for the Extensible Provisioning Protocol (EPP)" />
+
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-gould-eppext-verificationcode-02 - Verification Code Extension for the Extensible Provisioning Protocol (EPP)</title>
+    
+    
+    <style type="text/css">
+	@media only screen 
+	  and (min-width: 992px)
+	  and (max-width: 1199px) {
+	    body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 768px)
+	  and (max-width: 991px) {
+            body { font-size: 14pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-width: 480px)
+	  and (max-width: 767px) {
+            body { font-size: 11pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (max-width: 479px) {
+            body { font-size: 8pt; }
+            div.content { width: 96ex; margin: 0 auto; }
+        }
+	@media only screen 
+	  and (min-device-width : 375px) 
+	  and (max-device-width : 667px) {
+            body { font-size: 9.5pt; }
+            div.content { width: 96ex; margin: 0 1px; }
+        }
+	@media only screen 
+	  and (min-device-width: 1200px) {
+            body { font-size: 10pt; margin: 0 4em; }
+            div.content { width: 96ex; margin: 0; }
+        }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	    font-weight: bold;
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+	    font-weight: bold;
+        }
+        pre {
+            font-size: 1em;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header{
+	    font-weight: bold;
+	}
+        .newpage {
+            page-break-before: always;
+        }
+        .invisible {
+            text-decoration: none;
+            color: white;
+        }
+        a.selflink {
+          color: black;
+          text-decoration: none;
+        }
+        @media print {
+            body {
+                font-family: monospace;
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1em;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+            .noprint {
+                display: none;
+            }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+            .docinfo {
+                background-color: #EEE;
+            }
+            .top {
+                border-top: 7px solid #EEE;
+            }
+            .bgwhite  { background-color: white; }
+            .bgred    { background-color: #F44; }
+            .bggrey   { background-color: #666; }
+            .bgbrown  { background-color: #840; }            
+            .bgorange { background-color: #FA0; }
+            .bgyellow { background-color: #EE0; }
+            .bgmagenta{ background-color: #F4F; }
+            .bgblue   { background-color: #66F; }
+            .bgcyan   { background-color: #4DD; }
+            .bggreen  { background-color: #4F4; }
+
+            .legend   { font-size: 90%; }
+            .cplate   { font-size: 70%; border: solid grey 1px; }
+	}
+    </style>
+    <!--[if IE]>
+    <style>
+    body {
+       font-size: 13px;
+       margin: 10px 10px;
+    }
+    </style>
+    <![endif]-->
+
+    <script type="text/javascript"><!--
+    function addHeaderTags() {
+	var spans = document.getElementsByTagName("span");
+	for (var i=0; i < spans.length; i++) {
+	    var elem = spans[i];
+	    if (elem) {
+		var level = elem.getAttribute("class");
+                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
+                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";		
+                }
+	    }
+	}
+    }
+    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
+    function showElem(id) {
+        var elem = document.getElementById(id);
+        elem.innerHTML = eval(id+"_html");
+        elem.style.visibility='visible';
+    }
+    function hideElem(id) {
+        var elem = document.getElementById(id);
+        elem.style.visibility='hidden';        
+        elem.innerHTML = "";
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()">
+  <div class="content">
+   <div style="height: 13px;">
+      <div onmouseover="this.style.cursor='pointer';"
+         onclick="showElem('legend');"
+         onmouseout="hideElem('legend')"
+	 style="height: 6px; position: absolute;"
+         class="pre noprint docinfo bgred"
+         title="Click for colour legend." >                                                                        </div>
+      <div id="legend"
+           class="docinfo noprint pre legend"
+           style="position:absolute; top: 4px; left: 4ex; visibility:hidden; background-color: white; padding: 4px 9px 5px 7px; border: solid #345 1px; "
+           onmouseover="showElem('legend');"
+           onmouseout="hideElem('legend');">
+      </div>
+   </div>
+<span class="pre noprint docinfo top">[<a href="../html/" title="Document search and retrieval page">Docs</a>] [<a href="https://tools.ietf.org/id/draft-gould-eppext-verificationcode-02.txt" title="Plaintext version of this document">txt</a>|<a href="/pdf/draft-gould-eppext-verificationcode-02.txt" title="PDF version of this document">pdf</a>|<a href="/id/draft-gould-eppext-verificationcode-02.xml" title="XML source for this document">xml</a>] [<a href='https://datatracker.ietf.org/doc/draft-gould-eppext-verificationcode' title='IESG Datatracker information for this document'>Tracker</a>] [<a href="mailto:draft-gould-eppext-verificationcode@tools.ietf.org?subject=draft-gould-eppext-verificationcode%20" title="Send email to the document authors">Email</a>] [<a href="/rfcdiff?difftype=--hwdiff&amp;url2=draft-gould-eppext-verificationcode-02.txt" title="Inline diff (wdiff)">Diff1</a>] [<a href="/rfcdiff?url2=draft-gould-eppext-verificationcode-02.txt" title="Side-by-side diff">Diff2</a>] [<a href="/idnits?url=https://tools.ietf.org/id/draft-gould-eppext-verificationcode-02.txt" title="Run an idnits check of this document">Nits</a>] [<a href="https://datatracker.ietf.org/ipr/search/?id=draft-gould-eppext-verificationcode&amp;submit=draft" title="IPR disclosures related to this document">IPR</a>]     </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<span class="pre noprint docinfo">Versions: <a href="./draft-gould-eppext-verificationcode-00">00</a> <a href="./draft-gould-eppext-verificationcode-01">01</a> <a href="./draft-gould-eppext-verificationcode-02">02</a>                                                      </span><br />
+<span class="pre noprint docinfo">                                                                        </span><br />
+<pre>
+Network Working Group                                           J. Gould
+Internet-Draft                                            VeriSign, Inc.
+Intended status: Standards Track                        November 9, 2015
+Expires: May 12, 2016
+
+
+  <span class="h1">Verification Code Extension for the Extensible Provisioning Protocol</span>
+                                 <span class="h1">(EPP)</span>
+                 <span class="h1">draft-gould-eppext-verificationcode-02</span>
+
+Abstract
+
+   This document describes an Extensible Provisioning Protocol (EPP)
+   extension for including a verification code for marking the data for
+   a transform command as being verified by a 3rd party, which is
+   referred to as the Verification Service Provider (VSP).  The
+   verification code is digitally signed by the VSP using XML Signature
+   and is "base64" encoded.  The XML Signature includes the VSP signer
+   certificate, so the server can verify that the verification code
+   originated from the VSP.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of <a href="./bcp78">BCP 78</a> and <a href="./bcp79">BCP 79</a>.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 12, 2016.
+
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to <a href="./bcp78">BCP 78</a> and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 1]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-2" id="page-2" href="#page-2" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in <a href="#section-4">Section 4</a>.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   <a href="#section-1">1</a>.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-2">2</a>
+     <a href="#section-1.1">1.1</a>.  Conventions Used in This Document . . . . . . . . . . . .   <a href="#page-3">3</a>
+   <a href="#section-2">2</a>.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   <a href="#page-3">3</a>
+     <a href="#section-2.1">2.1</a>.  Verification Code . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-2.1.1">2.1.1</a>.  Signed Code . . . . . . . . . . . . . . . . . . . . .   <a href="#page-4">4</a>
+       <a href="#section-2.1.2">2.1.2</a>.  Encoded Signed Code . . . . . . . . . . . . . . . . .   <a href="#page-6">6</a>
+     <a href="#section-2.2">2.2</a>.  Verification Profile  . . . . . . . . . . . . . . . . . .  <a href="#page-11">11</a>
+   <a href="#section-3">3</a>.  EPP Command Mapping . . . . . . . . . . . . . . . . . . . . .  <a href="#page-12">12</a>
+     <a href="#section-3.1">3.1</a>.  EPP Query Commands  . . . . . . . . . . . . . . . . . . .  <a href="#page-12">12</a>
+       <a href="#section-3.1.1">3.1.1</a>.  EPP &lt;check&gt; Command . . . . . . . . . . . . . . . . .  <a href="#page-12">12</a>
+       <a href="#section-3.1.2">3.1.2</a>.  EPP &lt;info&gt; Command  . . . . . . . . . . . . . . . . .  <a href="#page-12">12</a>
+       <a href="#section-3.1.3">3.1.3</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .  <a href="#page-24">24</a>
+     <a href="#section-3.2">3.2</a>.  EPP Transform Commands  . . . . . . . . . . . . . . . . .  <a href="#page-25">25</a>
+       <a href="#section-3.2.1">3.2.1</a>.  EPP &lt;create&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-25">25</a>
+       <a href="#section-3.2.2">3.2.2</a>.  EPP &lt;delete&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-27">27</a>
+       <a href="#section-3.2.3">3.2.3</a>.  EPP &lt;renew&gt; Command . . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+       <a href="#section-3.2.4">3.2.4</a>.  EPP &lt;transfer&gt; Command  . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+       <a href="#section-3.2.5">3.2.5</a>.  EPP &lt;update&gt; Command  . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+   <a href="#section-4">4</a>.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-28">28</a>
+     <a href="#section-4.1">4.1</a>.  Verification Code Extension Schema  . . . . . . . . . . .  <a href="#page-28">28</a>
+   <a href="#section-5">5</a>.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <a href="#page-32">32</a>
+     <a href="#section-5.1">5.1</a>.  XML Namespace . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-32">32</a>
+     <a href="#section-5.2">5.2</a>.  EPP Extension Registry  . . . . . . . . . . . . . . . . .  <a href="#page-32">32</a>
+   <a href="#section-6">6</a>.  Security Considerations . . . . . . . . . . . . . . . . . . .  <a href="#page-33">33</a>
+   <a href="#section-7">7</a>.  Normative References  . . . . . . . . . . . . . . . . . . . .  <a href="#page-33">33</a>
+   <a href="#appendix-A">Appendix A</a>.  Acknowledgements . . . . . . . . . . . . . . . . . .  <a href="#page-34">34</a>
+   <a href="#appendix-B">Appendix B</a>.  Change History . . . . . . . . . . . . . . . . . . .  <a href="#page-34">34</a>
+     <a href="#appendix-B.1">B.1</a>.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .  <a href="#page-34">34</a>
+     <a href="#appendix-B.2">B.2</a>.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .  <a href="#page-34">34</a>
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  <a href="#page-34">34</a>
+
+<span class="h2"><a class="selflink" name="section-1" href="#section-1">1</a>.  Introduction</span>
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provisioning Protocol (EPP) [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].  This mapping, an
+   extension to EPP object mappings like the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], EPP host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>], and EPP contact mapping
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>], can be used to pass a verification code to one of the EPP
+   transform commands.  The domain name object is used for examples in
+   the document.  The verification code is signed using XML Signature
+   [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>] and is "base64" encoded.  The
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 2]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-3" id="page-3" href="#page-3" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   "base64" encoded text of the verification code MUST conform to
+   [<a href="./rfc2045" title="&quot;Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies&quot;">RFC2045</a>].  The verification code demonstrates that verification was
+   done by a Verification Service Provider (VSP).
+
+   The Verification Service Provider (VSP) is a certified party to
+   verify that data is in compliance with the policies of a locality.  A
+   locality MAY require the client to have data verified in accordance
+   with local regulations or laws utilizing data sources not available
+   to the server.  The VSP has access to the local data sources and is
+   authorized to verify the data.  Examples include verifying that the
+   domain name is not prohibited and verifying that the domain name
+   registrant is a valid individual, organization, or business in the
+   locality.  The data verified, and the objects and operations that
+   require the verification code to be passed to the server is up to the
+   policies of the locality.  The verification code represents a marker
+   that the verification was completed.  The data verified by the VSP
+   MUST be stored by the VSP along with the generated verification code
+   to address any compliance issues.  The signer certificate and the
+   digital signature of the verification code MUST be verified by the
+   server.
+
+<span class="h3"><a class="selflink" name="section-1.1" href="#section-1.1">1.1</a>.  Conventions Used in This Document</span>
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in <a href="./rfc2119">RFC 2119</a> [<a href="./rfc2119" title="&quot;Key words for use in RFCs to Indicate Requirement Levels&quot;">RFC2119</a>].
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented in order to develop a conforming
+   implementation.
+
+   In examples, "C:" represents lines sent by a protocol client and "S:"
+   represents lines returned by a protocol server.  Indentation and
+   white space in examples are provided only to illustrate element
+   relationships and are not a REQUIRED feature of this protocol.
+
+   "verificationCode-1.0" is used as an abbreviation for
+   "urn:ietf:params:xml:ns:verificationCode-1.0".  The XML namespace
+   prefix "verificationCode" is used, but implementations MUST NOT
+   depend on it and instead employ a proper namespace-aware XML parser
+   and serializer to interpret and output the XML documents.
+
+<span class="h2"><a class="selflink" name="section-2" href="#section-2">2</a>.  Object Attributes</span>
+
+   This extension adds additional elements to EPP object mappings like
+   the EPP domain name mapping [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], EPP host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>],
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 3]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-4" id="page-4" href="#page-4" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   and EPP contact mapping [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].  Only those new elements are
+   described here.
+
+<span class="h3"><a class="selflink" name="section-2.1" href="#section-2.1">2.1</a>.  Verification Code</span>
+
+   The Verification Code is a formatted token, referred to as the
+   Verification Code Token, that is digitally signed by a Verification
+   Service Provider (VSP) using XML Signature
+   [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>], using the process described in
+   <a href="#section-2.1.1">Section 2.1.1</a>, and is then "base64" encoded, as defined in
+   <a href="#section-2.1.2">Section 2.1.2</a>.  The Verification Code Token syntax is specified using
+   Augmented Backus-Naur Form (ABNF) grammar [<a href="./rfc5234" title="&quot;Augmented BNF for Syntax Specifications: ABNF&quot;">RFC5234</a>] as follows:
+
+   Verification Code Token ABNF
+
+   token     = vsp-id "-" verification-id ; Verification Code Token
+   vsp-id    = 1*DIGIT                    ; VSP Identifier
+   verification-id = 1*(DIGIT / ALPHA)    ; Verification Identifier
+
+   For a VSP given VSP Identifier "1" and with a Verification Identifier
+   of "abc123", the resulting Verification Code Token is "1-abc123".
+   The Verification Identifier MUST be unique within a VSP and the VSP
+   Identifier MUST be unique across supporting VSP's, so the
+   Verification Code Token MUST be unique to an individual verification.
+   The VSP Identifiers MAY require registration within an IANA registry.
+
+<span class="h4"><a class="selflink" name="section-2.1.1" href="#section-2.1.1">2.1.1</a>.  Signed Code</span>
+
+   The &lt;verificationCode:signedCode&gt; is the fragment of XML that is
+   digitally signed using XML Signature [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>].
+   The &lt;verificationCode:signedCode&gt; includes a required "id" attribute
+   of type XSD ID for use with an IDREF URI from the Signature element.
+   The certificate of the issuer MUST be included with the Signature so
+   it that can be chained with the issuer's certificate by the
+   validating client.
+
+   The &lt;verificationCode:signedCode&gt; element includes a REQUIRED "type"
+   attribute for use in defining the type of the signed code.  It is up
+   to the VSP and the server to define the valid values for the "type"
+   attribute.  Examples of possible "type" attribute values include
+   "domain" for verification of the domain name, "registrant" for
+   verification of the registrant contact, or "domain-registrant" for
+   verification of both the domain name and the registrant.  The typed
+   signed code is used to indicate the verifications that are done by
+   the VSP.  The "type" attribute values MAY require registration within
+   an IANA registry.
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 4]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-5" id="page-5" href="#page-5" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   A &lt;verificationCode:signedCode&gt; element subsitutes for the
+   &lt;verificationCode:abstractSignedCode&gt; abstract element to define a
+   concrete definition of a signed code.  The
+   &lt;verificationCode:abstractSignedCode&gt; element can be replaced by
+   other signed code definitions using the XML schema subsitution groups
+   feature.
+
+   The child elements of the &lt;verificationCode:signedCode&gt; element
+   include:
+
+   &lt;verificationCode:code&gt;  Contains the Verification Code Token as
+       defined by the ABNF in <a href="#section-2.1">Section 2.1</a>.
+   &lt;Signature&gt;  XML Signature [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>] for the
+       &lt;verificationCode:signedCode&gt;.  Use of a namespace prefix, like
+       "dsig", is recommended for the XML Signature
+       [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>] elements.
+
+   Example of a "domain" typed signed code using the
+   &lt;verificationCode:signedCode&gt; element and XML Signature
+   [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>]:
+
+   &lt;verificationCode:signedCode
+     xmlns:verificationCode=
+     "urn:ietf:params:xml:ns:verificationCode-1.0"
+     id="signedCode"&gt;
+     &lt;verificationCode:code type="domain"&gt;1-abc111
+     &lt;/verificationCode:code&gt;
+     &lt;Signature xmlns="http://www.w3.org/2000/09/xmldsig#"&gt;
+      &lt;SignedInfo&gt;
+       &lt;CanonicalizationMethod
+    Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/&gt;
+       &lt;SignatureMethod
+    Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/&gt;
+       &lt;Reference URI="#signedCode"&gt;
+        &lt;Transforms&gt;
+         &lt;Transform
+    Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/&gt;
+        &lt;/Transforms&gt;
+        &lt;DigestMethod
+    Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/&gt;
+    &lt;DigestValue&gt;wgyW3nZPoEfpptlhRILKnOQnbdtU6ArM7ShrAfHgDFg=
+    &lt;/DigestValue&gt;
+       &lt;/Reference&gt;
+      &lt;/SignedInfo&gt;
+      &lt;SignatureValue&gt;
+    jMu4PfyQGiJBF0GWSEPFCJjmywCEqR2h4LD+ge6XQ+JnmKFFCuCZS/3SLKAx0L1w
+    QDFO2e0Y69k2G7/LGE37X3vOflobFM1oGwja8+GMVraoto5xAd4/AF7eHukgAymD
+    o9toxoa2h0yV4A4PmXzsU6S86XtCcUE+S/WM72nyn47zoUCzzPKHZBRyeWehVFQ+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 5]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-6" id="page-6" href="#page-6" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+    jYRMIAMzM57HHQA+6eaXefRvtPETgUO4aVIVSugc4OUAZZwbYcZrC6wOaQqqqAZi
+    30aPOBYbAvHMSmWSS+hFkbshomJfHxb97TD2grlYNrQIzqXk7WbHWy2SYdA+sI/Z
+    ipJsXNa6osTUw1CzA7jfwA==
+      &lt;/SignatureValue&gt;
+      &lt;KeyInfo&gt;
+       &lt;X509Data&gt;
+       &lt;X509Certificate&gt;
+    MIIESTCCAzGgAwIBAgIBAjANBgkqhkiG9w0BAQsFADBiMQswCQYDVQQGEwJVUzEL
+    MAkGA1UECBMCQ0ExFDASBgNVBAcTC0xvcyBBbmdlbGVzMRMwEQYDVQQKEwpJQ0FO
+    TiBUTUNIMRswGQYDVQQDExJJQ0FOTiBUTUNIIFRFU1QgQ0EwHhcNMTMwMjA4MDAw
+    MDAwWhcNMTgwMjA3MjM1OTU5WjBsMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0Ex
+    FDASBgNVBAcTC0xvcyBBbmdlbGVzMRcwFQYDVQQKEw5WYWxpZGF0b3IgVE1DSDEh
+    MB8GA1UEAxMYVmFsaWRhdG9yIFRNQ0ggVEVTVCBDRVJUMIIBIjANBgkqhkiG9w0B
+    AQEFAAOCAQ8AMIIBCgKCAQEAo/cwvXhbVYl0RDWWvoyeZpETVZVVcMCovUVNg/sw
+    WinuMgEWgVQFrz0xA04pEhXCFVv4evbUpekJ5buqU1gmQyOsCKQlhOHTdPjvkC5u
+    pDqa51Flk0TMaMkIQjs7aUKCmA4RG4tTTGK/EjR1ix8/D0gHYVRldy1YPrMP+ou7
+    5bOVnIos+HifrAtrIv4qEqwLL4FTZAUpaCa2BmgXfy2CSRQbxD5Or1gcSa3vurh5
+    sPMCNxqaXmIXmQipS+DuEBqMM8tldaN7RYojUEKrGVsNk5i9y2/7sjn1zyyUPf7v
+    L4GgDYqhJYWV61DnXgx/Jd6CWxvsnDF6scscQzUTEl+hywIDAQABo4H/MIH8MAwG
+    A1UdEwEB/wQCMAAwHQYDVR0OBBYEFPZEcIQcD/Bj2IFz/LERuo2ADJviMIGMBgNV
+    HSMEgYQwgYGAFO0/7kEh3FuEKS+Q/kYHaD/W6wihoWakZDBiMQswCQYDVQQGEwJV
+    UzELMAkGA1UECBMCQ0ExFDASBgNVBAcTC0xvcyBBbmdlbGVzMRMwEQYDVQQKEwpJ
+    Q0FOTiBUTUNIMRswGQYDVQQDExJJQ0FOTiBUTUNIIFRFU1QgQ0GCAQEwDgYDVR0P
+    AQH/BAQDAgeAMC4GA1UdHwQnMCUwI6AhoB+GHWh0dHA6Ly9jcmwuaWNhbm4ub3Jn
+    L3RtY2guY3JsMA0GCSqGSIb3DQEBCwUAA4IBAQB2qSy7ui+43cebKUKwWPrzz9y/
+    IkrMeJGKjo40n+9uekaw3DJ5EqiOf/qZ4pjBD++oR6BJCb6NQuQKwnoAz5lE4Ssu
+    y5+i93oT3HfyVc4gNMIoHm1PS19l7DBKrbwbzAea/0jKWVzrvmV7TBfjxD3AQo1R
+    bU5dBr6IjbdLFlnO5x0G0mrG7x5OUPuurihyiURpFDpwH8KAH1wMcCpXGXFRtGKk
+    wydgyVYAty7otkl/z3bZkCVT34gPvF70sR6+QxUy8u0LzF5A/beYaZpxSYG31amL
+    AdXitTWFipaIGea9lEGFM0L9+Bg7XzNn4nVLXokyEB3bgS4scG6QznX23FGk
+      &lt;/X509Certificate&gt;
+      &lt;/X509Data&gt;
+      &lt;/KeyInfo&gt;
+     &lt;/Signature&gt;
+   &lt;/verificationCode:signedCode&gt;
+
+<span class="h4"><a class="selflink" name="section-2.1.2" href="#section-2.1.2">2.1.2</a>.  Encoded Signed Code</span>
+
+   The &lt;verificationCode:encodedSignedCode&gt; element contains one or more
+   encoded form of the digitally signed &lt;verificationCode:signedCode&gt;
+   element, described in <a href="#section-2.1.1">Section 2.1.1</a>.
+
+   The child elements of the &lt;verificationCode:encodedSignedCode&gt;
+   element include:
+
+   &lt;verificationCode:code&gt;  One or more &lt;verificationCode:code&gt; elements
+       that is an encoded form of the digitally signed
+       &lt;verificationCode:signedCode&gt; element, described in
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 6]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-7" id="page-7" href="#page-7" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+       <a href="#section-2.1.1">Section 2.1.1</a>, with the encoding defined by the "encoding"
+       attribute with the default "encoding" value of "base64".  The
+       "base64" encoded text of the &lt;verificationCode:encodedSignedCode&gt;
+       element MUST conform to [<a href="./rfc2045" title="&quot;Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies&quot;">RFC2045</a>].
+
+   Example &lt;verificationCode:encodedSignedCode&gt; element that contains
+   one "base64" encoded &lt;verificationCode:signedCode&gt; contained in the
+   &lt;verificationCode:code&gt; element:
+
+   &lt;verificationCode:encodedSignedCode
+     xmlns:verificationCode=
+       "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+     &lt;verificationCode:code&gt;
+   ICAgICAgPHZlcmlmaWNhdGlvbkNvZGU6c2lnbmVkQ29kZQogICAgICAgIHhtbG5z
+   OnZlcmlmaWNhdGlvbkNvZGU9CiAgICAgICAgICAidXJuOmlldGY6cGFyYW1zOnht
+   bDpuczp2ZXJpZmljYXRpb25Db2RlLTEuMCIKICAgICAgICAgIGlkPSJzaWduZWRD
+   b2RlIj4KICAgCQk8dmVyaWZpY2F0aW9uQ29kZTpjb2RlPjEtYWJjMTIzPC92ZXJp
+   ZmljYXRpb25Db2RlOmNvZGU+CiAgPFNpZ25hdHVyZSB4bWxucz0iaHR0cDovL3d3
+   dy53My5vcmcvMjAwMC8wOS94bWxkc2lnIyI+CiAgIDxTaWduZWRJbmZvPgogICAg
+   PENhbm9uaWNhbGl6YXRpb25NZXRob2QKIEFsZ29yaXRobT0iaHR0cDovL3d3dy53
+   My5vcmcvMjAwMS8xMC94bWwtZXhjLWMxNG4jIi8+CiAgICA8U2lnbmF0dXJlTWV0
+   aG9kCiBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMDQveG1sZHNp
+   Zy1tb3JlI3JzYS1zaGEyNTYiLz4KICAgIDxSZWZlcmVuY2UgVVJJPSIjc2lnbmVk
+   Q29kZSI+CiAgICAgPFRyYW5zZm9ybXM+CiAgICAgIDxUcmFuc2Zvcm0KIEFsZ29y
+   aXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI2VudmVsb3Bl
+   ZC1zaWduYXR1cmUiLz4KICAgICA8L1RyYW5zZm9ybXM+CiAgICAgPERpZ2VzdE1l
+   dGhvZAogQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVu
+   YyNzaGEyNTYiLz4KIDxEaWdlc3RWYWx1ZT53Z3lXM25aUG9FZnBwdGxoUklMS25P
+   UW5iZHRVNkFyTTdTaHJBZkhnREZnPTwvRGlnZXN0VmFsdWU+CiAgICA8L1JlZmVy
+   ZW5jZT4KICAgPC9TaWduZWRJbmZvPgogICA8U2lnbmF0dXJlVmFsdWU+CiBqTXU0
+   UGZ5UUdpSkJGMEdXU0VQRkNKam15d0NFcVIyaDRMRCtnZTZYUStKbm1LRkZDdUNa
+   Uy8zU0xLQXgwTDF3CiBRREZPMmUwWTY5azJHNy9MR0UzN1gzdk9mbG9iRk0xb0d3
+   amE4K0dNVnJhb3RvNXhBZDQvQUY3ZUh1a2dBeW1ECiBvOXRveG9hMmgweVY0QTRQ
+   bVh6c1U2Uzg2WHRDY1VFK1MvV003Mm55bjQ3em9VQ3p6UEtIWkJSeWVXZWhWRlEr
+   CiBqWVJNSUFNek01N0hIUUErNmVhWGVmUnZ0UEVUZ1VPNGFWSVZTdWdjNE9VQVpa
+   d2JZY1pyQzZ3T2FRcXFxQVppCiAzMGFQT0JZYkF2SE1TbVdTUytoRmtic2hvbUpm
+   SHhiOTdURDJncmxZTnJRSXpxWGs3V2JIV3kyU1lkQStzSS9aCiBpcEpzWE5hNm9z
+   VFV3MUN6QTdqZndBPT0KICAgPC9TaWduYXR1cmVWYWx1ZT4KICAgPEtleUluZm8+
+   CiAgICA8WDUwOURhdGE+CiAgICA8WDUwOUNlcnRpZmljYXRlPgogTUlJRVNUQ0NB
+   ekdnQXdJQkFnSUJBakFOQmdrcWhraUc5dzBCQVFzRkFEQmlNUXN3Q1FZRFZRUUdF
+   d0pWVXpFTAogTUFrR0ExVUVDQk1DUTBFeEZEQVNCZ05WQkFjVEMweHZjeUJCYm1k
+   bGJHVnpNUk13RVFZRFZRUUtFd3BKUTBGTwogVGlCVVRVTklNUnN3R1FZRFZRUURF
+   eEpKUTBGT1RpQlVUVU5JSUZSRlUxUWdRMEV3SGhjTk1UTXdNakE0TURBdwogTURB
+   d1doY05NVGd3TWpBM01qTTFPVFU1V2pCc01Rc3dDUVlEVlFRR0V3SlZVekVMTUFr
+   R0ExVUVDQk1DUTBFeAogRkRBU0JnTlZCQWNUQzB4dmN5QkJibWRsYkdWek1SY3dG
+   UVlEVlFRS0V3NVdZV3hwWkdGMGIzSWdWRTFEU0RFaAogTUI4R0ExVUVBeE1ZVm1G
+   c2FXUmhkRzl5SUZSTlEwZ2dWRVZUVkNCRFJWSlVNSUlCSWpBTkJna3Foa2lHOXcw
+   QgogQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBby9jd3ZYaGJWWWwwUkRXV3ZveWVa
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 7]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-8" id="page-8" href="#page-8" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   cEVUVlpWVmNNQ292VVZOZy9zdwogV2ludU1nRVdnVlFGcnoweEEwNHBFaFhDRlZ2
+   NGV2YlVwZWtKNWJ1cVUxZ21ReU9zQ0tRbGhPSFRkUGp2a0M1dQogcERxYTUxRmxr
+   MFRNYU1rSVFqczdhVUtDbUE0Ukc0dFRUR0svRWpSMWl4OC9EMGdIWVZSbGR5MVlQ
+   ck1QK291NwogNWJPVm5Jb3MrSGlmckF0ckl2NHFFcXdMTDRGVFpBVXBhQ2EyQm1n
+   WGZ5MkNTUlFieEQ1T3IxZ2NTYTN2dXJoNQogc1BNQ054cWFYbUlYbVFpcFMrRHVF
+   QnFNTTh0bGRhTjdSWW9qVUVLckdWc05rNWk5eTIvN3NqbjF6eXlVUGY3dgogTDRH
+   Z0RZcWhKWVdWNjFEblhneC9KZDZDV3h2c25ERjZzY3NjUXpVVEVsK2h5d0lEQVFB
+   Qm80SC9NSUg4TUF3RwogQTFVZEV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZQWkVj
+   SVFjRC9CajJJRnovTEVSdW8yQURKdmlNSUdNQmdOVgogSFNNRWdZUXdnWUdBRk8w
+   LzdrRWgzRnVFS1MrUS9rWUhhRC9XNndpaG9XYWtaREJpTVFzd0NRWURWUVFHRXdK
+   VgogVXpFTE1Ba0dBMVVFQ0JNQ1EwRXhGREFTQmdOVkJBY1RDMHh2Y3lCQmJtZGxi
+   R1Z6TVJNd0VRWURWUVFLRXdwSgogUTBGT1RpQlVUVU5JTVJzd0dRWURWUVFERXhK
+   SlEwRk9UaUJVVFVOSUlGUkZVMVFnUTBHQ0FRRXdEZ1lEVlIwUAogQVFIL0JBUURB
+   Z2VBTUM0R0ExVWRId1FuTUNVd0k2QWhvQitHSFdoMGRIQTZMeTlqY213dWFXTmhi
+   bTR1YjNKbgogTDNSdFkyZ3VZM0pzTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFC
+   MnFTeTd1aSs0M2NlYktVS3dXUHJ6ejl5LwogSWtyTWVKR0tqbzQwbis5dWVrYXcz
+   REo1RXFpT2YvcVo0cGpCRCsrb1I2QkpDYjZOUXVRS3dub0F6NWxFNFNzdQogeTUr
+   aTkzb1QzSGZ5VmM0Z05NSW9IbTFQUzE5bDdEQktyYndiekFlYS8waktXVnpydm1W
+   N1RCZmp4RDNBUW8xUgogYlU1ZEJyNklqYmRMRmxuTzV4MEcwbXJHN3g1T1VQdXVy
+   aWh5aVVScEZEcHdIOEtBSDF3TWNDcFhHWEZSdEdLawogd3lkZ3lWWUF0eTdvdGts
+   L3ozYlprQ1ZUMzRnUHZGNzBzUjYrUXhVeTh1MEx6RjVBL2JlWWFacHhTWUczMWFt
+   TAogQWRYaXRUV0ZpcGFJR2VhOWxFR0ZNMEw5K0JnN1h6Tm40blZMWG9reUVCM2Jn
+   UzRzY0c2UXpuWDIzRkdrCiAgIDwvWDUwOUNlcnRpZmljYXRlPgogICA8L1g1MDlE
+   YXRhPgogICA8L0tleUluZm8+CiAgPC9TaWduYXR1cmU+CgkJPC92ZXJpZmljYXRp
+   b25Db2RlOnNpZ25lZENvZGU+Cg==
+     &lt;/verificationCode:code&gt;
+   &lt;/verificationCode:encodedSignedCode&gt;
+
+   Example &lt;verificationCode:encodedSignedCode&gt; element that contains
+   two &lt;verificationCode:code&gt; elements ;.
+
+   &lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+     &lt;command&gt;
+       &lt;create&gt;
+         &lt;domain:create
+          xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+           &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+           &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+           &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+           &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+           &lt;domain:authInfo&gt;
+             &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+           &lt;/domain:authInfo&gt;
+         &lt;/domain:create&gt;
+       &lt;/create&gt;
+       &lt;extension&gt;
+         &lt;verificationCode:encodedSignedCode
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 8]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-9" id="page-9" href="#page-9" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+           xmlns:verificationCode=
+             "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+           &lt;verificationCode:code&gt;
+   ICAgICAgPHZlcmlmaWNhdGlvbkNvZGU6c2lnbmVkQ29kZQogICAgICAgIHhtbG5z
+   OnZlcmlmaWNhdGlvbkNvZGU9CiAgICAgICAgICAidXJuOmlldGY6cGFyYW1zOnht
+   bDpuczp2ZXJpZmljYXRpb25Db2RlLTEuMCIKICAgICAgICAgIGlkPSJzaWduZWRD
+   b2RlIj4KICAgCQk8dmVyaWZpY2F0aW9uQ29kZTpjb2RlPjEtYWJjMTIzPC92ZXJp
+   ZmljYXRpb25Db2RlOmNvZGU+CiAgPFNpZ25hdHVyZSB4bWxucz0iaHR0cDovL3d3
+   dy53My5vcmcvMjAwMC8wOS94bWxkc2lnIyI+CiAgIDxTaWduZWRJbmZvPgogICAg
+   PENhbm9uaWNhbGl6YXRpb25NZXRob2QKIEFsZ29yaXRobT0iaHR0cDovL3d3dy53
+   My5vcmcvMjAwMS8xMC94bWwtZXhjLWMxNG4jIi8+CiAgICA8U2lnbmF0dXJlTWV0
+   aG9kCiBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMDQveG1sZHNp
+   Zy1tb3JlI3JzYS1zaGEyNTYiLz4KICAgIDxSZWZlcmVuY2UgVVJJPSIjc2lnbmVk
+   Q29kZSI+CiAgICAgPFRyYW5zZm9ybXM+CiAgICAgIDxUcmFuc2Zvcm0KIEFsZ29y
+   aXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI2VudmVsb3Bl
+   ZC1zaWduYXR1cmUiLz4KICAgICA8L1RyYW5zZm9ybXM+CiAgICAgPERpZ2VzdE1l
+   dGhvZAogQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVu
+   YyNzaGEyNTYiLz4KIDxEaWdlc3RWYWx1ZT53Z3lXM25aUG9FZnBwdGxoUklMS25P
+   UW5iZHRVNkFyTTdTaHJBZkhnREZnPTwvRGlnZXN0VmFsdWU+CiAgICA8L1JlZmVy
+   ZW5jZT4KICAgPC9TaWduZWRJbmZvPgogICA8U2lnbmF0dXJlVmFsdWU+CiBqTXU0
+   UGZ5UUdpSkJGMEdXU0VQRkNKam15d0NFcVIyaDRMRCtnZTZYUStKbm1LRkZDdUNa
+   Uy8zU0xLQXgwTDF3CiBRREZPMmUwWTY5azJHNy9MR0UzN1gzdk9mbG9iRk0xb0d3
+   amE4K0dNVnJhb3RvNXhBZDQvQUY3ZUh1a2dBeW1ECiBvOXRveG9hMmgweVY0QTRQ
+   bVh6c1U2Uzg2WHRDY1VFK1MvV003Mm55bjQ3em9VQ3p6UEtIWkJSeWVXZWhWRlEr
+   CiBqWVJNSUFNek01N0hIUUErNmVhWGVmUnZ0UEVUZ1VPNGFWSVZTdWdjNE9VQVpa
+   d2JZY1pyQzZ3T2FRcXFxQVppCiAzMGFQT0JZYkF2SE1TbVdTUytoRmtic2hvbUpm
+   SHhiOTdURDJncmxZTnJRSXpxWGs3V2JIV3kyU1lkQStzSS9aCiBpcEpzWE5hNm9z
+   VFV3MUN6QTdqZndBPT0KICAgPC9TaWduYXR1cmVWYWx1ZT4KICAgPEtleUluZm8+
+   CiAgICA8WDUwOURhdGE+CiAgICA8WDUwOUNlcnRpZmljYXRlPgogTUlJRVNUQ0NB
+   ekdnQXdJQkFnSUJBakFOQmdrcWhraUc5dzBCQVFzRkFEQmlNUXN3Q1FZRFZRUUdF
+   d0pWVXpFTAogTUFrR0ExVUVDQk1DUTBFeEZEQVNCZ05WQkFjVEMweHZjeUJCYm1k
+   bGJHVnpNUk13RVFZRFZRUUtFd3BKUTBGTwogVGlCVVRVTklNUnN3R1FZRFZRUURF
+   eEpKUTBGT1RpQlVUVU5JSUZSRlUxUWdRMEV3SGhjTk1UTXdNakE0TURBdwogTURB
+   d1doY05NVGd3TWpBM01qTTFPVFU1V2pCc01Rc3dDUVlEVlFRR0V3SlZVekVMTUFr
+   R0ExVUVDQk1DUTBFeAogRkRBU0JnTlZCQWNUQzB4dmN5QkJibWRsYkdWek1SY3dG
+   UVlEVlFRS0V3NVdZV3hwWkdGMGIzSWdWRTFEU0RFaAogTUI4R0ExVUVBeE1ZVm1G
+   c2FXUmhkRzl5SUZSTlEwZ2dWRVZUVkNCRFJWSlVNSUlCSWpBTkJna3Foa2lHOXcw
+   QgogQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBby9jd3ZYaGJWWWwwUkRXV3ZveWVa
+   cEVUVlpWVmNNQ292VVZOZy9zdwogV2ludU1nRVdnVlFGcnoweEEwNHBFaFhDRlZ2
+   NGV2YlVwZWtKNWJ1cVUxZ21ReU9zQ0tRbGhPSFRkUGp2a0M1dQogcERxYTUxRmxr
+   MFRNYU1rSVFqczdhVUtDbUE0Ukc0dFRUR0svRWpSMWl4OC9EMGdIWVZSbGR5MVlQ
+   ck1QK291NwogNWJPVm5Jb3MrSGlmckF0ckl2NHFFcXdMTDRGVFpBVXBhQ2EyQm1n
+   WGZ5MkNTUlFieEQ1T3IxZ2NTYTN2dXJoNQogc1BNQ054cWFYbUlYbVFpcFMrRHVF
+   QnFNTTh0bGRhTjdSWW9qVUVLckdWc05rNWk5eTIvN3NqbjF6eXlVUGY3dgogTDRH
+   Z0RZcWhKWVdWNjFEblhneC9KZDZDV3h2c25ERjZzY3NjUXpVVEVsK2h5d0lEQVFB
+   Qm80SC9NSUg4TUF3RwogQTFVZEV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZQWkVj
+   SVFjRC9CajJJRnovTEVSdW8yQURKdmlNSUdNQmdOVgogSFNNRWdZUXdnWUdBRk8w
+   LzdrRWgzRnVFS1MrUS9rWUhhRC9XNndpaG9XYWtaREJpTVFzd0NRWURWUVFHRXdK
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                  [Page 9]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-10" id="page-10" href="#page-10" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   VgogVXpFTE1Ba0dBMVVFQ0JNQ1EwRXhGREFTQmdOVkJBY1RDMHh2Y3lCQmJtZGxi
+   R1Z6TVJNd0VRWURWUVFLRXdwSgogUTBGT1RpQlVUVU5JTVJzd0dRWURWUVFERXhK
+   SlEwRk9UaUJVVFVOSUlGUkZVMVFnUTBHQ0FRRXdEZ1lEVlIwUAogQVFIL0JBUURB
+   Z2VBTUM0R0ExVWRId1FuTUNVd0k2QWhvQitHSFdoMGRIQTZMeTlqY213dWFXTmhi
+   bTR1YjNKbgogTDNSdFkyZ3VZM0pzTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFC
+   MnFTeTd1aSs0M2NlYktVS3dXUHJ6ejl5LwogSWtyTWVKR0tqbzQwbis5dWVrYXcz
+   REo1RXFpT2YvcVo0cGpCRCsrb1I2QkpDYjZOUXVRS3dub0F6NWxFNFNzdQogeTUr
+   aTkzb1QzSGZ5VmM0Z05NSW9IbTFQUzE5bDdEQktyYndiekFlYS8waktXVnpydm1W
+   N1RCZmp4RDNBUW8xUgogYlU1ZEJyNklqYmRMRmxuTzV4MEcwbXJHN3g1T1VQdXVy
+   aWh5aVVScEZEcHdIOEtBSDF3TWNDcFhHWEZSdEdLawogd3lkZ3lWWUF0eTdvdGts
+   L3ozYlprQ1ZUMzRnUHZGNzBzUjYrUXhVeTh1MEx6RjVBL2JlWWFacHhTWUczMWFt
+   TAogQWRYaXRUV0ZpcGFJR2VhOWxFR0ZNMEw5K0JnN1h6Tm40blZMWG9reUVCM2Jn
+   UzRzY0c2UXpuWDIzRkdrCiAgIDwvWDUwOUNlcnRpZmljYXRlPgogICA8L1g1MDlE
+   YXRhPgogICA8L0tleUluZm8+CiAgPC9TaWduYXR1cmU+CgkJPC92ZXJpZmljYXRp
+   b25Db2RlOnNpZ25lZENvZGU+Cg==
+           &lt;/verificationCode:code&gt;
+           &lt;verificationCode:code&gt;
+   PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48dmVyaWZpY2F0
+   aW9uQ29kZTpzaWduZWRDb2RlIHhtbG5zOnZlcmlmaWNhdGlvbkNvZGU9InVybjpp
+   ZXRmOnBhcmFtczp4bWw6bnM6dmVyaWZpY2F0aW9uQ29kZS0xLjAiIGlkPSJzaWdu
+   ZWRDb2RlIiB0eXBlPSJyZWdpc3RyYW50Ij48dmVyaWZpY2F0aW9uQ29kZTpjb2Rl
+   PjEtYWJjMjIyPC92ZXJpZmljYXRpb25Db2RlOmNvZGU+PGRzaWc6U2lnbmF0dXJl
+   IHhtbG5zOmRzaWc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvMDkveG1sZHNpZyMi
+   Pjxkc2lnOlNpZ25lZEluZm8+PGRzaWc6Q2Fub25pY2FsaXphdGlvbk1ldGhvZCBB
+   bGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLXhtbC1jMTRu
+   LTIwMDEwMzE1I1dpdGhDb21tZW50cyIvPjxkc2lnOlNpZ25hdHVyZU1ldGhvZCBB
+   bGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvMDkveG1sZHNpZyNyc2Et
+   c2hhMSIvPjxkc2lnOlJlZmVyZW5jZSBVUkk9IiNzaWduZWRDb2RlIj48ZHNpZzpU
+   cmFuc2Zvcm1zPjxkc2lnOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cu
+   dzMub3JnLzIwMDAvMDkveG1sZHNpZyNlbnZlbG9wZWQtc2lnbmF0dXJlIi8+PC9k
+   c2lnOlRyYW5zZm9ybXM+PGRzaWc6RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0
+   cDovL3d3dy53My5vcmcvMjAwMS8wNC94bWxlbmMjc2hhMjU2Ii8+PGRzaWc6RGln
+   ZXN0VmFsdWU+SFg2TU1WUWdnSStzNG9tT3haYjBGTW1VSlBRdk15WmUybDVEdEhh
+   QlZMND08L2RzaWc6RGlnZXN0VmFsdWU+PC9kc2lnOlJlZmVyZW5jZT48L2RzaWc6
+   U2lnbmVkSW5mbz48ZHNpZzpTaWduYXR1cmVWYWx1ZT5VOUhPNVlYVWE0ZUsyYXRz
+   U1RuQk1DU3dXM0dWUzZnUEtkaDBZTlZicERud1d4b1BtYlR2YkVsNDE4NFlKZ3Uw
+   WXB3RkROMmZLY3JVCk1YV0hncE56K0oycTh6MWpTcVJMUEw0UmpnRWw0eGhiOXl5
+   cExOZC8xQXJXRVlhWWZEdUc1S3FYV05MRG5YVzJoQkEzK0R5Wk82MFQKcTVPd0R5
+   ZVFSVlNPVWNXVE9FOTJsSlZ4M014Q1V6d1hoL0ZOSTlPbGtXK0ZPNVZNNTZlTmZq
+   UEhkUlJVdjdzQzRmM0NnWmFaSWFXNQp2RmJnTmJodFJVa0hsSVhnYVNGWDgvcFdV
+   RXFIY0dLTUxnRU1nbHBnQ3RtOFlIcXVqb0tXUk0yUDNiK2h3ZTRsU0hSWVRjK0pB
+   eEluClU4RDc1WnliWThnSWFuZUprS2dwVTk2T0tJTGQ5L0l0UVhaeHZnPT08L2Rz
+   aWc6U2lnbmF0dXJlVmFsdWU+PGRzaWc6S2V5SW5mbz48ZHNpZzpYNTA5RGF0YT48
+   ZHNpZzpYNTA5Q2VydGlmaWNhdGU+TUlJRGlUQ0NBbkdnQXdJQkFnSUVmcXE2SFRB
+   TkJna3Foa2lHOXcwQkFRc0ZBREIxTVJBd0RnWURWUVFHRXdkVmJtdHViM2R1TVJB
+   dwpEZ1lEVlFRSUV3ZFZibXR1YjNkdU1SQXdEZ1lEVlFRSEV3ZFZibXR1YjNkdU1S
+   QXdEZ1lEVlFRS0V3ZFZibXR1YjNkdU1SQXdEZ1lEClZRUUxFd2RWYm10dWIzZHVN
+   Umt3RndZRFZRUURFeEIyWlhKcFptbGpZWFJwYjI1RGIyUmxNQjRYRFRFMU1EWXhO
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 10]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-11" id="page-11" href="#page-11" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   VEl4TURBeU1sb1gKRFRNMU1EWXhNREl4TURBeU1sb3dkVEVRTUE0R0ExVUVCaE1I
+   Vlc1cmJtOTNiakVRTUE0R0ExVUVDQk1IVlc1cmJtOTNiakVRTUE0RwpBMVVFQnhN
+   SFZXNXJibTkzYmpFUU1BNEdBMVVFQ2hNSFZXNXJibTkzYmpFUU1BNEdBMVVFQ3hN
+   SFZXNXJibTkzYmpFWk1CY0dBMVVFCkF4TVFkbVZ5YVdacFkyRjBhVzl1UTI5a1pU
+   Q0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUpjY2pY
+   cmsKUWFJL2lHUEZ3WmVITjFnRFVhcTltVnJmQis2eWR5Qmdoc2FHVFZoaERIOFNO
+   TmtpamxIMkxCQ3J3TjhjVjhQZ1BPOXRwbG9rR2F5UwpxNktFaHZtTk03b1dsZk5L
+   SkdSdGNidGMzTnJuYzhiUUJacU1xcFo0UlNRTmh5QWh6Ri85UmErd3RFc0JWeGF3
+   VDc1L2J0SDZ1YytmClJOdE5FcmhJdVlJUmN0WTZIRmRaR3BlS3cxYnlYK0RsNkJP
+   L3ZLdnQ4NDllY1R3aEZIcDUwWGh2NFVTL0Z5aWVLaGs3dDdHRnJGRlQKL2NCTGsy
+   WmxFa1lLcFlEU2dlc2lseFg2QkpTZVdCbXZLQzlTL2pBZDhNWmRHVUg2aHNHRXBl
+   U1BmZkZQV3FWcXl6V0p5bG91OXF4ZQpnUTZjOFo2SVpXZkUzakxSOUVySDhzOTFD
+   Mm1pTFZrQ0F3RUFBYU1oTUI4d0hRWURWUjBPQkJZRUZIY0JLdk03dmk3dUZNTUx5
+   ZE43CmVGVXF2YzVVTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFBVjB2cmlrSWRB
+   d2l4THZ0NUx5eXpTNFdTU1d0dVlWL2JQMVg3NzVMRmYKSWh3a2xoMENidk5rYXlK
+   Tms2Tnp0eDlSc1AwNWZndkxrZER1N0V5cnRzY3I1ZVdETG1WMGtKMWE1N1Z4bnJh
+   aEdLTnM2Wit1Ui9pSApMaTJXb3liWEpFT2N0NWtJSjFzL05CeUUrdkdGdjFoTmJz
+   dVVVUEVCYWVtaWpYUFROOWxxZE9uM1FIbktobXhsa1czYS9KbmhtT20vCkRWYTE0
+   NDJXTVVUSlUyVFlWVldtdUs2NFkwQXFrN2FldzkvVzIzZEcrT2xhOW9VYnBrSXJr
+   dDRDN3hRa0d5SXN2eUo3bi91OFhBRDIKbno1T1cvek5GWnlrZDAzT2N3M240NkZx
+   c1IwVDlBbFBEWHQxUjlmMjZMd1lxdjk3dWtVNEcrMVRJNHorV0F2TCtVRk9FVnNu
+   PC9kc2lnOlg1MDlDZXJ0aWZpY2F0ZT48L2RzaWc6WDUwOURhdGE+PC9kc2lnOktl
+   eUluZm8+PC9kc2lnOlNpZ25hdHVyZT48L3ZlcmlmaWNhdGlvbkNvZGU6c2lnbmVk
+   Q29kZT4=
+           &lt;/verificationCode:code&gt;
+       &lt;/verificationCode:encodedSignedCode&gt;
+       &lt;/extension&gt;
+       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+     &lt;/command&gt;
+   &lt;/epp&gt;
+
+<span class="h3"><a class="selflink" name="section-2.2" href="#section-2.2">2.2</a>.  Verification Profile</span>
+
+   A Verification Profile defines the set of verification code types,
+   the commands that the verification code types are required,
+   supported, or not supported, and the grace period by which the
+   verification code types MUST be set.  A server MAY support many
+   verification profiles, each with a unique name and a unique
+   verification policy that is implemented by the server.  Each client
+   MAY have zero or more server assigned verification profiles that will
+   enforce the required verification policies.  Most likely a client
+   will be assigned zero or one server assigned verification profile,
+   but overlapping profiles is possible.  Overlapping verification
+   profiles MUST be treated as a logical "and" of the policies by the
+   server.  If no verification profile is assigned to the client, no
+   additional verification is required by the client.
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 11]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-12" id="page-12" href="#page-12" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-3" href="#section-3">3</a>.  EPP Command Mapping</span>
+
+   A detailed description of the EPP syntax and semantics can be found
+   in the EPP core protocol specification [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h3"><a class="selflink" name="section-3.1" href="#section-3.1">3.1</a>.  EPP Query Commands</span>
+
+   EPP provides three commands to retrieve object information: &lt;check&gt;
+   to determine if an object is known to the server, &lt;info&gt; to retrieve
+   detailed information associated with an object, and &lt;transfer&gt; to
+   retrieve object transfer status information.
+
+<span class="h4"><a class="selflink" name="section-3.1.1" href="#section-3.1.1">3.1.1</a>.  EPP &lt;check&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;check&gt; command
+   or &lt;check&gt; response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.1.2" href="#section-3.1.2">3.1.2</a>.  EPP &lt;info&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;info&gt;
+   command of an object mapping like the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], EPP host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>], and EPP contact mapping
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+   The EPP &lt;info&gt; command is used to retrieve the verification
+   information.  The verification information is based on the
+   verification profile, as defined in <a href="#section-2.2">Section 2.2</a>, set in the server
+   for the client.  The &lt;verificationCode:info&gt; element is an empty
+   element that indicates that the client requests the verification
+   information.  The OPTIONAL "profile" attribute can be used by the
+   client to explicitly specify a verification profile, as defined in
+   <a href="#section-2.2">Section 2.2</a>, to base the verification information on.  It is up to
+   server policy on the set of verification profiles that the client is
+   allowed to explicitly specify, and if the client is not allowed, the
+   server MUST return the 2201 error response.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 12]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-13" id="page-13" href="#page-13" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   Example &lt;info&gt; domain command with the &lt;verificationCode:info&gt;
+   extension to retrieve the verification information for the domain
+   "domain.example", using the profiles associated with the client:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;info&gt;
+   C:      &lt;domain:info
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   C:      &lt;/domain:info&gt;
+   C:    &lt;/info&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;verificationCode:info
+   C:        xmlns:verificationCode=
+   C:          "urn:ietf:params:xml:ns:verificationCode-1.0"/&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   Example &lt;info&gt; domain command with the &lt;verificationCode:info&gt;
+   extension to retrieve the verification information for the domain
+   "domain.example", using the profiles associated with the client and
+   with the authorization information to retrieve the verification codes
+   from the non-sponsoring client:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;info&gt;
+   C:      &lt;domain:info
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   C:        &lt;domain:authInfo&gt;
+   C:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   C:        &lt;/domain:authInfo&gt;
+   C:      &lt;/domain:info&gt;
+   C:    &lt;/info&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;verificationCode:info
+   C:        xmlns:verificationCode=
+   C:          "urn:ietf:params:xml:ns:verificationCode-1.0"/&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 13]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-14" id="page-14" href="#page-14" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   Example &lt;info&gt; domain command with the &lt;verificationCode:info&gt;
+   extension to retrieve the verification information for the domain
+   "domain.example", using the the "sample" profile:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+   C:    &lt;info&gt;
+   C:      &lt;domain:info
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   C:      &lt;/domain:info&gt;
+   C:    &lt;/info&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;verificationCode:info
+   C:        xmlns:verificationCode=
+   C:          "urn:ietf:params:xml:ns:verificationCode-1.0"
+   C:        profile="sample"/&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   If the query was successful, the server replies with a
+   &lt;verificationCode:infData&gt; element along with the regular EPP
+   &lt;resData&gt;.  The &lt;verificationCode:infData&gt; element contains the
+   following child elements:
+
+   &lt;verificationCode:status&gt;  The status of the verification for the
+       object, using all of the verification profiles assigned to the
+       client.  There are four possible values for the status:
+
+
+       notApplicable  The status is not applicable to the client since
+           there is no assigned verification profile.
+       nonCompliant  The object is non-compliant according to the
+           verification profiles.  If at least one of the profiles is
+           "nonCompliant", the object is "nonCompliant".
+       pendingCompliance  The object is not in compliance with the
+           verification profiles, but has a grace period to set the
+           required set of verification codes, as reflected by the due
+           date of the verification code type.  If at least one of the
+           profiles is "pendingCompliance" and none of the profiles is
+           "nonCompliant", the object is "pendingCompliance".
+       compliant  The object is compliant with the verification
+           profiles.  If All of the profiles for the object are
+           "compliant" or if the object has no assignd profiles, the
+           object is "compliant".
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 14]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-15" id="page-15" href="#page-15" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   &lt;verificationCode:profile&gt;  Zero or more OPTIONAL
+       &lt;verificationCode:profile&gt; elements that defines the verification
+       status of the object based on the profile.  The required "name"
+       attribute defines the name of the profile.  The
+       &lt;verificationCode:profile&gt; element contains the following child
+       elements:
+
+
+       &lt;verificationCode:status&gt;  The status of the verification for the
+           object and the profile.  There are four possible values for
+           the status:
+
+
+           notApplicable  The profile status is not applicable to the
+               client based on the assigned verification profiles or the
+               profile specified.
+           nonCompliant  The object is non-compliant according to the
+               verification profile.
+           pendingCompliance  The object is not in compliance with the
+               verification profile, but has a grace period to set the
+               required set of verification codes, as reflected by the
+               due date of the verification code type.
+           compliant  The object is compliant with the verification
+               profile.
+       &lt;verificationCode:missing&gt;  OPTIONAL list of missing verification
+           code types.  The &lt;verificationCode:missing&gt; element is
+           returned only if there is at least one missing verification
+           code type and based on server policy.  The
+           &lt;verificationCode:missing&gt; element contains the following
+           child elements:
+
+
+           &lt;verificationCode:code&gt;  One or more &lt;verificationCode:code&gt;
+               elements that is empty with the REQUIRED "type" attribute
+               that indicates the verification code type and the
+               REQUIRED "due" attribute that indicates when the
+               verification code type was or is due.  Past due
+               verification code types will result in the
+               &lt;verificationCode:status&gt; element being set to
+               "nonCompliant".
+       &lt;verificationCode:set&gt;  OPTIONAL list of set verification codes.
+           The &lt;verificationCode:set&gt; element is returned only if there
+           is at least one set verification code.  The
+           &lt;verificationCode:set&gt; element contains the following child
+           elements:
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 15]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-16" id="page-16" href="#page-16" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+           &lt;verificationCode:code&gt;  One or more &lt;verificationCode:code&gt;
+               elements containing the verification code with a REQUIRED
+               "type" attribute that indicates the code type and a
+               REQUIRED "date" attribute that indicates when the
+               verification code was set.  The inclusion of the code
+               value is up server policy, so if the server determines
+               that the code value cannot be exposed to a non-sponsoring
+               client, the &lt;verificationCode:code&gt; element MUST be
+               empty.
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+   extension for a compliant domain using the "sample" profile, and with
+   the two verification codes, from the sponsoring or authorized client:
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="ok"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:        &lt;domain:authInfo&gt;
+   S:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   S:        &lt;/domain:authInfo&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   S:        &lt;verificationCode:status&gt;compliant
+   S:        &lt;/verificationCode:status&gt;
+   S:        &lt;verificationCode:profile name="sample"&gt;
+   S:          &lt;verificationCode:status&gt;compliant
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:set&gt;
+   S:            &lt;verificationCode:code type="domain"
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 16]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-17" id="page-17" href="#page-17" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   S:              date="2010-04-03T22:00:00.0Z"&gt;1-abc333
+   S:            &lt;/verificationCode:code&gt;
+   S:            &lt;verificationCode:code type="registrant"
+   S:              date="2010-04-03T22:00:00.0Z"&gt;1-abc444
+   S:            &lt;/verificationCode:code&gt;
+   S:          &lt;/verificationCode:set&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+   extension for a compliant domain using the "sample" profile, and with
+   the two verification codes, from the sponsoring or authorized client
+   that also includes codes set for the "sample2" profile:
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="ok"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:        &lt;domain:authInfo&gt;
+   S:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   S:        &lt;/domain:authInfo&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 17]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-18" id="page-18" href="#page-18" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   S:        &lt;verificationCode:status&gt;compliant
+   S:        &lt;/verificationCode:status&gt;
+   S:        &lt;verificationCode:profile name="sample"&gt;
+   S:          &lt;verificationCode:status&gt;compliant
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:set&gt;
+   S:            &lt;verificationCode:code type="domain"
+   S:              date="2010-04-03T22:00:00.0Z"&gt;1-abc333
+   S:            &lt;/verificationCode:code&gt;
+   S:            &lt;verificationCode:code type="registrant"
+   S:              date="2010-04-03T22:00:00.0Z"&gt;1-abc444
+   S:            &lt;/verificationCode:code&gt;
+   S:          &lt;/verificationCode:set&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:        &lt;verificationCode:profile name="sample2"&gt;
+   S:          &lt;verificationCode:status&gt;notApplicable
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:set&gt;
+   S:            &lt;verificationCode:code type="domain"
+   S:              date="2010-04-03T22:00:00.0Z"&gt;2-abc555
+   S:            &lt;/verificationCode:code&gt;
+   S:          &lt;/verificationCode:set&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 18]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-19" id="page-19" href="#page-19" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+   extension for a compliant domain using the "sample" profile, and with
+   the two verification code types, from the non-sponsoring client:
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="ok"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   S:        &lt;verificationCode:status&gt;compliant
+   S:        &lt;/verificationCode:status&gt;
+   S:        &lt;verificationCode:profile name="sample"&gt;
+   S:          &lt;verificationCode:status&gt;compliant
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:set&gt;
+   S:            &lt;verificationCode:code type="domain"
+   S:              date="2010-04-03T22:00:00.0Z"/&gt;
+   S:            &lt;verificationCode:code type="registrant"
+   S:              date="2010-04-03T22:00:00.0Z"/&gt;
+   S:          &lt;/verificationCode:set&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 19]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-20" id="page-20" href="#page-20" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+   extension for a non-compliant domain using the "sample" profile, and
+   with the verification code types missing along with their due dates:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 20]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-21" id="page-21" href="#page-21" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="serverHold"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   S:        &lt;verificationCode:status&gt;nonCompliant
+   S:        &lt;/verificationCode:status&gt;
+   S:        &lt;verificationCode:profile name="sample"&gt;
+   S:          &lt;verificationCode:status&gt;nonCompliant
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:missing&gt;
+   S:            &lt;verificationCode:code
+   S:              type="domain"
+   S:              due="2010-04-03T22:00:00.0Z"/&gt;
+   S:            &lt;verificationCode:code
+   S:              type="registrant"
+   S:              due="2010-04-08T22:00:00.0Z"/&gt;
+   S:          &lt;/verificationCode:missing&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 21]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-22" id="page-22" href="#page-22" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   extension for a pending compliance domain using the "sample" profile,
+   with the verification code type missing along with the due date, and
+   with set verification code:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 22]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-23" id="page-23" href="#page-23" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="ok"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   S:        &lt;verificationCode:status&gt;pendingCompliance
+   S:        &lt;/verificationCode:status&gt;
+   S:        &lt;verificationCode:profile name="sample"&gt;
+   S:          &lt;verificationCode:status&gt;pendingCompliance
+   S:          &lt;/verificationCode:status&gt;
+   S:          &lt;verificationCode:missing&gt;
+   S:            &lt;verificationCode:code
+   S:              type="registrant"
+   S:              due="2010-04-08T22:00:00.0Z"/&gt;
+   S:          &lt;/verificationCode:missing&gt;
+   S:          &lt;verificationCode:set&gt;
+   S:            &lt;verificationCode:code type="domain"
+   S:              date="2010-04-03T22:00:00.0Z"&gt;1-abc333
+   S:            &lt;/verificationCode:code&gt;
+   S:          &lt;/verificationCode:set&gt;
+   S:        &lt;/verificationCode:profile&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 23]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-24" id="page-24" href="#page-24" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   Example &lt;info&gt; domain response using the &lt;verificationCode:infData&gt;
+   extension for a client that does not have a verification profile
+   assigned:
+
+   S:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   S:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   S:  &lt;response&gt;
+   S:    &lt;result code="1000"&gt;
+   S:      &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+   S:    &lt;/result&gt;
+   S:    &lt;resData&gt;
+   S:      &lt;domain:infData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   S:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   S:        &lt;domain:roid&gt;DOMAIN-REP&lt;/domain:roid&gt;
+   S:        &lt;domain:status s="ok"/&gt;
+   S:        &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+   S:        &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+   S:        &lt;domain:crDate&gt;2010-04-03T22:00:00.0Z
+   S:        &lt;/domain:crDate&gt;
+   S:        &lt;domain:exDate&gt;2015-04-03T22:00:00.0Z
+   S:        &lt;/domain:exDate&gt;
+   S:      &lt;/domain:infData&gt;
+   S:    &lt;/resData&gt;
+   S:    &lt;extension&gt;
+   S:      &lt;verificationCode:infData
+   S:        xmlns:verificationCode=
+   S:        "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   S:        &lt;verificationCode:status&gt;notApplicable
+   S:        &lt;/verificationCode:status&gt;
+   S:      &lt;/verificationCode:infData&gt;
+   S:    &lt;/extension&gt;
+   S:    &lt;trID&gt;
+   S:      &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   S:      &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+   S:    &lt;/trID&gt;
+   S:  &lt;/response&gt;
+   S:&lt;/epp&gt;
+
+<span class="h4"><a class="selflink" name="section-3.1.3" href="#section-3.1.3">3.1.3</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension does not add any elements to the EPP &lt;transfer&gt; query
+   command or &lt;transfer&gt; response described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 24]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-25" id="page-25" href="#page-25" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+<span class="h3"><a class="selflink" name="section-3.2" href="#section-3.2">3.2</a>.  EPP Transform Commands</span>
+
+   EPP provides five commands to transform objects: &lt;create&gt; to create
+   an instance of an object, &lt;delete&gt; to delete an instance of an
+   object, &lt;renew&gt; to extend the validity period of an object,
+   &lt;transfer&gt; to manage object sponsorship changes, and &lt;update&gt; to
+   change information associated with an object.
+
+<span class="h4"><a class="selflink" name="section-3.2.1" href="#section-3.2.1">3.2.1</a>.  EPP &lt;create&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;create&gt;
+   command of an object mapping like the EPP domain name mapping
+   [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], EPP host mapping [<a href="./rfc5732" title="&quot;Extensible Provisioning Protocol (EPP) Host Mapping&quot;">RFC5732</a>], and EPP contact mapping
+   [<a href="./rfc5733" title="&quot;Extensible Provisioning Protocol (EPP) Contact Mapping&quot;">RFC5733</a>].
+
+   The EPP &lt;create&gt; command provides a transform operation that allows a
+   client to create an object.  In addition to the EPP command elements
+   described in an object mapping like [<a href="./rfc5731" title="&quot;Extensible Provisioning Protocol (EPP) Domain Name Mapping&quot;">RFC5731</a>], the command MAY
+   contain a child &lt;verificationCode:encodedSignedCode&gt; element, as
+   defined in <a href="#section-2.1.2">Section 2.1.2</a>, that identifies the extension namespace for
+   the client to provide proof of verification by a Verification Service
+   Provider (VSP).  The server MAY support multiple policies for the
+   passing of the &lt;verificationCode:encodedSignedCode&gt; element based on
+   the client profile, which include:
+
+   required  The client MUST pass a valid
+       &lt;verificationCode:encodedSignedCode&gt; element containing the
+       required set of verification codes.  If a
+       &lt;verificationCode:encodedSignedCode&gt; element is not passed or the
+       required set of verification codes is not included, the server
+       MUST return an EPP error result code of 2306.  If an invalid
+       &lt;verificationCode:encodedSignedCode&gt; element is passed, the
+       server MUST return an EPP error result code of 2005.
+   optional  The client MAY pass a valid
+       &lt;verificationCode:encodedSignedCode&gt; element.  If an invalid
+       &lt;verificationCode:encodedSignedCode&gt; element is passed, the
+       server MUST return an EPP error result code of 2005.
+   not supported  The client MUST NOT pass a
+       &lt;verificationCode:encodedSignedCode&gt; element.  If a
+       &lt;verificationCode:encodedSignedCode&gt; element is passed, the
+       server MUST return an EPP error result code of 2102.
+
+   Example &lt;create&gt; command to create a domain object with a
+   verification code:
+
+   C:&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+   C:&lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+   C:  &lt;command&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 25]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-26" id="page-26" href="#page-26" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   C:    &lt;create&gt;
+   C:      &lt;domain:create
+   C:       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+   C:        &lt;domain:name&gt;domain.example&lt;/domain:name&gt;
+   C:        &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+   C:        &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+   C:        &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+   C:        &lt;domain:authInfo&gt;
+   C:          &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+   C:        &lt;/domain:authInfo&gt;
+   C:      &lt;/domain:create&gt;
+   C:    &lt;/create&gt;
+   C:    &lt;extension&gt;
+   C:      &lt;verificationCode:encodedSignedCode
+   C:        xmlns:verificationCode=
+   C:          "urn:ietf:params:xml:ns:verificationCode-1.0"&gt;
+   C:        &lt;verificationCode:code&gt;
+   C:ICAgICAgPHZlcmlmaWNhdGlvbkNvZGU6c2lnbmVkQ29kZQogICAgICAgIHhtbG5z
+   C:OnZlcmlmaWNhdGlvbkNvZGU9CiAgICAgICAgICAidXJuOmlldGY6cGFyYW1zOnht
+   C:bDpuczp2ZXJpZmljYXRpb25Db2RlLTEuMCIKICAgICAgICAgIGlkPSJzaWduZWRD
+   C:b2RlIj4KICAgCQk8dmVyaWZpY2F0aW9uQ29kZTpjb2RlPjEtYWJjMTIzPC92ZXJp
+   C:ZmljYXRpb25Db2RlOmNvZGU+CiAgPFNpZ25hdHVyZSB4bWxucz0iaHR0cDovL3d3
+   C:dy53My5vcmcvMjAwMC8wOS94bWxkc2lnIyI+CiAgIDxTaWduZWRJbmZvPgogICAg
+   C:PENhbm9uaWNhbGl6YXRpb25NZXRob2QKIEFsZ29yaXRobT0iaHR0cDovL3d3dy53
+   C:My5vcmcvMjAwMS8xMC94bWwtZXhjLWMxNG4jIi8+CiAgICA8U2lnbmF0dXJlTWV0
+   C:aG9kCiBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMDQveG1sZHNp
+   C:Zy1tb3JlI3JzYS1zaGEyNTYiLz4KICAgIDxSZWZlcmVuY2UgVVJJPSIjc2lnbmVk
+   C:Q29kZSI+CiAgICAgPFRyYW5zZm9ybXM+CiAgICAgIDxUcmFuc2Zvcm0KIEFsZ29y
+   C:aXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI2VudmVsb3Bl
+   C:ZC1zaWduYXR1cmUiLz4KICAgICA8L1RyYW5zZm9ybXM+CiAgICAgPERpZ2VzdE1l
+   C:dGhvZAogQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVu
+   C:YyNzaGEyNTYiLz4KIDxEaWdlc3RWYWx1ZT53Z3lXM25aUG9FZnBwdGxoUklMS25P
+   C:UW5iZHRVNkFyTTdTaHJBZkhnREZnPTwvRGlnZXN0VmFsdWU+CiAgICA8L1JlZmVy
+   C:ZW5jZT4KICAgPC9TaWduZWRJbmZvPgogICA8U2lnbmF0dXJlVmFsdWU+CiBqTXU0
+   C:UGZ5UUdpSkJGMEdXU0VQRkNKam15d0NFcVIyaDRMRCtnZTZYUStKbm1LRkZDdUNa
+   C:Uy8zU0xLQXgwTDF3CiBRREZPMmUwWTY5azJHNy9MR0UzN1gzdk9mbG9iRk0xb0d3
+   C:amE4K0dNVnJhb3RvNXhBZDQvQUY3ZUh1a2dBeW1ECiBvOXRveG9hMmgweVY0QTRQ
+   C:bVh6c1U2Uzg2WHRDY1VFK1MvV003Mm55bjQ3em9VQ3p6UEtIWkJSeWVXZWhWRlEr
+   C:CiBqWVJNSUFNek01N0hIUUErNmVhWGVmUnZ0UEVUZ1VPNGFWSVZTdWdjNE9VQVpa
+   C:d2JZY1pyQzZ3T2FRcXFxQVppCiAzMGFQT0JZYkF2SE1TbVdTUytoRmtic2hvbUpm
+   C:SHhiOTdURDJncmxZTnJRSXpxWGs3V2JIV3kyU1lkQStzSS9aCiBpcEpzWE5hNm9z
+   C:VFV3MUN6QTdqZndBPT0KICAgPC9TaWduYXR1cmVWYWx1ZT4KICAgPEtleUluZm8+
+   C:CiAgICA8WDUwOURhdGE+CiAgICA8WDUwOUNlcnRpZmljYXRlPgogTUlJRVNUQ0NB
+   C:ekdnQXdJQkFnSUJBakFOQmdrcWhraUc5dzBCQVFzRkFEQmlNUXN3Q1FZRFZRUUdF
+   C:d0pWVXpFTAogTUFrR0ExVUVDQk1DUTBFeEZEQVNCZ05WQkFjVEMweHZjeUJCYm1k
+   C:bGJHVnpNUk13RVFZRFZRUUtFd3BKUTBGTwogVGlCVVRVTklNUnN3R1FZRFZRUURF
+   C:eEpKUTBGT1RpQlVUVU5JSUZSRlUxUWdRMEV3SGhjTk1UTXdNakE0TURBdwogTURB
+   C:d1doY05NVGd3TWpBM01qTTFPVFU1V2pCc01Rc3dDUVlEVlFRR0V3SlZVekVMTUFr
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 26]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-27" id="page-27" href="#page-27" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   C:R0ExVUVDQk1DUTBFeAogRkRBU0JnTlZCQWNUQzB4dmN5QkJibWRsYkdWek1SY3dG
+   C:UVlEVlFRS0V3NVdZV3hwWkdGMGIzSWdWRTFEU0RFaAogTUI4R0ExVUVBeE1ZVm1G
+   C:c2FXUmhkRzl5SUZSTlEwZ2dWRVZUVkNCRFJWSlVNSUlCSWpBTkJna3Foa2lHOXcw
+   C:QgogQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBby9jd3ZYaGJWWWwwUkRXV3ZveWVa
+   C:cEVUVlpWVmNNQ292VVZOZy9zdwogV2ludU1nRVdnVlFGcnoweEEwNHBFaFhDRlZ2
+   C:NGV2YlVwZWtKNWJ1cVUxZ21ReU9zQ0tRbGhPSFRkUGp2a0M1dQogcERxYTUxRmxr
+   C:MFRNYU1rSVFqczdhVUtDbUE0Ukc0dFRUR0svRWpSMWl4OC9EMGdIWVZSbGR5MVlQ
+   C:ck1QK291NwogNWJPVm5Jb3MrSGlmckF0ckl2NHFFcXdMTDRGVFpBVXBhQ2EyQm1n
+   C:WGZ5MkNTUlFieEQ1T3IxZ2NTYTN2dXJoNQogc1BNQ054cWFYbUlYbVFpcFMrRHVF
+   C:QnFNTTh0bGRhTjdSWW9qVUVLckdWc05rNWk5eTIvN3NqbjF6eXlVUGY3dgogTDRH
+   C:Z0RZcWhKWVdWNjFEblhneC9KZDZDV3h2c25ERjZzY3NjUXpVVEVsK2h5d0lEQVFB
+   C:Qm80SC9NSUg4TUF3RwogQTFVZEV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZQWkVj
+   C:SVFjRC9CajJJRnovTEVSdW8yQURKdmlNSUdNQmdOVgogSFNNRWdZUXdnWUdBRk8w
+   C:LzdrRWgzRnVFS1MrUS9rWUhhRC9XNndpaG9XYWtaREJpTVFzd0NRWURWUVFHRXdK
+   C:VgogVXpFTE1Ba0dBMVVFQ0JNQ1EwRXhGREFTQmdOVkJBY1RDMHh2Y3lCQmJtZGxi
+   C:R1Z6TVJNd0VRWURWUVFLRXdwSgogUTBGT1RpQlVUVU5JTVJzd0dRWURWUVFERXhK
+   C:SlEwRk9UaUJVVFVOSUlGUkZVMVFnUTBHQ0FRRXdEZ1lEVlIwUAogQVFIL0JBUURB
+   C:Z2VBTUM0R0ExVWRId1FuTUNVd0k2QWhvQitHSFdoMGRIQTZMeTlqY213dWFXTmhi
+   C:bTR1YjNKbgogTDNSdFkyZ3VZM0pzTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFC
+   C:MnFTeTd1aSs0M2NlYktVS3dXUHJ6ejl5LwogSWtyTWVKR0tqbzQwbis5dWVrYXcz
+   C:REo1RXFpT2YvcVo0cGpCRCsrb1I2QkpDYjZOUXVRS3dub0F6NWxFNFNzdQogeTUr
+   C:aTkzb1QzSGZ5VmM0Z05NSW9IbTFQUzE5bDdEQktyYndiekFlYS8waktXVnpydm1W
+   C:N1RCZmp4RDNBUW8xUgogYlU1ZEJyNklqYmRMRmxuTzV4MEcwbXJHN3g1T1VQdXVy
+   C:aWh5aVVScEZEcHdIOEtBSDF3TWNDcFhHWEZSdEdLawogd3lkZ3lWWUF0eTdvdGts
+   C:L3ozYlprQ1ZUMzRnUHZGNzBzUjYrUXhVeTh1MEx6RjVBL2JlWWFacHhTWUczMWFt
+   C:TAogQWRYaXRUV0ZpcGFJR2VhOWxFR0ZNMEw5K0JnN1h6Tm40blZMWG9reUVCM2Jn
+   C:UzRzY0c2UXpuWDIzRkdrCiAgIDwvWDUwOUNlcnRpZmljYXRlPgogICA8L1g1MDlE
+   C:YXRhPgogICA8L0tleUluZm8+CiAgPC9TaWduYXR1cmU+CgkJPC92ZXJpZmljYXRp
+   C:b25Db2RlOnNpZ25lZENvZGU+Cg==
+   C:        &lt;/verificationCode:code&gt;
+   C:      &lt;/verificationCode:encodedSignedCode&gt;
+   C:    &lt;/extension&gt;
+   C:    &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+   C:  &lt;/command&gt;
+   C:&lt;/epp&gt;
+
+   This extension does not add any elements to the EPP &lt;create&gt; response
+   described in the [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>].
+
+<span class="h4"><a class="selflink" name="section-3.2.2" href="#section-3.2.2">3.2.2</a>.  EPP &lt;delete&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;delete&gt;
+   command and response in the same fashion as defined for the EPP
+   &lt;create&gt; Command (<a href="#section-3.2.1">Section 3.2.1</a>).
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 27]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-28" id="page-28" href="#page-28" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+<span class="h4"><a class="selflink" name="section-3.2.3" href="#section-3.2.3">3.2.3</a>.  EPP &lt;renew&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;renew&gt;
+   command and response in the same fashion as defined for the EPP
+   &lt;create&gt; Command (<a href="#section-3.2.1">Section 3.2.1</a>).
+
+<span class="h4"><a class="selflink" name="section-3.2.4" href="#section-3.2.4">3.2.4</a>.  EPP &lt;transfer&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP
+   &lt;transfer&gt; command and response in the same fashion as defined for
+   the EPP &lt;create&gt; Command (<a href="#section-3.2.1">Section 3.2.1</a>).
+
+<span class="h4"><a class="selflink" name="section-3.2.5" href="#section-3.2.5">3.2.5</a>.  EPP &lt;update&gt; Command</span>
+
+   This extension defines additional elements to extend the EPP &lt;update&gt;
+   command and response in the same fashion as defined for the EPP
+   &lt;create&gt; Command (<a href="#section-3.2.1">Section 3.2.1</a>).
+
+<span class="h2"><a class="selflink" name="section-4" href="#section-4">4</a>.  Formal Syntax</span>
+
+   One schema is presented here that is the EPP Verification Code
+   Extension schema.
+
+   The formal syntax presented here is a complete schema representation
+   of the object mapping suitable for automated validation of EPP XML
+   instances.  The BEGIN and END tags are not part of the schema; they
+   are used to note the beginning and ending of the schema for URI
+   registration purposes.
+
+<span class="h3"><a class="selflink" name="section-4.1" href="#section-4.1">4.1</a>.  Verification Code Extension Schema</span>
+
+   BEGIN
+   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+   &lt;schema
+     targetNamespace=
+       "urn:ietf:params:xml:ns:verificationCode-1.0"
+     xmlns:verificationCode=
+       "urn:ietf:params:xml:ns:verificationCode-1.0"
+     xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+     xmlns="http://www.w3.org/2001/XMLSchema"
+     elementFormDefault="qualified"&gt;
+
+     &lt;annotation&gt;
+       &lt;documentation&gt;
+         Extensible Provisioning Protocol v1.0
+         Verification Code Extension.
+       &lt;/documentation&gt;
+     &lt;/annotation&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 28]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-29" id="page-29" href="#page-29" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+     &lt;import namespace="http://www.w3.org/2000/09/xmldsig#"
+       schemaLocation="xmldsig-core-schema.xsd"/&gt;
+
+     &lt;!-- Abstract signed code for substitution --&gt;
+     &lt;element name="abstractSignedCode"
+       type="verificationCode:abstractSignedCodeType"
+       abstract="true"/&gt;
+
+     &lt;!-- Empty type for use in extending for a signed code --&gt;
+     &lt;complexType name="abstractSignedCodeType"/&gt;
+
+     &lt;!-- Definition of concrete signed code --&gt;
+     &lt;element name="signedCode"
+       type="verificationCode:signedCodeType"
+       substitutionGroup="verificationCode:abstractSignedCode"/&gt;
+
+     &lt;complexType name="signedCodeType"&gt;
+       &lt;complexContent&gt;
+         &lt;extension base="verificationCode:abstractSignedCodeType"&gt;
+           &lt;sequence&gt;
+             &lt;element name="code"
+               type="verificationCode:verificationCodeType"/&gt;
+             &lt;element ref="dsig:Signature"/&gt;
+           &lt;/sequence&gt;
+           &lt;attribute name="id" type="ID" use="required"/&gt;
+         &lt;/extension&gt;
+       &lt;/complexContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="verificationCodeType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="token"&gt;
+           &lt;attribute name="type" type="token"
+             use="required"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;!-- Definition of an encoded signed code --&gt;
+     &lt;element name="encodedSignedCode"
+       type="verificationCode:encodedSignedCodeListType"/&gt;
+
+     &lt;complexType name="encodedSignedCodeListType"&gt;
+       &lt;sequence&gt;
+          &lt;element name="code"
+             type="verificationCode:encodedSignedCodeType"
+             minOccurs="1" maxOccurs="unbounded"/&gt;
+       &lt;/sequence&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 29]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-30" id="page-30" href="#page-30" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+     &lt;/complexType&gt;
+
+     &lt;complexType name="encodedSignedCodeType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="token"&gt;
+           &lt;attribute name="encoding"
+             type="token" default="base64"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;!-- info command extension elements --&gt;
+     &lt;element name="info" type="verificationCode:infoType"/&gt;
+
+     &lt;complexType name="infoType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="token"&gt;
+            &lt;attribute name="profile" type="token"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+
+     &lt;!-- info response extension elements --&gt;
+     &lt;element name="infData" type="verificationCode:infDataType"/&gt;
+
+     &lt;complexType name="infDataType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="status"
+           type="verificationCode:statusEnum"/&gt;
+         &lt;element name="profile"
+           type="verificationCode:profileDataType"
+           minOccurs="0" maxOccurs="unbounded"/&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="profileDataType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="status"
+           type="verificationCode:statusEnum"/&gt;
+         &lt;element name="missing"
+           type="verificationCode:missingCodes"
+           minOccurs="0"/&gt;
+         &lt;element name="set"
+           type="verificationCode:codesType"
+           minOccurs="0"/&gt;
+       &lt;/sequence&gt;
+       &lt;attribute name="name" type="token"/&gt;
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 30]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-31" id="page-31" href="#page-31" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+     &lt;/complexType&gt;
+
+     &lt;simpleType name="statusEnum"&gt;
+       &lt;restriction base="token"&gt;
+         &lt;enumeration value="notApplicable"/&gt;
+         &lt;enumeration value="nonCompliant"/&gt;
+         &lt;enumeration value="pendingCompliance"/&gt;
+         &lt;enumeration value="compliant"/&gt;
+       &lt;/restriction&gt;
+     &lt;/simpleType&gt;
+
+     &lt;complexType name="missingVerificationCode"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="verificationCode:verificationCodeType"&gt;
+           &lt;attribute name="due" type="dateTime"
+             use="required"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="missingCodes"&gt;
+       &lt;sequence&gt;
+         &lt;element name="code"
+           type="verificationCode:missingVerificationCode"
+           minOccurs="1" maxOccurs="unbounded"/&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="infoVerificationCodeType"&gt;
+       &lt;simpleContent&gt;
+         &lt;extension base="verificationCode:verificationCodeType"&gt;
+           &lt;attribute name="date" type="dateTime"
+             use="required"/&gt;
+         &lt;/extension&gt;
+       &lt;/simpleContent&gt;
+     &lt;/complexType&gt;
+
+     &lt;complexType name="codesType"&gt;
+       &lt;sequence&gt;
+         &lt;element name="code"
+           type="verificationCode:infoVerificationCodeType"
+           minOccurs="1" maxOccurs="unbounded"/&gt;
+       &lt;/sequence&gt;
+     &lt;/complexType&gt;
+
+   &lt;/schema&gt;
+   END
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 31]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-32" id="page-32" href="#page-32" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-5" href="#section-5">5</a>.  IANA Considerations</span>
+
+<span class="h3"><a class="selflink" name="section-5.1" href="#section-5.1">5.1</a>.  XML Namespace</span>
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [<a href="./rfc3688" title="&quot;The IETF XML Registry&quot;">RFC3688</a>].
+
+   Registration request for the verificationCode namespace:
+
+      URI: ietf:params:xml:ns:verificationCode-1.0
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the verificationCode XML schema:
+
+      URI: ietf:params:xml:ns:verificationCode-1.0
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+      XML: See the "Formal Syntax" section of this document.
+
+<span class="h3"><a class="selflink" name="section-5.2" href="#section-5.2">5.2</a>.  EPP Extension Registry</span>
+
+   The EPP extension described in this document should be registered by
+   the IANA in the EPP Extension Registry described in [<a href="./rfc7451" title="&quot;Extension Registry for the Extensible Provisioning Protocol&quot;">RFC7451</a>].  The
+   details of the registration are as follows:
+
+   Name of Extension: "Verification Code Extension for the Extensible
+   Provisioning Protocol (EPP)"
+
+   Document status: Standards Track
+
+   Reference: (insert reference to RFC version of this document)
+
+   Registrant Name and Email Address: IESG, &lt;iesg@ietf.org&gt;
+
+   TLDs: Any
+
+   IPR Disclosure: None
+
+   Status: Active
+
+   Notes: None
+
+
+
+
+
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 32]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-33" id="page-33" href="#page-33" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+<span class="h2"><a class="selflink" name="section-6" href="#section-6">6</a>.  Security Considerations</span>
+
+   The mapping extension described in this document is based on the
+   security services described by EPP [<a href="./rfc5730" title="&quot;Extensible Provisioning Protocol (EPP)&quot;">RFC5730</a>] and protocol layers used
+   by EPP.  The security considerations described in these other
+   specifications apply to this specification as well.
+
+   XML Signature [<a href="#ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>] is used in this
+   extension to verify that the Verification Code originated from a
+   trusted Verification Service Provider (VSP) and that it wasn't
+   tampered with in transit from the VSP to the client to the server.
+   To support multiple VSP keys, the VSP certificate chain MUST be
+   included in the &lt;X509Certificate&gt; elements of the Signed Code
+   (<a href="#section-2.1.1">Section 2.1.1</a>) and MUST chain up and be verified by the server
+   against a set of trusted certificates.
+
+   It is RECOMMENDED that signed codes do not include white-spaces
+   between the XML elements in order to mitigate risks of invalidating
+   the digital signature when transferring of signed codes between
+   applications takes place.
+
+   Use of XML canonicalization SHOULD be used when generating the signed
+   code.  SHA256/RSA-SHA256 SHOULD be used for digesting and signing.
+   The size of the RSA key SHOULD be at least 2048 bits.
+
+<span class="h2"><a class="selflink" name="section-7" href="#section-7">7</a>.  Normative References</span>
+
+   [<a name="ref-RFC2045" id="ref-RFC2045">RFC2045</a>]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
+              Extensions (MIME) Part One: Format of Internet Message
+              Bodies", <a href="./rfc2045">RFC 2045</a>, November 1996.
+
+   [<a name="ref-RFC2119" id="ref-RFC2119">RFC2119</a>]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", <a href="./bcp14">BCP 14</a>, <a href="./rfc2119">RFC 2119</a>, March 1997.
+
+   [<a name="ref-RFC3688" id="ref-RFC3688">RFC3688</a>]  Mealling, M., "The IETF XML Registry", <a href="./bcp81">BCP 81</a>, <a href="./rfc3688">RFC 3688</a>,
+              January 2004.
+
+   [<a name="ref-RFC5234" id="ref-RFC5234">RFC5234</a>]  Crocker, D. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, <a href="./rfc5234">RFC 5234</a>, January 2008.
+
+   [<a name="ref-RFC5730" id="ref-RFC5730">RFC5730</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, <a href="./rfc5730">RFC 5730</a>, August 2009.
+
+   [<a name="ref-RFC5731" id="ref-RFC5731">RFC5731</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, <a href="./rfc5731">RFC 5731</a>, August 2009.
+
+   [<a name="ref-RFC5732" id="ref-RFC5732">RFC5732</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Host Mapping", STD 69, <a href="./rfc5732">RFC 5732</a>, August 2009.
+
+
+
+<span class="grey">Gould                     Expires May 12, 2016                 [Page 33]</span></pre>
+<hr class='noprint' style='width: 96ex;' align='left'/><!--NewPage--><pre class='newpage'><a name="page-34" id="page-34" href="#page-34" class="invisible"> </a>
+<span class="grey">Internet-Draft              verificationCode               November 2015</span>
+
+
+   [<a name="ref-RFC5733" id="ref-RFC5733">RFC5733</a>]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Contact Mapping", STD 69, <a href="./rfc5733">RFC 5733</a>, August 2009.
+
+   [<a name="ref-RFC7451" id="ref-RFC7451">RFC7451</a>]  Hollenbeck, S., "Extension Registry for the Extensible
+              Provisioning Protocol", <a href="./rfc7451">RFC 7451</a>, February 2015.
+
+   [<a name="ref-W3C.CR-xmldsig-core2-20120124" id="ref-W3C.CR-xmldsig-core2-20120124">W3C.CR-xmldsig-core2-20120124</a>]
+              Cantor, S., Roessler, T., Eastlake, D., Yiu, K., Reagle,
+              J., Solo, D., Datta, P., and F. Hirsch, "XML Signature
+              Syntax and Processing Version 2.0", World Wide Web
+              Consortium CR CR-xmldsig-core2-20120124, January 2012,
+              &lt;<a href="http://www.w3.org/TR/2012/CR-xmldsig-core2-20120124">http://www.w3.org/TR/2012/CR-xmldsig-core2-20120124</a>&gt;.
+
+<span class="h2"><a class="selflink" name="appendix-A" href="#appendix-A">Appendix A</a>.  Acknowledgements</span>
+
+<span class="h2"><a class="selflink" name="appendix-B" href="#appendix-B">Appendix B</a>.  Change History</span>
+
+<span class="h3"><a class="selflink" name="appendix-B.1" href="#appendix-B.1">B.1</a>.  Change from 00 to 01</span>
+
+   1.  Fixed pendingComplaince and complaint to pendingCompliance and
+       compliant in text.
+   2.  Fixed verificaton to verification.
+
+<span class="h3"><a class="selflink" name="appendix-B.2" href="#appendix-B.2">B.2</a>.  Change from 01 to 02</span>
+
+   1.  Added support for the notApplicable status value.
+
+Author's Address
+
+   James Gould
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: jgould@verisign.com
+   URI:   <a href="http://www.verisign.com">http://www.verisign.com</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould                     Expires May 12, 2016                 [Page 34]
+
+</pre><br />
+    <span class="noprint"><small><small>Html markup produced by rfcmarkup 1.115, available from
+      <a href="https://tools.ietf.org/tools/rfcmarkup/">https://tools.ietf.org/tools/rfcmarkup/</a>
+    </small></small></span>
+  </div>
+</body>
+</html>
